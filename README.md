@@ -1,5 +1,5 @@
 
-![Bliburu](https://raw.githubusercontent.com/jsnchzjmnz/bliburu/master/logo.png)
+![Bliburu](https://raw.githubusercontent.com/jsnchzjmnz/bliburo/master/logo.png)
 
 Bliburu es un Software de Gestión Bibliotecaria Libre que está pensado para simplificar la gestión de préstamo y venta de libros y revistas.
 
