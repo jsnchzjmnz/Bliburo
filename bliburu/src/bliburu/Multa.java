@@ -24,5 +24,10 @@ package bliburu;
 public class Multa {
     
     private int idMulta;
+
+    public Multa() {
+    }
+    
+    
     
 }
