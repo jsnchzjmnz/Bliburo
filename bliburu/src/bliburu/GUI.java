@@ -66,11 +66,11 @@ public class GUI extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
         jTab = new javax.swing.JTabbedPane();
         jPanelLiteratura = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelRecursosLiterarios = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListRecursosLiterarios = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabelRecursosLiterariosLabel = new javax.swing.JLabel();
+        jPanelRecursoLiterarioFiltro = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jCheckBoxFiltroLibro = new javax.swing.JCheckBox();
         jCheckBoxFiltroRevista = new javax.swing.JCheckBox();
@@ -85,31 +85,31 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxFiltroRevistaTipo = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jLabelRegistroRevistaLabel = new javax.swing.JLabel();
+        jLabelRegistroRevistaNombre = new javax.swing.JLabel();
+        jLabelRegistroRevistaNumero = new javax.swing.JLabel();
+        jLabelRegistroRevistaAnio = new javax.swing.JLabel();
+        jLabelRegistroRevistaCosto = new javax.swing.JLabel();
         jComboBoxRegistroRevistaTipo = new javax.swing.JComboBox<>();
         jTextFieldRegistroRevistaNombre = new javax.swing.JTextField();
         jButtonRegistroRevista = new javax.swing.JButton();
         jSpinnerAnioRevista = new javax.swing.JSpinner();
         jSpinnerRegistroRevistaNumero = new javax.swing.JSpinner();
         jSpinnerRegistroRevistaCosto = new javax.swing.JSpinner();
-        jLabel14 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelRegistroRevistasTipo = new javax.swing.JLabel();
+        jPanelRegistroLibros = new javax.swing.JPanel();
+        jLabelRegistroLibrosTitle = new javax.swing.JLabel();
         jTextFieldRegistroLibroNombre = new javax.swing.JTextField();
         jTextFieldRegistroLibroAutor = new javax.swing.JTextField();
         jTextFieldRegistroLibroEditorial = new javax.swing.JTextField();
         jComboBoxTipoLibro = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelRegistroLibroNombre = new javax.swing.JLabel();
+        jLabelRegistroLibroAutor = new javax.swing.JLabel();
+        jLabelRegistroLibroEditorial = new javax.swing.JLabel();
+        jLabelRegistroLibroAnio = new javax.swing.JLabel();
         jButtonRegistroLibro = new javax.swing.JButton();
         jSpinnerRegistroLibroAnio = new javax.swing.JSpinner();
-        jLabel15 = new javax.swing.JLabel();
+        jLabelRegistroLibroTipo = new javax.swing.JLabel();
         jPanelPrestamos = new javax.swing.JPanel();
         jPanelVentas = new javax.swing.JPanel();
         jPanelClientes = new javax.swing.JPanel();
@@ -118,14 +118,14 @@ public class GUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItemImportarLiteratura = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItemSalir = new javax.swing.JMenuItem();
         jMenuHerramientas = new javax.swing.JMenu();
         jMenuItemAjustes = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemAyuda = new javax.swing.JMenuItem();
+        jMenuItemAcerca = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(170, 104, 69));
@@ -148,12 +148,12 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jListRecursosLiterarios);
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(88, 68, 49));
-        jLabel1.setText("Recursos Literarios");
+        jLabelRecursosLiterariosLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabelRecursosLiterariosLabel.setForeground(new java.awt.Color(88, 68, 49));
+        jLabelRecursosLiterariosLabel.setText("Recursos Literarios");
 
-        jPanel3.setBackground(new java.awt.Color(125, 164, 203));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 68, 49), 2));
+        jPanelRecursoLiterarioFiltro.setBackground(new java.awt.Color(125, 164, 203));
+        jPanelRecursoLiterarioFiltro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 68, 49), 2));
 
         jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(88, 68, 49));
@@ -255,44 +255,44 @@ public class GUI extends javax.swing.JFrame {
         jLabel17.setBackground(new java.awt.Color(125, 164, 203));
         jLabel17.setText("Tipo");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelRecursoLiterarioFiltroLayout = new javax.swing.GroupLayout(jPanelRecursoLiterarioFiltro);
+        jPanelRecursoLiterarioFiltro.setLayout(jPanelRecursoLiterarioFiltroLayout);
+        jPanelRecursoLiterarioFiltroLayout.setHorizontalGroup(
+            jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRecursoLiterarioFiltroLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBoxFiltroTodo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRecursoLiterarioFiltroLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBoxFiltroLibro)
                     .addComponent(jCheckBoxFiltroRevista)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanelRecursoLiterarioFiltroLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jLabel16))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanelRecursoLiterarioFiltroLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRecursoLiterarioFiltroLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxFiltroRevistaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBoxFiltroLibrosPrestados)
                                     .addComponent(jCheckBoxFiltroLibrosDisponibles)
                                     .addComponent(jComboBoxFiltroTipoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBoxFiltroRevistasPrestadas)
                                     .addComponent(jCheckBoxFiltroRevistasDisponibles)
                                     .addComponent(jCheckBoxFiltroRevistasVendidas)))))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelRecursoLiterarioFiltroLayout.setVerticalGroup(
+            jPanelRecursoLiterarioFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRecursoLiterarioFiltroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -322,44 +322,44 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelRecursosLiterariosLayout = new javax.swing.GroupLayout(jPanelRecursosLiterarios);
+        jPanelRecursosLiterarios.setLayout(jPanelRecursosLiterariosLayout);
+        jPanelRecursosLiterariosLayout.setHorizontalGroup(
+            jPanelRecursosLiterariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRecursosLiterariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelRecursoLiterarioFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelRecursosLiterariosLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addComponent(jLabel1)
+                .addComponent(jLabelRecursosLiterariosLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelRecursosLiterariosLayout.setVerticalGroup(
+            jPanelRecursosLiterariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRecursosLiterariosLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelRecursosLiterariosLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelRecursosLiterariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelRecursoLiterarioFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
 
-        jLabel4.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(88, 68, 49));
-        jLabel4.setText("Registro de Revistas");
+        jLabelRegistroRevistaLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabelRegistroRevistaLabel.setForeground(new java.awt.Color(88, 68, 49));
+        jLabelRegistroRevistaLabel.setText("Registro de Revistas");
 
-        jLabel10.setText("Nombre");
+        jLabelRegistroRevistaNombre.setText("Nombre");
 
-        jLabel11.setText("Número");
+        jLabelRegistroRevistaNumero.setText("Número");
 
-        jLabel12.setText("Año");
+        jLabelRegistroRevistaAnio.setText("Año");
 
-        jLabel13.setText("Costo");
+        jLabelRegistroRevistaCosto.setText("Costo");
 
         jComboBoxRegistroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Venta", "Prestamo" }));
 
@@ -383,7 +383,7 @@ public class GUI extends javax.swing.JFrame {
 
         jSpinnerRegistroRevistaCosto.setModel(new javax.swing.SpinnerNumberModel(1500.0d, null, null, 1.0d));
 
-        jLabel14.setText("Tipo");
+        jLabelRegistroRevistasTipo.setText("Tipo");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -397,21 +397,21 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
+                                        .addComponent(jLabelRegistroRevistaNombre)
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextFieldRegistroRevistaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel13))
+                                    .addComponent(jLabelRegistroRevistaCosto))
                                 .addGap(122, 122, 122))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
+                                .addComponent(jLabelRegistroRevistaNumero)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSpinnerRegistroRevistaCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jSpinnerRegistroRevistaNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel14))
+                                    .addComponent(jLabelRegistroRevistaAnio)
+                                    .addComponent(jLabelRegistroRevistasTipo))
                                 .addGap(40, 40, 40)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSpinnerAnioRevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -422,43 +422,43 @@ public class GUI extends javax.swing.JFrame {
                                         .addGap(55, 55, 55))))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabelRegistroRevistaLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel4)
+                .addComponent(jLabelRegistroRevistaLabel)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                            .addComponent(jLabelRegistroRevistaNombre)
                             .addComponent(jTextFieldRegistroRevistaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
+                            .addComponent(jLabelRegistroRevistaNumero)
                             .addComponent(jSpinnerRegistroRevistaNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(7, 7, 7)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
+                            .addComponent(jLabelRegistroRevistaCosto)
                             .addComponent(jSpinnerRegistroRevistaCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jSpinnerAnioRevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabelRegistroRevistaAnio))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBoxRegistroRevistaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
+                            .addComponent(jLabelRegistroRevistasTipo))
                         .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonRegistroRevista))))
         );
 
-        jLabel5.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(88, 68, 49));
-        jLabel5.setText("Registro de Libros");
+        jLabelRegistroLibrosTitle.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        jLabelRegistroLibrosTitle.setForeground(new java.awt.Color(88, 68, 49));
+        jLabelRegistroLibrosTitle.setText("Registro de Libros");
 
         jTextFieldRegistroLibroNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,13 +468,13 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBoxTipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
 
-        jLabel6.setText("Nombre");
+        jLabelRegistroLibroNombre.setText("Nombre");
 
-        jLabel7.setText("Autor");
+        jLabelRegistroLibroAutor.setText("Autor");
 
-        jLabel8.setText("Editorial");
+        jLabelRegistroLibroEditorial.setText("Editorial");
 
-        jLabel9.setText("Año");
+        jLabelRegistroLibroAnio.setText("Año");
 
         jButtonRegistroLibro.setText("Registrar");
         jButtonRegistroLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -486,81 +486,81 @@ public class GUI extends javax.swing.JFrame {
         jSpinnerRegistroLibroAnio.setModel(new javax.swing.SpinnerDateModel());
         jSpinnerRegistroLibroAnio.setEditor(new javax.swing.JSpinner.DateEditor(jSpinnerRegistroLibroAnio, "yyyy"));
 
-        jLabel15.setText("Tipo");
+        jLabelRegistroLibroTipo.setText("Tipo");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelRegistroLibrosLayout = new javax.swing.GroupLayout(jPanelRegistroLibros);
+        jPanelRegistroLibros.setLayout(jPanelRegistroLibrosLayout);
+        jPanelRegistroLibrosLayout.setHorizontalGroup(
+            jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
+                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
+                        .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
+                                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLibrosLayout.createSequentialGroup()
+                                        .addComponent(jLabelRegistroLibroNombre)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
+                                    .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
+                                        .addComponent(jLabelRegistroLibroAutor)
                                         .addGap(27, 27, 27)))
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextFieldRegistroLibroAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                     .addComponent(jTextFieldRegistroLibroNombre)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel15))
+                            .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
+                                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelRegistroLibroEditorial)
+                                    .addComponent(jLabelRegistroLibroTipo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
+                                        .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jSpinnerRegistroLibroAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextFieldRegistroLibroEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 59, Short.MAX_VALUE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
                                         .addComponent(jComboBoxTipoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButtonRegistroLibro))))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel9))
+                                .addComponent(jLabelRegistroLibrosTitle))
+                            .addComponent(jLabelRegistroLibroAnio))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel5)
+        jPanelRegistroLibrosLayout.setVerticalGroup(
+            jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
+                .addComponent(jLabelRegistroLibrosTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelRegistroLibroNombre)
                     .addComponent(jTextFieldRegistroLibroNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldRegistroLibroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabelRegistroLibroAutor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldRegistroLibroEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addComponent(jLabelRegistroLibroEditorial))
+                .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRegistroLibrosLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                        .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelRegistroLibroAnio)
                             .addComponent(jSpinnerRegistroLibroAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelRegistroLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBoxTipoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))
+                            .addComponent(jLabelRegistroLibroTipo))
                         .addContainerGap(28, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroLibrosLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonRegistroLibro))))
         );
@@ -572,10 +572,10 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLiteraturaLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanelLiteraturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelRegistroLibros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelRecursosLiterarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelLiteraturaLayout.setVerticalGroup(
@@ -584,10 +584,10 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelLiteraturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLiteraturaLayout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelRegistroLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelRecursosLiterarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -674,22 +674,22 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuArchivo.setText("Archivo");
 
-        jMenuItem5.setText("Importar Literatura");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemImportarLiteratura.setText("Importar Literatura");
+        jMenuItemImportarLiteratura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItemImportarLiteraturaActionPerformed(evt);
             }
         });
-        jMenuArchivo.add(jMenuItem5);
+        jMenuArchivo.add(jMenuItemImportarLiteratura);
         jMenuArchivo.add(jSeparator1);
 
-        jMenuItem4.setText("Salir");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemSalirActionPerformed(evt);
             }
         });
-        jMenuArchivo.add(jMenuItem4);
+        jMenuArchivo.add(jMenuItemSalir);
 
         jMenuBar.add(jMenuArchivo);
 
@@ -712,21 +712,21 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Ayuda");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAyuda.setText("Ayuda");
+        jMenuItemAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemAyudaActionPerformed(evt);
             }
         });
-        jMenuAyuda.add(jMenuItem1);
+        jMenuAyuda.add(jMenuItemAyuda);
 
-        jMenuItem2.setText("Acerca");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAcerca.setText("Acerca");
+        jMenuItemAcerca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemAcercaActionPerformed(evt);
             }
         });
-        jMenuAyuda.add(jMenuItem2);
+        jMenuAyuda.add(jMenuItemAcerca);
 
         jMenuBar.add(jMenuAyuda);
 
@@ -757,15 +757,15 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuAyudaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAyudaActionPerformed
         
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemAyudaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaActionPerformed
         Acerca acerca = new Acerca();
         acerca.setTitle("About");
         acerca.show();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemAcercaActionPerformed
 
     private void jMenuItemAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjustesActionPerformed
         Ajustes ajustes = new Ajustes();
@@ -802,7 +802,7 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonRegistroLibroActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuItemImportarLiteraturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportarLiteraturaActionPerformed
         int returnVal = jFileChooser1.showOpenDialog(this);
     if (returnVal == JFileChooser.APPROVE_OPTION) {
         String ruta = jFileChooser1.getSelectedFile().getAbsolutePath();
@@ -817,11 +817,11 @@ public class GUI extends javax.swing.JFrame {
     } else {
         System.out.println("File access cancelled by user.");
     }
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_jMenuItemImportarLiteraturaActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jButtonRegistroRevistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroRevistaActionPerformed
         biblioteca.getInventario().registrarRevista(jTextFieldRegistroRevistaNombre.getText(), (int) jSpinnerRegistroRevistaNumero.getModel().getValue(), (Date) jSpinnerAnioRevista.getValue(), TipoRevista.valueOf(jComboBoxRegistroRevistaTipo.getModel().getSelectedItem().toString().toUpperCase()), (double) jSpinnerRegistroRevistaCosto.getValue());
@@ -1044,42 +1044,42 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxRegistroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxTipoLibro;
     private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelRecursosLiterariosLabel;
+    private javax.swing.JLabel jLabelRegistroLibroAnio;
+    private javax.swing.JLabel jLabelRegistroLibroAutor;
+    private javax.swing.JLabel jLabelRegistroLibroEditorial;
+    private javax.swing.JLabel jLabelRegistroLibroNombre;
+    private javax.swing.JLabel jLabelRegistroLibroTipo;
+    private javax.swing.JLabel jLabelRegistroLibrosTitle;
+    private javax.swing.JLabel jLabelRegistroRevistaAnio;
+    private javax.swing.JLabel jLabelRegistroRevistaCosto;
+    private javax.swing.JLabel jLabelRegistroRevistaLabel;
+    private javax.swing.JLabel jLabelRegistroRevistaNombre;
+    private javax.swing.JLabel jLabelRegistroRevistaNumero;
+    private javax.swing.JLabel jLabelRegistroRevistasTipo;
     private javax.swing.JList<String> jListRecursosLiterarios;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuHerramientas;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItemAcerca;
     private javax.swing.JMenuItem jMenuItemAjustes;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jMenuItemAyuda;
+    private javax.swing.JMenuItem jMenuItemImportarLiteratura;
+    private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelClientes;
     private javax.swing.JPanel jPanelLiteratura;
     private javax.swing.JPanel jPanelMultas;
     private javax.swing.JPanel jPanelPrestamos;
+    private javax.swing.JPanel jPanelRecursoLiterarioFiltro;
+    private javax.swing.JPanel jPanelRecursosLiterarios;
+    private javax.swing.JPanel jPanelRegistroLibros;
     private javax.swing.JPanel jPanelVentas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
