@@ -63,7 +63,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser1 = new javax.swing.JFileChooser();
+        jFileChooserCargaRecursosLiterarios = new javax.swing.JFileChooser();
         jTab = new javax.swing.JTabbedPane();
         jPanelLiteratura = new javax.swing.JPanel();
         jPanelRecursosLiterarios = new javax.swing.JPanel();
@@ -803,9 +803,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegistroLibroActionPerformed
 
     private void jMenuItemImportarLiteraturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportarLiteraturaActionPerformed
-        int returnVal = jFileChooser1.showOpenDialog(this);
+        int returnVal = jFileChooserCargaRecursosLiterarios.showOpenDialog(this);
     if (returnVal == JFileChooser.APPROVE_OPTION) {
-        String ruta = jFileChooser1.getSelectedFile().getAbsolutePath();
+        String ruta = jFileChooserCargaRecursosLiterarios.getSelectedFile().getAbsolutePath();
             try {
                 biblioteca.getInventario().registroAutomatico(ruta);
             } catch (IOException ex) {
@@ -1043,7 +1043,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxFiltroTipoLibro;
     private javax.swing.JComboBox<String> jComboBoxRegistroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxTipoLibro;
-    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JFileChooser jFileChooserCargaRecursosLiterarios;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelRecursosLiterariosFiltroLabel;
     private javax.swing.JLabel jLabelRecursosLiterariosLabel;
