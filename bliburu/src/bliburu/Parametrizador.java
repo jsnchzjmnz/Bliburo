@@ -16,7 +16,6 @@
  */
 package bliburu;
 
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Calendar;
 
@@ -37,8 +36,9 @@ public class Parametrizador {
      */
     public Parametrizador() {
         
-        ZonedDateTime zdt = ZonedDateTime.now();
-        fechaDelSistema = java.util.Date.from( zdt.toInstant() );
+        
+        Calendar calendar = Calendar.getInstance();
+        fechaDelSistema = calendar.getTime();
         diasPrestamoLibro=10;
         diasPrestamoRevista=5;
     }
