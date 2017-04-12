@@ -21,7 +21,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -36,6 +37,10 @@ public class Administrador {
     private List<Multa> listaMultas;
     private List<Prestamo> listaPrestamos;
     private List<Venta> listaVentas;
+    private static final String expesionRegularEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    
+    private static final String expesionRegularTelefono = "^[0-9]{8}$";
     
     /**
      * Constructor por defecto de la clase Administrador
@@ -154,7 +159,8 @@ public class Administrador {
      * @param telefono teléfono del cliente
      */
     public void registrarCliente(String nombre,String cedula, String email, String telefono){
-        
+        Cliente cl = new Cliente(nombre, cedula, email, telefono);
+        listaClientes.add(cl);
     }
     
     /**
@@ -163,6 +169,35 @@ public class Administrador {
      */
     private boolean validarRegistroCliente(){
         return true;
+    }
+    
+    public  String validarEmailCliente(String correo){
+        Pattern pattern = Pattern.compile(expesionRegularEmail);
+
+        Matcher matcher = pattern.matcher(correo);
+        
+        if (matcher.find() == true) {
+            return "CORRECTO";
+        } else {
+            return "* El email ingresado es inválido.";
+        }
+    }
+    /**
+     * 
+     * @param telefono Permite validar que el telefono ingresado 
+     * cumpla con el formato
+     * @return retorna mensaje si es correcto el telefono o inválido
+     */
+    public String validarTelefonoCliente(String telefono){
+        Pattern pattern2 = Pattern.compile(expesionRegularTelefono);
+        
+        Matcher matcher2 = pattern2.matcher(telefono);
+        
+        if (matcher2.find() == true) {
+            return "CORRECTO";
+        } else {
+            return "* El telefono ingresado es inválido.";
+        }
     }
     
     /**

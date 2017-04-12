@@ -16,8 +16,11 @@
  */
 package bliburu;
 
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +29,10 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -123,12 +129,11 @@ public class GUI extends javax.swing.JFrame {
         txtEmailCliente = new javax.swing.JTextField();
         txtCedulaCliente = new javax.swing.JTextField();
         txtTelefonoCliente = new javax.swing.JTextField();
-        labelApellido1Cliente = new javax.swing.JLabel();
-        txtApellido2Cliente = new javax.swing.JTextField();
-        txtApellido1Cliente = new javax.swing.JTextField();
         btnAgregarCliente = new javax.swing.JButton();
         txtErrorEmail = new javax.swing.JLabel();
         txtErrorTelefono = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel = new javax.swing.JPanel();
         jPanelMultas = new javax.swing.JPanel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
@@ -600,7 +605,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelLiteraturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLiteraturaLayout.createSequentialGroup()
                         .addComponent(jPanelRegistroLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                         .addComponent(jPanelRegistroRevistasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelRecursosLiterarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -680,23 +685,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        labelApellido1Cliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelApellido1Cliente.setText("Apellidos: ");
-
-        txtApellido2Cliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtApellido2Cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellido2ClienteActionPerformed(evt);
-            }
-        });
-
-        txtApellido1Cliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtApellido1Cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellido1ClienteActionPerformed(evt);
-            }
-        });
-
         btnAgregarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregarCliente.setText("Agregar");
         btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -719,39 +707,30 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(labelApellido1Cliente)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtApellido1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApellido2Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(labelNombreCliente)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(labelNombreCliente)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(labelCedulaCliente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                        .addComponent(labelCorreoCliente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel6Layout.createSequentialGroup()
-                                            .addComponent(labelTelefonoCliente)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(labelCedulaCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtErrorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
-                                    .addComponent(txtErrorEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(labelCorreoCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(labelTelefonoCliente)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtErrorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(txtErrorEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -766,30 +745,43 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreCliente)
                     .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelApellido1Cliente)
-                    .addComponent(txtApellido1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellido2Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelCorreoCliente)
-                        .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtErrorEmail, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCedulaCliente)
-                    .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTelefonoCliente)
-                    .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtErrorTelefono))
-                .addGap(35, 35, 35)
-                .addComponent(btnAgregarCliente)
-                .addContainerGap())
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtErrorEmail)
+                        .addGap(62, 62, 62)
+                        .addComponent(txtErrorTelefono)
+                        .addGap(92, 92, 92))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCorreoCliente)
+                            .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCedulaCliente)
+                            .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTelefonoCliente)
+                            .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnAgregarCliente)
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
+
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 884, Short.MAX_VALUE)
+        );
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 255, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel);
 
         javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
         jPanelClientes.setLayout(jPanelClientesLayout);
@@ -797,15 +789,21 @@ public class GUI extends javax.swing.JFrame {
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelClientesLayout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelClientesLayout.setVerticalGroup(
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelClientesLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTab.addTab("Clientes", jPanelClientes);
@@ -1152,54 +1150,53 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtTelefonoClienteKeyTyped
 
-    private void txtApellido2ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido2ClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellido2ClienteActionPerformed
-
-    private void txtApellido1ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido1ClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellido1ClienteActionPerformed
-
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
         // TODO add your handling code here:
-        ValidarDatos validacion = new ValidarDatos();
+        Administrador admiCliente = new Administrador();
         String nombre = txtNombreCliente.getText();
-        String apellido1 = txtApellido1Cliente.getText();
-        String apellido2 = txtApellido2Cliente.getText();
         String email = txtEmailCliente.getText();
-        String validacionEmail = validacion.validarEmail(email);
+        String validacionEmail = admiCliente.validarEmailCliente(email);
         txtErrorEmail.setText(validacionEmail);
         String cedula = txtCedulaCliente.getText();
         String telefono = txtTelefonoCliente.getText();
-        String validacionTelefono = validacion.validarTelefono(telefono);
+        String validacionTelefono = admiCliente.validarTelefonoCliente(telefono);
         txtErrorTelefono.setText(validacionTelefono);
         if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
-            txtErrorEmail.setForeground(Color.green);
-            txtErrorTelefono.setForeground(Color.green);
-            Cliente cl = new Cliente(nombre,apellido1,apellido2,email,cedula,telefono);
-            //plantillaCliente plCliente = new plantillaCliente(cl);
-            panelnombre = new javax.swing.JLabel(cl.getNombre());
-            panelapellido1 = new javax.swing.JLabel(cl.getPrimerApellido());
-            panelapellido2 = new javax.swing.JLabel(cl.getSegundoApellido());
-            panelcorreo = new javax.swing.JLabel(cl.getCorreo());
-            panelcedula = new javax.swing.JLabel(cl.getCedula());
-            paneltelefono = new javax.swing.JLabel(cl.getTelefono());
-            panelMensaje = new javax.swing.JButton("ENVIAR msj");
-            jPanel.setLayout(new GridLayout(0,7,20,20));
-
-            jPanel.add(panelnombre);
-            jPanel.add(panelapellido1);
-            jPanel.add(panelapellido2);
-            jPanel.add(panelcorreo);
-            jPanel.add(panelcedula);
-            jPanel.add(paneltelefono);
-            jPanel.add(panelMensaje);
-            jPanel.revalidate();
-            jPanel.repaint();
+            admiCliente.registrarCliente(nombre, cedula, email, telefono);
+            refrescarPanelClientes(nombre,cedula,email,telefono);
         }
 
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
+    private void refrescarPanelClientes(String nombre, String cedula, 
+            String email, String telefono){
+        txtErrorEmail.setForeground(Color.green);
+        txtErrorTelefono.setForeground(Color.green);
+        JLabel panelnombre = new javax.swing.JLabel(nombre);
+        JLabel panelemail = new javax.swing.JLabel(email);
+        JLabel panelcedula = new javax.swing.JLabel(cedula);
+        JLabel paneltelefono = new javax.swing.JLabel(telefono);
+        JButton panelMensaje = new javax.swing.JButton("ENVIAR CORREO");
+        panelMensaje.setSize(25, 25);
+        jPanel.setLayout(new GridLayout(0,5,20,20));
+        jPanel.add(panelnombre);
+        jPanel.add(panelemail);
+        jPanel.add(panelcedula);
+        jPanel.add(paneltelefono);
+        jPanel.add(panelMensaje);
+        jPanel.revalidate();
+        jPanel.repaint();
+        txtNombreCliente.setText("");
+        txtEmailCliente.setText("");
+        txtCedulaCliente.setText("");
+        txtTelefonoCliente.setText("");
+        txtErrorTelefono.setText(null);
+        txtErrorTelefono.setIcon(null);
+        txtErrorEmail.setText(null);
+        txtErrorEmail.setIcon(null);
+        txtErrorEmail.setForeground(Color.red);
+        txtErrorTelefono.setForeground(Color.red);
+    }
     
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
@@ -1351,6 +1348,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAyuda;
     private javax.swing.JMenuItem jMenuItemImportarLiteratura;
     private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelClientes;
     private javax.swing.JPanel jPanelHeader;
@@ -1362,6 +1360,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelRegistroLibros;
     private javax.swing.JPanel jPanelRegistroRevistasLabel;
     private javax.swing.JPanel jPanelVentas;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneFiltro;
     private javax.swing.JPopupMenu.Separator jSeparatorFiltro;
     private javax.swing.JSpinner jSpinnerAnioRevista;
@@ -1373,13 +1372,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRegistroLibroEditorial;
     private javax.swing.JTextField jTextFieldRegistroLibroNombre;
     private javax.swing.JTextField jTextFieldRegistroRevistaNombre;
-    private javax.swing.JLabel labelApellido1Cliente;
     private javax.swing.JLabel labelCedulaCliente;
     private javax.swing.JLabel labelCorreoCliente;
     private javax.swing.JLabel labelNombreCliente;
     private javax.swing.JLabel labelTelefonoCliente;
-    private javax.swing.JTextField txtApellido1Cliente;
-    private javax.swing.JTextField txtApellido2Cliente;
     private javax.swing.JTextField txtCedulaCliente;
     private javax.swing.JTextField txtEmailCliente;
     private javax.swing.JLabel txtErrorEmail;
