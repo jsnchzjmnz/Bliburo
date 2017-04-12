@@ -68,13 +68,13 @@ public class GUI extends javax.swing.JFrame {
         jPanelLiteratura = new javax.swing.JPanel();
         jPanelRecursosLiterarios = new javax.swing.JPanel();
         jScrollPaneFiltro = new javax.swing.JScrollPane();
-        jListRecursosLiterarios = new javax.swing.JList<>();
+        jListRecursosLiterarios = new javax.swing.JList<String>();
         jLabelRecursosLiterariosLabel = new javax.swing.JLabel();
         jPanelRecursoLiterarioFiltro = new javax.swing.JPanel();
         jLabelRecursosLiterariosFiltroLabel = new javax.swing.JLabel();
         jCheckBoxFiltroLibro = new javax.swing.JCheckBox();
         jCheckBoxFiltroRevista = new javax.swing.JCheckBox();
-        jComboBoxFiltroTipoLibro = new javax.swing.JComboBox<>();
+        jComboBoxFiltroTipoLibro = new javax.swing.JComboBox<String>();
         jCheckBoxFiltroLibrosDisponibles = new javax.swing.JCheckBox();
         jCheckBoxFiltroLibrosPrestados = new javax.swing.JCheckBox();
         jCheckBoxFiltroTodo = new javax.swing.JCheckBox();
@@ -82,7 +82,7 @@ public class GUI extends javax.swing.JFrame {
         jCheckBoxFiltroRevistasPrestadas = new javax.swing.JCheckBox();
         jCheckBoxFiltroRevistasVendidas = new javax.swing.JCheckBox();
         jLabelRegistroFiltroTipoLibro = new javax.swing.JLabel();
-        jComboBoxFiltroRevistaTipo = new javax.swing.JComboBox<>();
+        jComboBoxFiltroRevistaTipo = new javax.swing.JComboBox<String>();
         jLabelRegistroTipoRevista = new javax.swing.JLabel();
         jPanelRegistroRevistasLabel = new javax.swing.JPanel();
         jLabelRegistroRevistaLabel = new javax.swing.JLabel();
@@ -90,7 +90,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelRegistroRevistaNumero = new javax.swing.JLabel();
         jLabelRegistroRevistaAnio = new javax.swing.JLabel();
         jLabelRegistroRevistaCosto = new javax.swing.JLabel();
-        jComboBoxRegistroRevistaTipo = new javax.swing.JComboBox<>();
+        jComboBoxRegistroRevistaTipo = new javax.swing.JComboBox<String>();
         jTextFieldRegistroRevistaNombre = new javax.swing.JTextField();
         jButtonRegistroRevista = new javax.swing.JButton();
         jSpinnerAnioRevista = new javax.swing.JSpinner();
@@ -102,7 +102,7 @@ public class GUI extends javax.swing.JFrame {
         jTextFieldRegistroLibroNombre = new javax.swing.JTextField();
         jTextFieldRegistroLibroAutor = new javax.swing.JTextField();
         jTextFieldRegistroLibroEditorial = new javax.swing.JTextField();
-        jComboBoxTipoLibro = new javax.swing.JComboBox<>();
+        jComboBoxTipoLibro = new javax.swing.JComboBox<String>();
         jLabelRegistroLibroNombre = new javax.swing.JLabel();
         jLabelRegistroLibroAutor = new javax.swing.JLabel();
         jLabelRegistroLibroEditorial = new javax.swing.JLabel();
@@ -113,6 +113,22 @@ public class GUI extends javax.swing.JFrame {
         jPanelPrestamos = new javax.swing.JPanel();
         jPanelVentas = new javax.swing.JPanel();
         jPanelClientes = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        labelNombreCliente = new javax.swing.JLabel();
+        labelCorreoCliente = new javax.swing.JLabel();
+        labelCedulaCliente = new javax.swing.JLabel();
+        labelTelefonoCliente = new javax.swing.JLabel();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtEmailCliente = new javax.swing.JTextField();
+        txtCedulaCliente = new javax.swing.JTextField();
+        txtTelefonoCliente = new javax.swing.JTextField();
+        labelApellido1Cliente = new javax.swing.JLabel();
+        txtApellido2Cliente = new javax.swing.JTextField();
+        txtApellido1Cliente = new javax.swing.JTextField();
+        btnAgregarCliente = new javax.swing.JButton();
+        txtErrorEmail = new javax.swing.JLabel();
+        txtErrorTelefono = new javax.swing.JLabel();
         jPanelMultas = new javax.swing.JPanel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
@@ -132,7 +148,6 @@ public class GUI extends javax.swing.JFrame {
         setResizable(false);
 
         jTab.setBackground(new java.awt.Color(232, 232, 232));
-        jTab.setBorder(null);
         jTab.setForeground(new java.awt.Color(88, 68, 49));
         jTab.setFont(new java.awt.Font("Khmer OS System", 1, 14)); // NOI18N
 
@@ -178,7 +193,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jComboBoxFiltroTipoLibro.setBackground(new java.awt.Color(125, 164, 203));
-        jComboBoxFiltroTipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
+        jComboBoxFiltroTipoLibro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
         jComboBoxFiltroTipoLibro.setEnabled(false);
         jComboBoxFiltroTipoLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +259,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelRegistroFiltroTipoLibro.setText("Tipo");
 
         jComboBoxFiltroRevistaTipo.setBackground(new java.awt.Color(125, 164, 203));
-        jComboBoxFiltroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Venta", "Prestamo" }));
+        jComboBoxFiltroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "Venta", "Prestamo" }));
         jComboBoxFiltroRevistaTipo.setEnabled(false);
         jComboBoxFiltroRevistaTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,7 +376,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelRegistroRevistaCosto.setText("Costo");
 
-        jComboBoxRegistroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Venta", "Prestamo" }));
+        jComboBoxRegistroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Venta", "Prestamo" }));
 
         jTextFieldRegistroRevistaNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +396,7 @@ public class GUI extends javax.swing.JFrame {
 
         jSpinnerRegistroRevistaNumero.setModel(new javax.swing.SpinnerNumberModel());
 
-        jSpinnerRegistroRevistaCosto.setModel(new javax.swing.SpinnerNumberModel(1500.0d, null, null, 1.0d));
+        jSpinnerRegistroRevistaCosto.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1500.0d), null, null, Double.valueOf(1.0d)));
 
         jLabelRegistroRevistasTipo.setText("Tipo");
 
@@ -466,7 +481,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxTipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
+        jComboBoxTipoLibro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
 
         jLabelRegistroLibroNombre.setText("Nombre");
 
@@ -625,15 +640,172 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelClientes.setBackground(new java.awt.Color(232, 232, 232));
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel14.setText("Agregar Cliente");
+
+        labelNombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombreCliente.setText("Nombre:");
+
+        labelCorreoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCorreoCliente.setText("Correo electrónico:");
+
+        labelCedulaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCedulaCliente.setText("Cédula de Identificación:");
+
+        labelTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelTelefonoCliente.setText("Telefóno:");
+
+        txtNombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        txtEmailCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtEmailCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailClienteKeyTyped(evt);
+            }
+        });
+
+        txtCedulaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        txtTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTelefonoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoClienteKeyTyped(evt);
+            }
+        });
+
+        labelApellido1Cliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelApellido1Cliente.setText("Apellidos: ");
+
+        txtApellido2Cliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtApellido2Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellido2ClienteActionPerformed(evt);
+            }
+        });
+
+        txtApellido1Cliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtApellido1Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellido1ClienteActionPerformed(evt);
+            }
+        });
+
+        btnAgregarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAgregarCliente.setText("Agregar");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarClienteActionPerformed(evt);
+            }
+        });
+
+        txtErrorEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtErrorEmail.setForeground(new java.awt.Color(255, 0, 0));
+
+        txtErrorTelefono.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(labelApellido1Cliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtApellido1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApellido2Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(labelNombreCliente)
+                                .addGap(28, 28, 28)
+                                .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(labelCedulaCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                        .addComponent(labelCorreoCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                            .addComponent(labelTelefonoCliente)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtErrorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                                    .addComponent(txtErrorEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreCliente)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelApellido1Cliente)
+                    .addComponent(txtApellido1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellido2Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelCorreoCliente)
+                        .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtErrorEmail, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCedulaCliente)
+                    .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefonoCliente)
+                    .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErrorTelefono))
+                .addGap(35, 35, 35)
+                .addComponent(btnAgregarCliente)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
         jPanelClientes.setLayout(jPanelClientesLayout);
         jPanelClientesLayout.setHorizontalGroup(
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
+            .addGroup(jPanelClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         jPanelClientesLayout.setVerticalGroup(
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGroup(jPanelClientesLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         jTab.addTab("Clientes", jPanelClientes);
@@ -922,6 +1094,112 @@ public class GUI extends javax.swing.JFrame {
         refrescarjListRecursosLiterarios();
     }//GEN-LAST:event_jComboBoxFiltroRevistaTipoActionPerformed
 
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
+        // TODO add your handling code here:
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        //URL url = this.getClass().getResource(path);
+        //ImageIcon icon = new ImageIcon(url);
+        ValidarDatos validacion = new ValidarDatos();
+        String email = txtEmailCliente.getText();
+        if(!email.equals("")){
+            String validacionEmail = validacion.validarEmail(email);
+            //txtErrorEmail.setText(validacionEmail);
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorEmail.setText("");
+                //txtErrorEmail.setIcon(icon);
+            }
+            else{
+                path = pathWrong;
+                txtErrorEmail.setText("* Ingrese email válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorEmail.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtEmailClienteKeyTyped
+
+    private void txtTelefonoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoClienteKeyTyped
+        // TODO add your handling code here:
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        //URL url = this.getClass().getResource(path);
+        //ImageIcon icon = new ImageIcon(url);
+        ValidarDatos validacion = new ValidarDatos();
+        String telefono = txtTelefonoCliente.getText();
+        if(!telefono.equals("")){
+            String validacionEmail = validacion.validarTelefono(telefono);
+            //txtErrorEmail.setText(validacionEmail);
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorTelefono.setText("");
+                //txtErrorEmail.setIcon(icon);
+            }
+            else{
+                path = pathWrong;
+                txtErrorTelefono.setText("* Ingrese email válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorTelefono.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtTelefonoClienteKeyTyped
+
+    private void txtApellido2ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido2ClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellido2ClienteActionPerformed
+
+    private void txtApellido1ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido1ClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellido1ClienteActionPerformed
+
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        // TODO add your handling code here:
+        ValidarDatos validacion = new ValidarDatos();
+        String nombre = txtNombreCliente.getText();
+        String apellido1 = txtApellido1Cliente.getText();
+        String apellido2 = txtApellido2Cliente.getText();
+        String email = txtEmailCliente.getText();
+        String validacionEmail = validacion.validarEmail(email);
+        txtErrorEmail.setText(validacionEmail);
+        String cedula = txtCedulaCliente.getText();
+        String telefono = txtTelefonoCliente.getText();
+        String validacionTelefono = validacion.validarTelefono(telefono);
+        txtErrorTelefono.setText(validacionTelefono);
+        if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
+            txtErrorEmail.setForeground(Color.green);
+            txtErrorTelefono.setForeground(Color.green);
+            Cliente cl = new Cliente(nombre,apellido1,apellido2,email,cedula,telefono);
+            //plantillaCliente plCliente = new plantillaCliente(cl);
+            panelnombre = new javax.swing.JLabel(cl.getNombre());
+            panelapellido1 = new javax.swing.JLabel(cl.getPrimerApellido());
+            panelapellido2 = new javax.swing.JLabel(cl.getSegundoApellido());
+            panelcorreo = new javax.swing.JLabel(cl.getCorreo());
+            panelcedula = new javax.swing.JLabel(cl.getCedula());
+            paneltelefono = new javax.swing.JLabel(cl.getTelefono());
+            panelMensaje = new javax.swing.JButton("ENVIAR msj");
+            jPanel.setLayout(new GridLayout(0,7,20,20));
+
+            jPanel.add(panelnombre);
+            jPanel.add(panelapellido1);
+            jPanel.add(panelapellido2);
+            jPanel.add(panelcorreo);
+            jPanel.add(panelcedula);
+            jPanel.add(paneltelefono);
+            jPanel.add(panelMensaje);
+            jPanel.revalidate();
+            jPanel.repaint();
+        }
+
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
+
     
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
@@ -1029,6 +1307,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton jButtonRegistroLibro;
     private javax.swing.JButton jButtonRegistroRevista;
     private javax.swing.JCheckBox jCheckBoxFiltroLibro;
@@ -1044,6 +1323,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxRegistroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxTipoLibro;
     private javax.swing.JFileChooser jFileChooserCargaRecursosLiterarios;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelRecursosLiterariosFiltroLabel;
     private javax.swing.JLabel jLabelRecursosLiterariosLabel;
@@ -1071,6 +1351,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAyuda;
     private javax.swing.JMenuItem jMenuItemImportarLiteratura;
     private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelClientes;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelLiteratura;
@@ -1092,5 +1373,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRegistroLibroEditorial;
     private javax.swing.JTextField jTextFieldRegistroLibroNombre;
     private javax.swing.JTextField jTextFieldRegistroRevistaNombre;
+    private javax.swing.JLabel labelApellido1Cliente;
+    private javax.swing.JLabel labelCedulaCliente;
+    private javax.swing.JLabel labelCorreoCliente;
+    private javax.swing.JLabel labelNombreCliente;
+    private javax.swing.JLabel labelTelefonoCliente;
+    private javax.swing.JTextField txtApellido1Cliente;
+    private javax.swing.JTextField txtApellido2Cliente;
+    private javax.swing.JTextField txtCedulaCliente;
+    private javax.swing.JTextField txtEmailCliente;
+    private javax.swing.JLabel txtErrorEmail;
+    private javax.swing.JLabel txtErrorTelefono;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }
