@@ -16,8 +16,11 @@
  */
 package bliburu;
 
+import Mensajeria.window;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -1169,7 +1172,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void refrescarPanelClientes(String nombre, String cedula, 
-            String email, String telefono){
+        final String email, String telefono){
         txtErrorEmail.setForeground(Color.green);
         txtErrorTelefono.setForeground(Color.green);
         JLabel panelnombre = new javax.swing.JLabel(nombre);
@@ -1177,7 +1180,7 @@ public class GUI extends javax.swing.JFrame {
         JLabel panelcedula = new javax.swing.JLabel(cedula);
         JLabel paneltelefono = new javax.swing.JLabel(telefono);
         JButton panelMensaje = new javax.swing.JButton("ENVIAR CORREO");
-        panelMensaje.setSize(25, 25);
+        //panelMensaje.addActionListener((ActionListener) this);
         jPanel.setLayout(new GridLayout(0,5,20,20));
         jPanel.add(panelnombre);
         jPanel.add(panelemail);
@@ -1196,8 +1199,23 @@ public class GUI extends javax.swing.JFrame {
         txtErrorEmail.setIcon(null);
         txtErrorEmail.setForeground(Color.red);
         txtErrorTelefono.setForeground(Color.red);
+        panelMensaje.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                window ventana = new window();
+                ventana.Username = "bliburu2017@gmail.com";
+                ventana.PassWord = "IC2101POO";
+                ventana.To = email;
+                ventana.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
     }
     
+    // public void actionPerformed(ActionEvent e) {
+      //   System.out.println("Pulsado");
+     //}
+     
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
         DefaultListModel model = new DefaultListModel();
