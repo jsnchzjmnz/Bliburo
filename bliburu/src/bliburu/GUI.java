@@ -1185,6 +1185,13 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoBibliotecarioActionPerformed
 
+    /**
+     * Evento efectuado por el boton de agrear Cliente,
+     * Permite extaer los datos de los campos de texto
+     * Validar correo y telefono
+     * Finalmente mostrar los datos en el panel de Clientes
+     * 
+     */
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
         String nombre = txtNombreCliente.getText();
         String email = txtEmailCliente.getText();
@@ -1200,6 +1207,12 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un número de telefono válido
+     * 
+     */
     private void txtTelefonoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoClienteKeyTyped
 
         String pathRight = "/images/right.jpg";
@@ -1222,6 +1235,12 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtTelefonoClienteKeyTyped
 
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un correo electronico válido
+     * 
+     */
     private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
 
         String pathRight = "/images/right.jpg";
@@ -1372,6 +1391,7 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jListRecursosLiterariosMouseClicked
 
+    
     private void btnAgregarBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBibliotecarioActionPerformed
         String nombre = txtNombreBibliotecario.getText();
         String email = txtCorreoBibliotecario.getText();
@@ -1388,6 +1408,12 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarBibliotecarioActionPerformed
 
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un correo electronico válido
+     * 
+     */
     private void txtCorreoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoBibliotecarioKeyTyped
         // TODO add your handling code here:
         String pathRight = "/images/right.jpg";
@@ -1412,6 +1438,12 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCorreoBibliotecarioKeyTyped
 
+    /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un número de telefono válido
+     * 
+     */
     private void txtTelefonoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoBibliotecarioKeyTyped
         String pathRight = "/images/right.jpg";
         String pathWrong = "/images/wrong.jpg";
@@ -1435,7 +1467,7 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtTelefonoBibliotecarioKeyTyped
 
-         /**
+     /**
      * 
      * @param nombre agrega nombre del cliente en el Panel
      * * @param cedula agrega cedula del cliente en el Panel
@@ -1482,6 +1514,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+
+    /**
+     * 
+     * @param nombre agrega nombre del Bibliotecario en el Panel
+     * * @param cedula agrega cedula del Bibliotecario en el Panel
+     * * @param email agrega email del Bibliotecario en el Panel
+     * * @param telefono agrega telefono del Bibliotecario en el Panel
+     */
     private void refrescarPanelBibliotecarios(String nombre, String cedula, 
         final String email, String telefono){
         txtErrorEmailBiblio.setForeground(Color.green);
