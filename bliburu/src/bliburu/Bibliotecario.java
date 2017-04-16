@@ -27,14 +27,15 @@ public class Bibliotecario extends Persona{
     Bibliotecario(){
             idBibliotecario+=1;
     }
-     /**
-     * Constructor sobrecargado para el Bibliotecario
-     * @param nombre nombre del Bibliotecario
-     * @param contrasenia correo del Bibliotecario
-     */
-    Bibliotecario(String nombre,String contrasenia){
+    
+    Bibliotecario(String nombre,String correo,String cedula,
+            String telefono,String contrasenia){
         this.nombre = nombre;
+        this.email = correo;
+        this.cedula = cedula;
+        this.telefono = telefono;
         this.contrasenia = contrasenia;
+        idBibliotecario+=1;
     }
 
     /**

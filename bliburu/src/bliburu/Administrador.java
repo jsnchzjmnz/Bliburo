@@ -181,6 +181,20 @@ public class Administrador {
         listaClientes.add(cl);
     }
     
+        /**
+     * Método que se encarga del registro de clientes
+     * 
+     * @param nombre nombre del Bibliotecario
+     * @param cedula cédula del Bibliotecario
+     * @param email correo electrónico del Bibliotecario
+     * @param telefono teléfono del Bibliotecario
+     */
+    public void registrarBibliotecario(String nombre,String cedula, 
+            String email, String telefono,String password){
+        Bibliotecario bl = new Bibliotecario(nombre, cedula, email, telefono,password);
+        listaBibliotecarios.add(bl);
+    }
+    
     /**
      * Se encarga de realizar todas las validaciones requeridas para el registro de clientes
      * 
@@ -195,7 +209,7 @@ public class Administrador {
      * cumpla con el formato
      * @return retorna mensaje si es correcto el correo o inválido
      */
-    public  String validarEmailCliente(String correo){
+    public  String validarEmail(String correo){
         Pattern pattern = Pattern.compile(expesionRegularEmail);
 
         Matcher matcher = pattern.matcher(correo);
@@ -212,7 +226,7 @@ public class Administrador {
      * cumpla con el formato
      * @return retorna mensaje si es correcto el telefono o inválido
      */
-    public String validarTelefonoCliente(String telefono){
+    public String validarTelefono(String telefono){
         Pattern pattern2 = Pattern.compile(expesionRegularTelefono);
         
         Matcher matcher2 = pattern2.matcher(telefono);
