@@ -36,15 +36,23 @@ public class Bibliotecario extends Persona{
         this.nombre = nombre;
         this.contrasenia = contrasenia;
     }
-     /**
+
+    /**
      * 
      * @return retorna contraseña del Bibliotecario
      */
     public String getContrasenia() {
         return contrasenia;
     }
+    /**
+     * 
+     * @return retorna idBibliotecario del Bibliotecario
+     */
+    public static int getIdBibliotecario() {
+        return idBibliotecario;
+    }
 
-        /**
+    /**
      * 
      * @param contrasenia asigna contraseña al Bibliotecario
      */
@@ -52,5 +60,13 @@ public class Bibliotecario extends Persona{
         this.contrasenia = contrasenia;
     }
     
+    /**
+     * 
+     * @param idBibliotecario asigna idBibliotecario al Bibliotecario
+     */
+    public static void setIdBibliotecario(int idBibliotecario) {
+        Bibliotecario.idBibliotecario = idBibliotecario;
+    }
+
     
 }

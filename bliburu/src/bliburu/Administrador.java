@@ -34,6 +34,7 @@ public class Administrador {
 
     private Parametrizador parametrizador;
     private List<Cliente> listaClientes;
+    private List<Bibliotecario> listaBibliotecarios;
     private List<Multa> listaMultas;
     private List<Prestamo> listaPrestamos;
     private List<Venta> listaVentas;
@@ -49,6 +50,7 @@ public class Administrador {
     public Administrador() {
         parametrizador = new Parametrizador();
         listaClientes = new ArrayList<Cliente>();
+        listaBibliotecarios =  new ArrayList<Bibliotecario>();
         listaMultas = new ArrayList<Multa>();
         listaPrestamos = new ArrayList<Prestamo>();
         listaVentas = new ArrayList<Venta>();
@@ -72,6 +74,14 @@ public class Administrador {
      */
     public List<Cliente> getListaClientes() {
         return listaClientes;
+    }
+    
+    /**
+     * 
+     * @return retorna la lista de Bibliotecarios
+     */
+    public List<Bibliotecario> getListaBibliotecario() {
+        return listaBibliotecarios;
     }
 
     /**
@@ -118,6 +128,14 @@ public class Administrador {
      */
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
+    }
+    
+    /**
+     * 
+     * @param listaBibliotecarios asigna una nueva lista de Bibliotecarios
+     */
+    public void listaBibliotecarios(List<Bibliotecario> listaBibliotecarios) {
+        this.listaBibliotecarios = listaBibliotecarios;
     }
 
     /**
