@@ -171,6 +171,12 @@ public class Administrador {
         return true;
     }
     
+     /**
+     * 
+     * @param correo Permite validar que el correo ingresado 
+     * cumpla con el formato
+     * @return retorna mensaje si es correcto el correo o inválido
+     */
     public  String validarEmailCliente(String correo){
         Pattern pattern = Pattern.compile(expesionRegularEmail);
 
