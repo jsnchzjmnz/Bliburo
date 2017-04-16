@@ -108,7 +108,9 @@ public class Administrador {
         return listaVentas;
     }
     
-    
+    public Cliente getClienteEnLista(int indice){
+        return listaClientes.get(indice);
+    }
     
     /*
     Setter
