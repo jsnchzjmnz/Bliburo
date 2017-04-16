@@ -176,9 +176,10 @@ public class Administrador {
      * @param email correo electrónico del cliente
      * @param telefono teléfono del cliente
      */
-    public void registrarCliente(String nombre,String cedula, String email, String telefono){
+    public int registrarCliente(String nombre,String cedula, String email, String telefono){
         Cliente cl = new Cliente(nombre, cedula, email, telefono);
         listaClientes.add(cl);
+        return cl.getIdCliente();
     }
     
         /**
