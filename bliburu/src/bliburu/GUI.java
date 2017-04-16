@@ -924,10 +924,6 @@ public class GUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarBibliotecario)
-                .addGap(241, 241, 241))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -957,6 +953,10 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(txtErrorEmailBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtErrorTelefonoBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarBibliotecario)
+                .addGap(276, 276, 276))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -985,9 +985,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtPasswordBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(btnAgregarBibliotecario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout jpanelMostrarBibliotecariosLayout = new javax.swing.GroupLayout(jpanelMostrarBibliotecarios);
@@ -1019,7 +1019,7 @@ public class GUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1384,7 +1384,7 @@ public class GUI extends javax.swing.JFrame {
         String password=String.valueOf(txtPasswordBibliotecario.getPassword());
         if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
             administradorBibliotecario.registrarBibliotecario(nombre, cedula, email, telefono,password);
-            refrescarPanelClientes(nombre,cedula,email,telefono);
+            refrescarPanelBibliotecarios(nombre,cedula,email,telefono);
         }
     }//GEN-LAST:event_btnAgregarBibliotecarioActionPerformed
 
@@ -1504,6 +1504,7 @@ public class GUI extends javax.swing.JFrame {
         txtCorreoBibliotecario.setText("");
         txtCedulaBibliotecario.setText("");
         txtTelefonoBibliotecario.setText("");
+        txtPasswordBibliotecario.setText("");
         txtErrorTelefonoBiblio.setText(null);
         txtErrorTelefonoBiblio.setIcon(null);
         txtErrorEmailBiblio.setText(null);
