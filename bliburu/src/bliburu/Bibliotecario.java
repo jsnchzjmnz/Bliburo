@@ -49,7 +49,7 @@ public class Bibliotecario extends Persona{
      * 
      * @return retorna idBibliotecario del Bibliotecario
      */
-    public static int getIdBibliotecario() {
+    public int getIdBibliotecario() {
         return idBibliotecario;
     }
 

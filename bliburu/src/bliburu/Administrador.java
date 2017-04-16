@@ -190,10 +190,11 @@ public class Administrador {
      * @param email correo electrónico del Bibliotecario
      * @param telefono teléfono del Bibliotecario
      */
-    public void registrarBibliotecario(String nombre,String cedula, 
+    public int registrarBibliotecario(String nombre,String cedula, 
             String email, String telefono,String password){
         Bibliotecario bl = new Bibliotecario(nombre, cedula, email, telefono,password);
         listaBibliotecarios.add(bl);
+       return bl.getIdBibliotecario();
     }
     
     /**
