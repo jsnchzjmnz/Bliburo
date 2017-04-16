@@ -49,11 +49,18 @@ public class Cliente extends Persona{
         this.telefono = telefono;
         idCliente+=1;
     }
-
+        /**
+     * 
+     * @return retorna IdCiente
+     */
     public int getIdCliente() {
         return idCliente;
     }
-
+    
+    /**
+     * 
+     * @param idCliente asigna el IdCliente
+     */
     public void setIdCliente(int idCliente) {
         Cliente.idCliente = idCliente;
     }

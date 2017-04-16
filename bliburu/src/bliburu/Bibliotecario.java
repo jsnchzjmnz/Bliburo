@@ -27,15 +27,27 @@ public class Bibliotecario extends Persona{
     Bibliotecario(){
             idBibliotecario+=1;
     }
+     /**
+     * Constructor sobrecargado para el Bibliotecario
+     * @param nombre nombre del Bibliotecario
+     * @param contrasenia correo del Bibliotecario
+     */
     Bibliotecario(String nombre,String contrasenia){
         this.nombre = nombre;
         this.contrasenia = contrasenia;
     }
-
+     /**
+     * 
+     * @return retorna contraseña del Bibliotecario
+     */
     public String getContrasenia() {
         return contrasenia;
     }
 
+        /**
+     * 
+     * @param contrasenia asigna contraseña al Bibliotecario
+     */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }

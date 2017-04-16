@@ -1099,6 +1099,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreClienteActionPerformed
 
+    
     private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
         // TODO add your handling code here:
         String pathRight = "/images/right.jpg";
@@ -1170,7 +1171,13 @@ public class GUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
-
+     /**
+     * 
+     * @param nombre agrega nombre del cliente en el Panel
+     * * @param cedula agrega cedula del cliente en el Panel
+     * * @param email agrega email del cliente en el Panel
+     * * @param telefono agrega telefono del cliente en el Panel
+     */
     private void refrescarPanelClientes(String nombre, String cedula, 
         final String email, String telefono){
         txtErrorEmail.setForeground(Color.green);
@@ -1211,11 +1218,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
-    
-    // public void actionPerformed(ActionEvent e) {
-      //   System.out.println("Pulsado");
-     //}
-     
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
         DefaultListModel model = new DefaultListModel();
