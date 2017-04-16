@@ -41,6 +41,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Julio Sánchez Jiménez (jsnchzjmnz)
+ * @author Joaquin Mena Montero (jjomena)
  * @version 0.1
  */
 public class GUI extends javax.swing.JFrame {
@@ -160,6 +161,13 @@ public class GUI extends javax.swing.JFrame {
         txtPasswordBibliotecario = new javax.swing.JPasswordField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jpanelMostrarBibliotecarios = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel5 = new javax.swing.JPanel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -1027,6 +1035,80 @@ public class GUI extends javax.swing.JFrame {
 
         jTab.addTab("Bibliotecario", jPanel1);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Idenficador de Cliente:");
+
+        jButton1.setText("Consultar");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(23, 23, 23))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 365, Short.MAX_VALUE)
+        );
+
+        jScrollPane3.setViewportView(jPanel5);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+
+        jTab.addTab("Deudas", jPanel3);
+
         jPanelHeader.setBackground(new java.awt.Color(125, 164, 202));
         jPanelHeader.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 68, 49), 2));
 
@@ -1039,7 +1121,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanelHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelLogo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(814, Short.MAX_VALUE))
         );
         jPanelHeaderLayout.setVerticalGroup(
             jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1110,18 +1192,18 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jTab, javax.swing.GroupLayout.PREFERRED_SIZE, 928, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jTab))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTab)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -1169,6 +1251,52 @@ public class GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
+    private void btnAgregarBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBibliotecarioActionPerformed
+        String nombre = txtNombreBibliotecario.getText();
+        String email = txtCorreoBibliotecario.getText();
+        String validacionEmail = administradorBibliotecario.validarEmail(email);
+        txtErrorEmailBiblio.setText(validacionEmail);
+        String cedula = txtCedulaBibliotecario.getText();
+        String telefono = txtTelefonoBibliotecario.getText();
+        String validacionTelefono = administradorBibliotecario.validarTelefono(telefono);
+        txtErrorTelefonoBiblio.setText(validacionTelefono);
+        String password=String.valueOf(txtPasswordBibliotecario.getPassword());
+        if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
+            administradorBibliotecario.registrarBibliotecario(nombre, cedula, email, telefono,password);
+            refrescarPanelBibliotecarios(nombre,cedula,email,telefono);
+        }
+    }//GEN-LAST:event_btnAgregarBibliotecarioActionPerformed
+
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un correo electronico válido
+     * 
+     */
+    private void txtCorreoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoBibliotecarioKeyTyped
+        // TODO add your handling code here:
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String email = txtCorreoBibliotecario.getText();
+        if(!email.equals("")){
+            String validacionEmail = administradorBibliotecario.validarEmail(email);
+            //txtErrorEmail.setText(validacionEmail);
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorEmailBiblio.setText("");
+                //txtErrorEmail.setIcon(icon);
+            }
+            else{
+                path = pathWrong;
+                txtErrorEmailBiblio.setText("* Ingrese email válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorEmailBiblio.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtCorreoBibliotecarioKeyTyped
+
     private void txtCorreoBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoBibliotecarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoBibliotecarioActionPerformed
@@ -1180,6 +1308,35 @@ public class GUI extends javax.swing.JFrame {
     private void txtCedulaBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaBibliotecarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCedulaBibliotecarioActionPerformed
+
+    /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un número de telefono válido
+     * 
+     */
+    private void txtTelefonoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoBibliotecarioKeyTyped
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String telefono = txtTelefonoBibliotecario.getText();
+        if(!telefono.equals("")){
+            String validacionTelefono = administradorBibliotecario.validarTelefono(telefono);
+            //txtErrorEmail.setText(validacionEmail);
+            if(validacionTelefono.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorTelefonoBiblio.setText("");
+                //txtErrorEmail.setIcon(icon);
+            }
+            else{
+                path = pathWrong;
+                txtErrorTelefonoBiblio.setText("* Ingrese Teléfono válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorTelefonoBiblio.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtTelefonoBibliotecarioKeyTyped
 
     private void txtTelefonoBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoBibliotecarioActionPerformed
         // TODO add your handling code here:
@@ -1271,7 +1428,6 @@ public class GUI extends javax.swing.JFrame {
 
         biblioteca.getInventario().registrarLibro(jTextFieldRegistroLibroNombre.getText(), jTextFieldRegistroLibroAutor.getText(), (Date) jSpinnerRegistroLibroAnio.getModel().getValue(),jTextFieldRegistroLibroEditorial.getText(), TipoLibro.valueOf(jComboBoxTipoLibro.getModel().getSelectedItem().toString().toUpperCase()));
         refrescarjListRecursosLiterarios();
-
     }//GEN-LAST:event_jButtonRegistroLibroActionPerformed
 
     private void jTextFieldRegistroLibroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRegistroLibroNombreActionPerformed
@@ -1388,85 +1544,9 @@ public class GUI extends javax.swing.JFrame {
             resultadoConsultado.cargarContenido(biblioteca.getInventario().getListaRecursosLiterarios().get(contador));
             resultadoConsultado.show();
         }
-
     }//GEN-LAST:event_jListRecursosLiterariosMouseClicked
 
     
-    private void btnAgregarBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBibliotecarioActionPerformed
-        String nombre = txtNombreBibliotecario.getText();
-        String email = txtCorreoBibliotecario.getText();
-        String validacionEmail = administradorBibliotecario.validarEmail(email);
-        txtErrorEmailBiblio.setText(validacionEmail);
-        String cedula = txtCedulaBibliotecario.getText();
-        String telefono = txtTelefonoBibliotecario.getText();
-        String validacionTelefono = administradorBibliotecario.validarTelefono(telefono);
-        txtErrorTelefonoBiblio.setText(validacionTelefono);
-        String password=String.valueOf(txtPasswordBibliotecario.getPassword());
-        if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
-            administradorBibliotecario.registrarBibliotecario(nombre, cedula, email, telefono,password);
-            refrescarPanelBibliotecarios(nombre,cedula,email,telefono);
-        }
-    }//GEN-LAST:event_btnAgregarBibliotecarioActionPerformed
-
-     /**
-     * Evento efectuado por el el campo Telefono: cada vez que se digita 
-     * cualquier entrada en este campo se evalua los datos ingresados, validando
-     * que corresponda a un correo electronico válido
-     * 
-     */
-    private void txtCorreoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoBibliotecarioKeyTyped
-        // TODO add your handling code here:
-        String pathRight = "/images/right.jpg";
-        String pathWrong = "/images/wrong.jpg";
-        String path = pathWrong;
-        String email = txtCorreoBibliotecario.getText();
-        if(!email.equals("")){
-            String validacionEmail = administradorBibliotecario.validarEmail(email);
-            //txtErrorEmail.setText(validacionEmail);
-            if(validacionEmail.equals("CORRECTO")){
-                path = pathRight;
-                txtErrorEmailBiblio.setText("");
-                //txtErrorEmail.setIcon(icon);
-            }
-            else{
-                path = pathWrong;
-                txtErrorEmailBiblio.setText("* Ingrese email válido");
-            }
-            URL url = this.getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
-            txtErrorEmailBiblio.setIcon(icon);
-        }
-    }//GEN-LAST:event_txtCorreoBibliotecarioKeyTyped
-
-    /**
-     * Evento efectuado por el el campo Telefono: cada vez que se digita 
-     * cualquier entrada en este campo se evalua los datos ingresados, validando
-     * que corresponda a un número de telefono válido
-     * 
-     */
-    private void txtTelefonoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoBibliotecarioKeyTyped
-        String pathRight = "/images/right.jpg";
-        String pathWrong = "/images/wrong.jpg";
-        String path = pathWrong;
-        String telefono = txtTelefonoBibliotecario.getText();
-        if(!telefono.equals("")){
-            String validacionTelefono = administradorBibliotecario.validarTelefono(telefono);
-            //txtErrorEmail.setText(validacionEmail);
-            if(validacionTelefono.equals("CORRECTO")){
-                path = pathRight;
-                txtErrorTelefonoBiblio.setText("");
-                //txtErrorEmail.setIcon(icon);
-            }
-            else{
-                path = pathWrong;
-                txtErrorTelefonoBiblio.setText("* Ingrese Teléfono válido");
-            }
-            URL url = this.getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
-            txtErrorTelefonoBiblio.setIcon(icon);
-        }
-    }//GEN-LAST:event_txtTelefonoBibliotecarioKeyTyped
-
      /**
      * 
      * @param nombre agrega nombre del cliente en el Panel
@@ -1672,6 +1752,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarBibliotecario;
     private javax.swing.JButton btnAgregarCliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonRegistroLibro;
     private javax.swing.JButton jButtonRegistroRevista;
     private javax.swing.JCheckBox jCheckBoxFiltroLibro;
@@ -1689,6 +1770,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooserCargaRecursosLiterarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1723,6 +1805,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelClientes;
     private javax.swing.JPanel jPanelHeader;
@@ -1737,6 +1822,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelVentas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPaneFiltro;
     private javax.swing.JPopupMenu.Separator jSeparatorFiltro;
     private javax.swing.JSpinner jSpinnerAnioRevista;
@@ -1744,6 +1830,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerRegistroRevistaCosto;
     private javax.swing.JSpinner jSpinnerRegistroRevistaNumero;
     private javax.swing.JTabbedPane jTab;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldRegistroLibroAutor;
     private javax.swing.JTextField jTextFieldRegistroLibroEditorial;
     private javax.swing.JTextField jTextFieldRegistroLibroNombre;
