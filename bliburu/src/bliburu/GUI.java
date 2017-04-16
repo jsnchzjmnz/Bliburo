@@ -1106,10 +1106,10 @@ public class GUI extends javax.swing.JFrame {
         String path = pathWrong;
         //URL url = this.getClass().getResource(path);
         //ImageIcon icon = new ImageIcon(url);
-        ValidarDatos validacion = new ValidarDatos();
+        Administrador administradorCliente = new Administrador();
         String email = txtEmailCliente.getText();
         if(!email.equals("")){
-            String validacionEmail = validacion.validarEmail(email);
+            String validacionEmail = administradorCliente.validarEmailCliente(email);
             //txtErrorEmail.setText(validacionEmail);
             if(validacionEmail.equals("CORRECTO")){
                 path = pathRight;
@@ -1133,19 +1133,19 @@ public class GUI extends javax.swing.JFrame {
         String path = pathWrong;
         //URL url = this.getClass().getResource(path);
         //ImageIcon icon = new ImageIcon(url);
-        ValidarDatos validacion = new ValidarDatos();
+        Administrador administradorCliente = new Administrador();
         String telefono = txtTelefonoCliente.getText();
         if(!telefono.equals("")){
-            String validacionEmail = validacion.validarTelefono(telefono);
+            String validacionTelefono = administradorCliente.validarTelefonoCliente(telefono);
             //txtErrorEmail.setText(validacionEmail);
-            if(validacionEmail.equals("CORRECTO")){
+            if(validacionTelefono.equals("CORRECTO")){
                 path = pathRight;
                 txtErrorTelefono.setText("");
                 //txtErrorEmail.setIcon(icon);
             }
             else{
                 path = pathWrong;
-                txtErrorTelefono.setText("* Ingrese email válido");
+                txtErrorTelefono.setText("* Ingrese Teléfono válido");
             }
             URL url = this.getClass().getResource(path);
             ImageIcon icon = new ImageIcon(url);
