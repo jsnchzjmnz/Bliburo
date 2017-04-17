@@ -1464,6 +1464,9 @@ public class GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
+     /**
+     * Evento del boton que agrega nuevos Bibliotecarios
+     */  
     private void btnAgregarBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBibliotecarioActionPerformed
         String nombre = txtNombreBibliotecario.getText();
         String email = txtCorreoBibliotecario.getText();
@@ -1759,6 +1762,10 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListRecursosLiterariosMouseClicked
 
+    /*
+    *Toma el valor de cliente ingresado por el usuario y consulta su información
+    *
+    */
     private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
 
         String idCliente = txtCodigoCliente.getText();
@@ -1878,6 +1885,9 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     
+    /*Permite mostar en el panel de libros, aquellos libros cuyo estado es disponible
+    *Permitiendo que sean prestados
+    */
     private void recorrerListaLibros(){
         int contador = 0;
         while(contador<biblioteca.getInventario().getListaRecursosLiterarios().size()){
@@ -1890,6 +1900,11 @@ public class GUI extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * 
+     * @param idLibro pinta el id del libro en panel de libros disponibles
+     * * @param nombreLibro pinta el nombre del libro en el panel de libros disponibles
+     */
     private void refrescarPanelLibrosDisponibles(final String idLibro, final String nombreLibro){
         JLabel panelIdLibro;
         JLabel panelnombreLibro;
@@ -1912,6 +1927,12 @@ public class GUI extends javax.swing.JFrame {
         });   
             
     }
+    
+    /**
+     * 
+     * @param idLibro pinta el id del libro en panel de libros solicitados a prestamo
+     * * @param nombreLibro pinta el nombre del libro solicitado a prestamo
+     */
     private void refrescarPanelLibrosSolicitados(String idLibro,String nombreLibro){
         JLabel panelIdLibro;
         JLabel panelnombreLibro;
