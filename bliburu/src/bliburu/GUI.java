@@ -17,6 +17,7 @@
 package bliburu;
 
 import Mensajeria.window;
+import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -174,15 +175,20 @@ public class GUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtCodigoCliente = new javax.swing.JTextField();
         btnConsultarCliente = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jpanelMostrarLibrosDisponibles = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
         labelNombreCliente1 = new javax.swing.JLabel();
         labelNombreCliente2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtConsultaNombreCliente = new javax.swing.JLabel();
         txtConsultaCorreoCliente = new javax.swing.JLabel();
         txtConsultaCedulaCliente = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jpanelMostrarLibrosDisponibles = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jpanelMostrarLibrosSolicitados = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -653,7 +659,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelLiteraturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLiteraturaLayout.createSequentialGroup()
                         .addComponent(jPanelRegistroLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(jPanelRegistroRevistasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelRecursosLiterarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -671,7 +677,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanelVentasLayout.setVerticalGroup(
             jPanelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 509, Short.MAX_VALUE)
         );
 
         jTab.addTab("Ventas", jPanelVentas);
@@ -686,7 +692,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanelMultasLayout.setVerticalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 509, Short.MAX_VALUE)
         );
 
         jTab.addTab("Multas", jPanelMultas);
@@ -1029,7 +1035,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1170,6 +1176,22 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout jpanelMostrarLibrosDisponiblesLayout = new javax.swing.GroupLayout(jpanelMostrarLibrosDisponibles);
+        jpanelMostrarLibrosDisponibles.setLayout(jpanelMostrarLibrosDisponiblesLayout);
+        jpanelMostrarLibrosDisponiblesLayout.setHorizontalGroup(
+            jpanelMostrarLibrosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 594, Short.MAX_VALUE)
+        );
+        jpanelMostrarLibrosDisponiblesLayout.setVerticalGroup(
+            jpanelMostrarLibrosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 289, Short.MAX_VALUE)
+        );
+
+        jScrollPane4.setViewportView(jpanelMostrarLibrosDisponibles);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel12.setText("Libros Disponibles para Prestamo");
+
         labelNombreCliente1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelNombreCliente1.setText("Nombre:");
 
@@ -1188,47 +1210,98 @@ public class GUI extends javax.swing.JFrame {
         txtConsultaCedulaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtConsultaCedulaCliente.setText("jLabel16");
 
-        javax.swing.GroupLayout jpanelMostrarLibrosDisponiblesLayout = new javax.swing.GroupLayout(jpanelMostrarLibrosDisponibles);
-        jpanelMostrarLibrosDisponibles.setLayout(jpanelMostrarLibrosDisponiblesLayout);
-        jpanelMostrarLibrosDisponiblesLayout.setHorizontalGroup(
-            jpanelMostrarLibrosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+        javax.swing.GroupLayout jpanelMostrarLibrosSolicitadosLayout = new javax.swing.GroupLayout(jpanelMostrarLibrosSolicitados);
+        jpanelMostrarLibrosSolicitados.setLayout(jpanelMostrarLibrosSolicitadosLayout);
+        jpanelMostrarLibrosSolicitadosLayout.setHorizontalGroup(
+            jpanelMostrarLibrosSolicitadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
-        jpanelMostrarLibrosDisponiblesLayout.setVerticalGroup(
-            jpanelMostrarLibrosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 289, Short.MAX_VALUE)
+        jpanelMostrarLibrosSolicitadosLayout.setVerticalGroup(
+            jpanelMostrarLibrosSolicitadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 251, Short.MAX_VALUE)
         );
 
-        jScrollPane4.setViewportView(jpanelMostrarLibrosDisponibles);
+        jScrollPane5.setViewportView(jpanelMostrarLibrosSolicitados);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel12.setText("Libros Disponibles para Prestamo");
+        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton2.setText("Procesar Préstamo");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtConsultaCedulaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(labelNombreCliente2)
+                                .addGap(38, 38, 38)
+                                .addComponent(txtConsultaCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(labelNombreCliente1)
+                                .addGap(95, 95, 95)
+                                .addComponent(txtConsultaNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5)))
+                .addContainerGap())
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreCliente1)
+                    .addComponent(txtConsultaNombreCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreCliente2)
+                    .addComponent(txtConsultaCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtConsultaCedulaCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton2)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanelPrestamosLayout = new javax.swing.GroupLayout(jPanelPrestamos);
         jPanelPrestamos.setLayout(jPanelPrestamosLayout);
         jPanelPrestamosLayout.setHorizontalGroup(
             jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtConsultaCedulaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addComponent(labelNombreCliente2)
-                        .addGap(38, 38, 38)
-                        .addComponent(txtConsultaCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addComponent(labelNombreCliente1)
-                        .addGap(95, 95, 95)
-                        .addComponent(txtConsultaNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrestamosLayout.createSequentialGroup()
                 .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addContainerGap(265, Short.MAX_VALUE))
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel12)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanelPrestamosLayout.setVerticalGroup(
             jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1236,24 +1309,15 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNombreCliente1)
-                            .addComponent(txtConsultaNombreCliente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNombreCliente2)
-                            .addComponent(txtConsultaCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtConsultaCedulaCliente)))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(170, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
         );
 
         jTab.addTab("Prestamos", jPanelPrestamos);
@@ -1704,8 +1768,8 @@ public class GUI extends javax.swing.JFrame {
         txtConsultaNombreCliente.setText(cl.getNombre());
         txtConsultaCorreoCliente.setText(cl.getEmail());
         txtConsultaCedulaCliente.setText(cl.getCedula());
-        refrescarPanelLibrosDisponibles();
-        
+        //refrescarPanelLibrosDisponibles();
+        recorrerListaLibros();
     }//GEN-LAST:event_btnConsultarClienteActionPerformed
 
     
@@ -1814,27 +1878,54 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     
-    private void refrescarPanelLibrosDisponibles(){
+    private void recorrerListaLibros(){
         int contador = 0;
-        JLabel panelIdLibro;
-        JLabel panelnombreLibro;
-        JButton panelAgregarLibro;
-        jpanelMostrarLibrosDisponibles.setLayout(new GridLayout(0,3,10,10));
         while(contador<biblioteca.getInventario().getListaRecursosLiterarios().size()){
             if(biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getEstado().toString()==Estado.DISPONIBLE.toString()){
                 String idLibro = biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getId();
                 String nombreLibro = biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getNombre();
-                panelIdLibro = new javax.swing.JLabel(idLibro);
-                panelnombreLibro = new javax.swing.JLabel(nombreLibro);
-                panelAgregarLibro = new javax.swing.JButton("Agregar");
-                jpanelMostrarLibrosDisponibles.add(panelIdLibro);
-                jpanelMostrarLibrosDisponibles.add(panelnombreLibro);
-                jpanelMostrarLibrosDisponibles.add(panelAgregarLibro);
-                jpanelMostrarLibrosDisponibles.revalidate();
-                jpanelMostrarLibrosDisponibles.repaint();
+                refrescarPanelLibrosDisponibles(idLibro,nombreLibro);
             }
-            contador++; 
+            contador++;  
         }
+    }
+    
+    private void refrescarPanelLibrosDisponibles(final String idLibro, final String nombreLibro){
+        JLabel panelIdLibro;
+        JLabel panelnombreLibro;
+        JButton panelAgregarLibro;
+        
+        jpanelMostrarLibrosDisponibles.setLayout(new GridLayout(0,3,10,10));
+        panelIdLibro = new javax.swing.JLabel(idLibro);
+        panelnombreLibro = new javax.swing.JLabel(nombreLibro);
+        panelAgregarLibro = new javax.swing.JButton("Agregar");
+        jpanelMostrarLibrosDisponibles.add(panelIdLibro);
+        jpanelMostrarLibrosDisponibles.add(panelnombreLibro);
+        jpanelMostrarLibrosDisponibles.add(panelAgregarLibro);
+        jpanelMostrarLibrosDisponibles.revalidate();
+        jpanelMostrarLibrosDisponibles.repaint();
+        panelAgregarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                refrescarPanelLibrosSolicitados(idLibro,nombreLibro);
+            }
+        });   
+            
+    }
+    private void refrescarPanelLibrosSolicitados(String idLibro,String nombreLibro){
+        JLabel panelIdLibro;
+        JLabel panelnombreLibro;
+        JButton panelEmilinarLibro;
+        panelIdLibro = new javax.swing.JLabel(idLibro);
+        panelnombreLibro = new javax.swing.JLabel(nombreLibro);
+        panelEmilinarLibro = new javax.swing.JButton("Eliminar");
+        jpanelMostrarLibrosSolicitados.setLayout(new GridLayout(0,3,10,10));
+        jpanelMostrarLibrosSolicitados.add(panelIdLibro);
+        jpanelMostrarLibrosSolicitados.add(panelnombreLibro);
+        jpanelMostrarLibrosSolicitados.add(panelEmilinarLibro);
+        jpanelMostrarLibrosSolicitados.revalidate();
+        jpanelMostrarLibrosSolicitados.repaint();
+        
     }
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
@@ -1946,6 +2037,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnConsultarCliente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonRegistroLibro;
     private javax.swing.JButton jButtonRegistroRevista;
     private javax.swing.JCheckBox jCheckBoxFiltroLibro;
@@ -2008,6 +2100,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanelClientes;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelLiteratura;
@@ -2023,7 +2116,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPaneFiltro;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparatorFiltro;
     private javax.swing.JSpinner jSpinnerAnioRevista;
     private javax.swing.JSpinner jSpinnerRegistroLibroAnio;
@@ -2037,6 +2132,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRegistroRevistaNombre;
     private javax.swing.JPanel jpanelMostrarBibliotecarios;
     private javax.swing.JPanel jpanelMostrarLibrosDisponibles;
+    private javax.swing.JPanel jpanelMostrarLibrosSolicitados;
     private javax.swing.JLabel labelCedulaCliente;
     private javax.swing.JLabel labelCorreoCliente;
     private javax.swing.JLabel labelNombreCliente;
