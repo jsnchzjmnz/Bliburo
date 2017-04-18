@@ -200,6 +200,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jpanelMostrarLibrosSolicitados = new javax.swing.JPanel();
         btnProcesarPrestamo = new javax.swing.JButton();
+        txtErrorCliente = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -1300,6 +1301,10 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
+        txtErrorCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtErrorCliente.setForeground(new java.awt.Color(255, 0, 0));
+        txtErrorCliente.setText("jLabel13");
+
         javax.swing.GroupLayout jPanelPrestamosLayout = new javax.swing.GroupLayout(jPanelPrestamos);
         jPanelPrestamos.setLayout(jPanelPrestamosLayout);
         jPanelPrestamosLayout.setHorizontalGroup(
@@ -1308,7 +1313,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtErrorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1328,7 +1335,11 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(txtErrorCliente)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1784,16 +1795,22 @@ public class GUI extends javax.swing.JFrame {
     */
     private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
 
+        txtErrorCliente.setText("");
         String idCliente = txtCodigoCliente.getText();
+        txtCodigoCliente.setText("");
         int indice = Integer.parseInt(idCliente);
         indice-=1;
-        //Cliente cl = administradorCliente.getClienteEnLista(indice);
-        clienteConsultas = administradorCliente.getClienteEnLista(indice);
-        txtConsultaNombreCliente.setText(clienteConsultas.getNombre());
-        txtConsultaCorreoCliente.setText(clienteConsultas.getEmail());
-        txtConsultaCedulaCliente.setText(clienteConsultas.getCedula());
-        //refrescarPanelLibrosDisponibles();
-        recorrerListaRecursosLiterarios();
+        try{
+            clienteConsultas = administradorCliente.getClienteEnLista(indice);
+            txtConsultaNombreCliente.setText(clienteConsultas.getNombre());
+            txtConsultaCorreoCliente.setText(clienteConsultas.getEmail());
+            txtConsultaCedulaCliente.setText(clienteConsultas.getCedula());
+            recorrerListaRecursosLiterarios();
+        }
+        catch(Exception e){
+            txtErrorCliente.setText("**ERROR!: Ingrese un Cliente Válido");
+        }
+
     }//GEN-LAST:event_btnConsultarClienteActionPerformed
 
     /*Acción del boton de procesar prestamo, genera un nuevo objeto prestamo como los parametros:
@@ -1912,7 +1929,7 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     
-    /*Permite mostar en el panel de libros, aquellos libros cuyo estado es disponible
+    /*Permite mostar en el panel de recursos Literarios, aquellos  cuyo estado es DISPONIBLE
     *Permitiendo que sean prestados
     */
     private void recorrerListaRecursosLiterarios(){
@@ -1930,7 +1947,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * 
      * @param idLibro pinta el id del libro en panel de libros disponibles
-     * * @param nombreLibro pinta el nombre del libro en el panel de libros disponibles
+     * @param nombreLibro pinta el nombre del libro en el panel de libros disponibles
      */
     private void refrescarPanelLibrosDisponibles(final String idLibro, final String nombreLibro,final int indice){
         JLabel panelIdLibro;
@@ -1949,12 +1966,16 @@ public class GUI extends javax.swing.JFrame {
         panelAgregarLibro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //refrescarPanelLibrosSolicitados(idLibro,nombreLibro,indice);
                 editarListaRecursosLiterariosSolicita(indice,true);
             }
         });   
             
     }
+     /**
+     * 
+     * @param indice indice al recurso literario que se encuentra en el inventario con estado Disponible
+     * @param accion determina si se desea agregar o aliminar un elemento de la listaRecursosLiterariosPrestados
+     */
     private void editarListaRecursosLiterariosSolicita(int indice,boolean accion){
         if(accion){
             listaRecursosLiterariosPrestados.add(biblioteca.getInventario().getListaRecursosLiterarios().get(indice));
@@ -1968,6 +1989,11 @@ public class GUI extends javax.swing.JFrame {
         
     }
     
+     /**
+     * Pintar en el Panel de Recursos literarios Solicitados aquellos seleccionados por el usuario
+     * @param indice indice al recurso literario que se encuentra en el inventario con estado Disponible
+     * 
+     */
     private void refrescarPanelLibrosSolicitados(final int indice){
         jpanelMostrarLibrosSolicitados.removeAll();
         for(int x=0;x<listaRecursosLiterariosPrestados.size();x++) {
@@ -2214,6 +2240,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel txtConsultaNombreCliente;
     private javax.swing.JTextField txtCorreoBibliotecario;
     private javax.swing.JTextField txtEmailCliente;
+    private javax.swing.JLabel txtErrorCliente;
     private javax.swing.JLabel txtErrorEmail;
     private javax.swing.JLabel txtErrorEmailBiblio;
     private javax.swing.JLabel txtErrorTelefono;
