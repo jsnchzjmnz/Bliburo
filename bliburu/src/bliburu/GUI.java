@@ -28,7 +28,10 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,6 +53,11 @@ public class GUI extends javax.swing.JFrame {
     private Biblioteca biblioteca;
     private Administrador administradorBibliotecario;
     private Administrador administradorCliente;
+    private Cliente clienteConsultas;
+    private List<RecursoLiterario> listaRecursosLiterariosPrestados; 
+    private Date fecha;
+    Calendar calendar = Calendar.getInstance();
+    private int recursosLiterariosAgregadosAPrestamo;
     
     /**
      * Creates new form GUI
@@ -58,6 +66,9 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         administradorBibliotecario = new Administrador();
         administradorCliente = new Administrador();
+        listaRecursosLiterariosPrestados = new ArrayList<RecursoLiterario>(); 
+        recursosLiterariosAgregadosAPrestamo = 0;
+        
     }
 
     /**
@@ -188,7 +199,7 @@ public class GUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         jpanelMostrarLibrosSolicitados = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnProcesarPrestamo = new javax.swing.JButton();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -1223,8 +1234,13 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(jpanelMostrarLibrosSolicitados);
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Procesar Préstamo");
+        btnProcesarPrestamo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnProcesarPrestamo.setText("Procesar Préstamo");
+        btnProcesarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcesarPrestamoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1257,7 +1273,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(148, 148, 148)
-                .addComponent(jButton2)
+                .addComponent(btnProcesarPrestamo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -1280,7 +1296,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jButton2)
+                .addComponent(btnProcesarPrestamo)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -1771,13 +1787,24 @@ public class GUI extends javax.swing.JFrame {
         String idCliente = txtCodigoCliente.getText();
         int indice = Integer.parseInt(idCliente);
         indice-=1;
-        Cliente cl = administradorCliente.getClienteEnLista(indice);
-        txtConsultaNombreCliente.setText(cl.getNombre());
-        txtConsultaCorreoCliente.setText(cl.getEmail());
-        txtConsultaCedulaCliente.setText(cl.getCedula());
+        //Cliente cl = administradorCliente.getClienteEnLista(indice);
+        clienteConsultas = administradorCliente.getClienteEnLista(indice);
+        txtConsultaNombreCliente.setText(clienteConsultas.getNombre());
+        txtConsultaCorreoCliente.setText(clienteConsultas.getEmail());
+        txtConsultaCedulaCliente.setText(clienteConsultas.getCedula());
         //refrescarPanelLibrosDisponibles();
-        recorrerListaLibros();
+        recorrerListaRecursosLiterarios();
     }//GEN-LAST:event_btnConsultarClienteActionPerformed
+
+    /*Acción del boton de procesar prestamo, genera un nuevo objeto prestamo como los parametros:
+    *Un Cliente asociado y una lista de Recursos literari y la fecha actual
+    */
+    private void btnProcesarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarPrestamoActionPerformed
+        // TODO add your handling code here:
+        this.fecha = calendar.getTime();
+        Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,fecha); 
+        
+    }//GEN-LAST:event_btnProcesarPrestamoActionPerformed
 
     
      /**
@@ -1888,13 +1915,13 @@ public class GUI extends javax.swing.JFrame {
     /*Permite mostar en el panel de libros, aquellos libros cuyo estado es disponible
     *Permitiendo que sean prestados
     */
-    private void recorrerListaLibros(){
+    private void recorrerListaRecursosLiterarios(){
         int contador = 0;
         while(contador<biblioteca.getInventario().getListaRecursosLiterarios().size()){
             if(biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getEstado().toString()==Estado.DISPONIBLE.toString()){
                 String idLibro = biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getId();
                 String nombreLibro = biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getNombre();
-                refrescarPanelLibrosDisponibles(idLibro,nombreLibro);
+                refrescarPanelLibrosDisponibles(idLibro,nombreLibro,contador);
             }
             contador++;  
         }
@@ -1905,7 +1932,7 @@ public class GUI extends javax.swing.JFrame {
      * @param idLibro pinta el id del libro en panel de libros disponibles
      * * @param nombreLibro pinta el nombre del libro en el panel de libros disponibles
      */
-    private void refrescarPanelLibrosDisponibles(final String idLibro, final String nombreLibro){
+    private void refrescarPanelLibrosDisponibles(final String idLibro, final String nombreLibro,final int indice){
         JLabel panelIdLibro;
         JLabel panelnombreLibro;
         JButton panelAgregarLibro;
@@ -1922,32 +1949,51 @@ public class GUI extends javax.swing.JFrame {
         panelAgregarLibro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                refrescarPanelLibrosSolicitados(idLibro,nombreLibro);
+                //refrescarPanelLibrosSolicitados(idLibro,nombreLibro,indice);
+                editarListaRecursosLiterariosSolicita(indice,true);
             }
         });   
             
     }
-    
-    /**
-     * 
-     * @param idLibro pinta el id del libro en panel de libros solicitados a prestamo
-     * * @param nombreLibro pinta el nombre del libro solicitado a prestamo
-     */
-    private void refrescarPanelLibrosSolicitados(String idLibro,String nombreLibro){
-        JLabel panelIdLibro;
-        JLabel panelnombreLibro;
-        JButton panelEmilinarLibro;
-        panelIdLibro = new javax.swing.JLabel(idLibro);
-        panelnombreLibro = new javax.swing.JLabel(nombreLibro);
-        panelEmilinarLibro = new javax.swing.JButton("Eliminar");
-        jpanelMostrarLibrosSolicitados.setLayout(new GridLayout(0,3,10,10));
-        jpanelMostrarLibrosSolicitados.add(panelIdLibro);
-        jpanelMostrarLibrosSolicitados.add(panelnombreLibro);
-        jpanelMostrarLibrosSolicitados.add(panelEmilinarLibro);
-        jpanelMostrarLibrosSolicitados.revalidate();
-        jpanelMostrarLibrosSolicitados.repaint();
+    private void editarListaRecursosLiterariosSolicita(int indice,boolean accion){
+        if(accion){
+            listaRecursosLiterariosPrestados.add(biblioteca.getInventario().getListaRecursosLiterarios().get(indice));
+            recursosLiterariosAgregadosAPrestamo+=1; 
+        }
+        else{
+            listaRecursosLiterariosPrestados.remove(indice);
+            recursosLiterariosAgregadosAPrestamo-=1;
+        }
+        refrescarPanelLibrosSolicitados(indice);
         
     }
+    
+    private void refrescarPanelLibrosSolicitados(final int indice){
+        jpanelMostrarLibrosSolicitados.removeAll();
+        for(int x=0;x<listaRecursosLiterariosPrestados.size();x++) {
+            String IdLibro = listaRecursosLiterariosPrestados.get(x).getId() ;
+            String nombreLibro = listaRecursosLiterariosPrestados.get(x).getNombre();
+            JLabel panelIdLibro;
+            JLabel panelnombreLibro;
+            JButton panelEmilinarLibro;
+            panelIdLibro = new javax.swing.JLabel(IdLibro);
+            panelnombreLibro = new javax.swing.JLabel(nombreLibro);
+            panelEmilinarLibro = new javax.swing.JButton("Eliminar");
+            jpanelMostrarLibrosSolicitados.setLayout(new GridLayout(0,3,10,10));
+            jpanelMostrarLibrosSolicitados.add(panelIdLibro);
+            jpanelMostrarLibrosSolicitados.add(panelnombreLibro);
+            jpanelMostrarLibrosSolicitados.add(panelEmilinarLibro);
+            jpanelMostrarLibrosSolicitados.revalidate();
+            jpanelMostrarLibrosSolicitados.repaint();
+            panelEmilinarLibro.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    editarListaRecursosLiterariosSolicita(indice,false);
+                }
+            });
+        }
+    }
+ 
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
         DefaultListModel model = new DefaultListModel();
@@ -2057,8 +2103,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarBibliotecario;
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnConsultarCliente;
+    private javax.swing.JButton btnProcesarPrestamo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonRegistroLibro;
     private javax.swing.JButton jButtonRegistroRevista;
     private javax.swing.JCheckBox jCheckBoxFiltroLibro;

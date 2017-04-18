@@ -16,10 +16,64 @@
  */
 package bliburu;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author julio
  */
 public class Prestamo {
+    private List<RecursoLiterario> productosPrestados;
+    private Cliente cliente;
+    private Date fecha;
+    
+    public Prestamo(){
+        Calendar calendar = Calendar.getInstance();
+        this.fecha = calendar.getTime();
+    }
+    
+    public Prestamo(Cliente cliente,List<RecursoLiterario> productosPrestados,Date fecha){
+        this.cliente = cliente;
+        this.productosPrestados = productosPrestados;
+        this.fecha = fecha;
+    }
+
+
+    /*
+    GETTERS
+    */
+
+    public List<RecursoLiterario> getProductosPrestados() {
+        return productosPrestados;
+    }
+    
+    public Cliente getCliente() {
+        return cliente;
+    }
+    
+    public Date getFecha() {
+        return fecha;
+    }
+    /*
+     Setters   
+     */    
+    public void setProductosPrestados(List<RecursoLiterario> productosPrestados) {
+        this.productosPrestados = productosPrestados;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    
     
 }
