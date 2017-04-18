@@ -139,8 +139,8 @@ public class GUI extends javax.swing.JFrame {
         jPanelVentas = new javax.swing.JPanel();
         jPanelMultas = new javax.swing.JPanel();
         jPanelClientes = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        jPanelAgregarCliente = new javax.swing.JPanel();
+        labelAgrearCliente = new javax.swing.JLabel();
         labelNombreCliente = new javax.swing.JLabel();
         labelCorreoCliente = new javax.swing.JLabel();
         labelCedulaCliente = new javax.swing.JLabel();
@@ -152,16 +152,16 @@ public class GUI extends javax.swing.JFrame {
         btnAgregarCliente = new javax.swing.JButton();
         txtErrorEmail = new javax.swing.JLabel();
         txtErrorTelefono = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPanelClientes = new javax.swing.JScrollPane();
         jPanelMostrarClientes = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelBibliotecarios = new javax.swing.JPanel();
+        panelAgregarBibliotecario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        labelNombreBibliotecario = new javax.swing.JLabel();
+        labelCorreoBibliotecario = new javax.swing.JLabel();
+        labelCedularBibliotecario = new javax.swing.JLabel();
+        labelTelefonoBibliotecario = new javax.swing.JLabel();
+        labelContraseniaBibliotecario = new javax.swing.JLabel();
         txtTelefonoBibliotecario = new javax.swing.JTextField();
         txtCedulaBibliotecario = new javax.swing.JTextField();
         txtNombreBibliotecario = new javax.swing.JTextField();
@@ -170,37 +170,37 @@ public class GUI extends javax.swing.JFrame {
         txtErrorEmailBiblio = new javax.swing.JLabel();
         txtErrorTelefonoBiblio = new javax.swing.JLabel();
         txtPasswordBibliotecario = new javax.swing.JPasswordField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPanelBibliotecario = new javax.swing.JScrollPane();
         jpanelMostrarBibliotecarios = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelDeudas = new javax.swing.JPanel();
+        jPanelClienteDeudas = new javax.swing.JPanel();
+        labelIdenficadorDeudas = new javax.swing.JLabel();
+        btnConsultarDeudas = new javax.swing.JButton();
+        txtIdClienteDeudas = new javax.swing.JTextField();
+        labelIDDeudas = new javax.swing.JLabel();
+        jScrollPaneDeudas = new javax.swing.JScrollPane();
+        panelMostrarDeudasCliente = new javax.swing.JPanel();
         jPanelPrestamos = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        panelIdentificadorClientePrestamo = new javax.swing.JPanel();
+        labelIdentificador = new javax.swing.JLabel();
+        labelID = new javax.swing.JLabel();
         txtCodigoCliente = new javax.swing.JTextField();
         btnConsultarCliente = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPanelLibrosDisponibles = new javax.swing.JScrollPane();
         jpanelMostrarLibrosDisponibles = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        labelNombreCliente1 = new javax.swing.JLabel();
-        labelNombreCliente2 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtConsultaNombreCliente = new javax.swing.JLabel();
-        txtConsultaCorreoCliente = new javax.swing.JLabel();
-        txtConsultaCedulaCliente = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        labelLibrosDisponibles = new javax.swing.JLabel();
+        jPanelFacturaPrestamos = new javax.swing.JPanel();
+        labelNombrePrestamoCLiente = new javax.swing.JLabel();
+        labelNombreClientePrestamo = new javax.swing.JLabel();
+        labelCedulaPrestamo = new javax.swing.JLabel();
+        txtConsultaNombreClientePrestamo = new javax.swing.JLabel();
+        txtConsultaCorreoClientePrestamo = new javax.swing.JLabel();
+        txtConsultaCedulaClientePrestamo = new javax.swing.JLabel();
+        jSeparatorFacturaPrestamo = new javax.swing.JSeparator();
+        jScrollPaneFacturaPrestamo = new javax.swing.JScrollPane();
         jpanelMostrarLibrosSolicitados = new javax.swing.JPanel();
         btnProcesarPrestamo = new javax.swing.JButton();
-        txtErrorCliente = new javax.swing.JLabel();
+        txtErrorClientePrestamo = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -711,10 +711,10 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelClientes.setBackground(new java.awt.Color(232, 232, 232));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAgregarCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel14.setText("Agregar Cliente");
+        labelAgrearCliente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAgrearCliente.setText("Agregar Cliente");
 
         labelNombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelNombreCliente.setText("Nombre:");
@@ -765,71 +765,71 @@ public class GUI extends javax.swing.JFrame {
         txtErrorTelefono.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAgregarClienteLayout = new javax.swing.GroupLayout(jPanelAgregarCliente);
+        jPanelAgregarCliente.setLayout(jPanelAgregarClienteLayout);
+        jPanelAgregarClienteLayout.setHorizontalGroup(
+            jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                         .addComponent(labelCedulaCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                             .addComponent(labelTelefonoCliente)
                             .addGap(57, 57, 57)
                             .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarClienteLayout.createSequentialGroup()
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarClienteLayout.createSequentialGroup()
                                 .addComponent(labelCorreoCliente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                                 .addComponent(labelNombreCliente)
                                 .addGap(66, 66, 66)))
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtErrorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                     .addComponent(txtErrorEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAgrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanelAgregarClienteLayout.setVerticalGroup(
+            jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14)
+                .addComponent(labelAgrearCliente)
                 .addGap(21, 21, 21)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreCliente)
                     .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtErrorEmail)
                         .addGap(62, 62, 62)
                         .addComponent(txtErrorTelefono)
                         .addGap(92, 92, 92))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelCorreoCliente)
                             .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelCedulaCliente)
                             .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelTelefonoCliente)
                             .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
@@ -848,7 +848,7 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 255, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(jPanelMostrarClientes);
+        jScrollPanelClientes.setViewportView(jPanelMostrarClientes);
 
         javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
         jPanelClientes.setLayout(jPanelClientesLayout);
@@ -856,42 +856,42 @@ public class GUI extends javax.swing.JFrame {
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
+                .addComponent(jScrollPanelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanelClientesLayout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelClientesLayout.setVerticalGroup(
             jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelClientesLayout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPanelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTab.addTab("Clientes", jPanelClientes);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelAgregarBibliotecario.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Agregar Bibliotecario");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Nombre:");
+        labelNombreBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombreBibliotecario.setText("Nombre:");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Correo electrónico: ");
+        labelCorreoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCorreoBibliotecario.setText("Correo electrónico: ");
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText("Cédula de Identificación:");
+        labelCedularBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCedularBibliotecario.setText("Cédula de Identificación:");
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel8.setText("Teléfono:");
+        labelTelefonoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelTelefonoBibliotecario.setText("Teléfono:");
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Contraseña:");
+        labelContraseniaBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelContraseniaBibliotecario.setText("Contraseña:");
 
         txtTelefonoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtTelefonoBibliotecario.addActionListener(new java.awt.event.ActionListener() {
@@ -946,70 +946,70 @@ public class GUI extends javax.swing.JFrame {
         txtErrorTelefonoBiblio.setForeground(new java.awt.Color(255, 0, 0));
         txtErrorTelefonoBiblio.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelAgregarBibliotecarioLayout = new javax.swing.GroupLayout(panelAgregarBibliotecario);
+        panelAgregarBibliotecario.setLayout(panelAgregarBibliotecarioLayout);
+        panelAgregarBibliotecarioLayout.setHorizontalGroup(
+            panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTelefonoBibliotecario)
+                    .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel1)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                            .addComponent(labelNombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(80, 80, 80)
                             .addComponent(txtNombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                            .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelCedularBibliotecario)
+                                .addComponent(labelCorreoBibliotecario)
+                                .addComponent(labelContraseniaBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtCorreoBibliotecario)
                                 .addComponent(txtCedulaBibliotecario)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                                    .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtTelefonoBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtPasswordBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(0, 0, Short.MAX_VALUE))))))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtErrorEmailBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtErrorTelefonoBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(102, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarBibliotecarioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAgregarBibliotecario)
                 .addGap(276, 276, 276))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelAgregarBibliotecarioLayout.setVerticalGroup(
+            panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreBibliotecario)
                     .addComponent(txtNombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCorreoBibliotecario)
                     .addComponent(txtCorreoBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtErrorEmailBiblio))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCedularBibliotecario)
                     .addComponent(txtCedulaBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefonoBibliotecario)
                     .addComponent(txtTelefonoBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtErrorTelefonoBiblio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelContraseniaBibliotecario)
                     .addComponent(txtPasswordBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(btnAgregarBibliotecario)
@@ -1027,123 +1027,123 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 163, Short.MAX_VALUE)
         );
 
-        jScrollPane2.setViewportView(jpanelMostrarBibliotecarios);
+        jScrollPanelBibliotecario.setViewportView(jpanelMostrarBibliotecarios);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanelBibliotecariosLayout = new javax.swing.GroupLayout(jPanelBibliotecarios);
+        jPanelBibliotecarios.setLayout(jPanelBibliotecariosLayout);
+        jPanelBibliotecariosLayout.setHorizontalGroup(
+            jPanelBibliotecariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBibliotecariosLayout.createSequentialGroup()
+                .addComponent(jScrollPanelBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 323, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelBibliotecariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAgregarBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelBibliotecariosLayout.setVerticalGroup(
+            jPanelBibliotecariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBibliotecariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelAgregarBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(jScrollPanelBibliotecario, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTab.addTab("Bibliotecario", jPanel1);
+        jTab.addTab("Bibliotecario", jPanelBibliotecarios);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelClienteDeudas.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Idenficador de Cliente:");
+        labelIdenficadorDeudas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelIdenficadorDeudas.setText("Idenficador de Cliente:");
 
-        jButton1.setText("Consultar");
+        btnConsultarDeudas.setText("Consultar");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setText("CL:");
+        labelIDDeudas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelIDDeudas.setText("CL:");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelClienteDeudasLayout = new javax.swing.GroupLayout(jPanelClienteDeudas);
+        jPanelClienteDeudas.setLayout(jPanelClienteDeudasLayout);
+        jPanelClienteDeudasLayout.setHorizontalGroup(
+            jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                .addGroup(jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnConsultarDeudas))
+                    .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                        .addGroup(jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                                .addComponent(labelIDDeudas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))))
+                                .addComponent(txtIdClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelIdenficadorDeudas))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanelClienteDeudasLayout.setVerticalGroup(
+            jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(labelIdenficadorDeudas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIDDeudas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnConsultarDeudas)
                 .addGap(23, 23, 23))
         );
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelMostrarDeudasClienteLayout = new javax.swing.GroupLayout(panelMostrarDeudasCliente);
+        panelMostrarDeudasCliente.setLayout(panelMostrarDeudasClienteLayout);
+        panelMostrarDeudasClienteLayout.setHorizontalGroup(
+            panelMostrarDeudasClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 631, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 365, Short.MAX_VALUE)
+        panelMostrarDeudasClienteLayout.setVerticalGroup(
+            panelMostrarDeudasClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 403, Short.MAX_VALUE)
         );
 
-        jScrollPane3.setViewportView(jPanel5);
+        jScrollPaneDeudas.setViewportView(panelMostrarDeudasCliente);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelDeudasLayout = new javax.swing.GroupLayout(jPanelDeudas);
+        jPanelDeudas.setLayout(jPanelDeudasLayout);
+        jPanelDeudasLayout.setHorizontalGroup(
+            jPanelDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDeudasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(220, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelDeudasLayout.setVerticalGroup(
+            jPanelDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDeudasLayout.createSequentialGroup()
+                .addGroup(jPanelDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDeudasLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanelClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDeudasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPaneDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        jTab.addTab("Deudas", jPanel3);
+        jTab.addTab("Deudas", jPanelDeudas);
 
         jPanelPrestamos.setBackground(new java.awt.Color(232, 232, 232));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        panelIdentificadorClientePrestamo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("Identificador Cliente");
+        labelIdentificador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelIdentificador.setText("Identificador Cliente");
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel10.setText("CL:");
+        labelID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelID.setText("CL:");
 
         txtCodigoCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
@@ -1154,34 +1154,34 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelIdentificadorClientePrestamoLayout = new javax.swing.GroupLayout(panelIdentificadorClientePrestamo);
+        panelIdentificadorClientePrestamo.setLayout(panelIdentificadorClientePrestamoLayout);
+        panelIdentificadorClientePrestamoLayout.setHorizontalGroup(
+            panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                .addGroup(panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(labelIdentificador))
+                    .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                        .addGroup(panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                                .addComponent(labelID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addComponent(btnConsultarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        panelIdentificadorClientePrestamoLayout.setVerticalGroup(
+            panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(labelIdentificador)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                .addGroup(panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelID)
                     .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConsultarCliente)
@@ -1199,28 +1199,28 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 289, Short.MAX_VALUE)
         );
 
-        jScrollPane4.setViewportView(jpanelMostrarLibrosDisponibles);
+        jScrollPanelLibrosDisponibles.setViewportView(jpanelMostrarLibrosDisponibles);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel12.setText("Libros Disponibles para Prestamo");
+        labelLibrosDisponibles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        labelLibrosDisponibles.setText("Libros Disponibles para Prestamo");
 
-        labelNombreCliente1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelNombreCliente1.setText("Nombre:");
+        labelNombrePrestamoCLiente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombrePrestamoCLiente.setText("Nombre:");
 
-        labelNombreCliente2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        labelNombreCliente2.setText("Correo Electrónico:");
+        labelNombreClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombreClientePrestamo.setText("Correo Electrónico:");
 
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel11.setText("Cédula de Identificación:");
+        labelCedulaPrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCedulaPrestamo.setText("Cédula de Identificación:");
 
-        txtConsultaNombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtConsultaNombreCliente.setText("jLabel12");
+        txtConsultaNombreClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtConsultaNombreClientePrestamo.setText("jLabel12");
 
-        txtConsultaCorreoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtConsultaCorreoCliente.setText("jLabel12");
+        txtConsultaCorreoClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtConsultaCorreoClientePrestamo.setText("jLabel12");
 
-        txtConsultaCedulaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtConsultaCedulaCliente.setText("jLabel16");
+        txtConsultaCedulaClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtConsultaCedulaClientePrestamo.setText("jLabel16");
 
         javax.swing.GroupLayout jpanelMostrarLibrosSolicitadosLayout = new javax.swing.GroupLayout(jpanelMostrarLibrosSolicitados);
         jpanelMostrarLibrosSolicitados.setLayout(jpanelMostrarLibrosSolicitadosLayout);
@@ -1233,7 +1233,7 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 251, Short.MAX_VALUE)
         );
 
-        jScrollPane5.setViewportView(jpanelMostrarLibrosSolicitados);
+        jScrollPaneFacturaPrestamo.setViewportView(jpanelMostrarLibrosSolicitados);
 
         btnProcesarPrestamo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnProcesarPrestamo.setText("Procesar Préstamo");
@@ -1243,67 +1243,69 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelFacturaPrestamosLayout = new javax.swing.GroupLayout(jPanelFacturaPrestamos);
+        jPanelFacturaPrestamos.setLayout(jPanelFacturaPrestamosLayout);
+        jPanelFacturaPrestamosLayout.setHorizontalGroup(
+            jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparatorFacturaPrestamo))
+                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                        .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txtConsultaCedulaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(labelNombreCliente2)
-                                .addGap(38, 38, 38)
-                                .addComponent(txtConsultaCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(labelNombreCliente1)
-                                .addGap(95, 95, 95)
-                                .addComponent(txtConsultaNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5)))
+                                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                        .addComponent(labelCedulaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtConsultaCedulaClientePrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                        .addComponent(labelNombreClientePrestamo)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                        .addComponent(labelNombrePrestamoCLiente)
+                                        .addGap(95, 95, 95)
+                                        .addComponent(txtConsultaNombreClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                .addGap(148, 148, 148)
+                                .addComponent(btnProcesarPrestamo)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnProcesarPrestamo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombreCliente1)
-                    .addComponent(txtConsultaNombreCliente))
+                .addComponent(jScrollPaneFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jPanelFacturaPrestamosLayout.setVerticalGroup(
+            jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombrePrestamoCLiente)
+                    .addComponent(txtConsultaNombreClientePrestamo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombreCliente2)
-                    .addComponent(txtConsultaCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreClientePrestamo)
+                    .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtConsultaCedulaCliente))
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCedulaPrestamo)
+                    .addComponent(txtConsultaCedulaClientePrestamo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparatorFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(jScrollPaneFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(btnProcesarPrestamo)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        txtErrorCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txtErrorCliente.setForeground(new java.awt.Color(255, 0, 0));
-        txtErrorCliente.setText("jLabel13");
+        txtErrorClientePrestamo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtErrorClientePrestamo.setForeground(new java.awt.Color(255, 0, 0));
+        txtErrorClientePrestamo.setText("jLabel13");
 
         javax.swing.GroupLayout jPanelPrestamosLayout = new javax.swing.GroupLayout(jPanelPrestamos);
         jPanelPrestamos.setLayout(jPanelPrestamosLayout);
@@ -1313,17 +1315,17 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelIdentificadorClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtErrorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtErrorClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPanelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jLabel12)))
+                        .addComponent(labelLibrosDisponibles)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelFacturaPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanelPrestamosLayout.setVerticalGroup(
@@ -1332,18 +1334,18 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelFacturaPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                         .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelIdentificadorClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                                 .addGap(31, 31, 31)
-                                .addComponent(txtErrorCliente)))
+                                .addComponent(txtErrorClientePrestamo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12)
+                        .addComponent(labelLibrosDisponibles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPanelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58))))
         );
 
@@ -1795,20 +1797,20 @@ public class GUI extends javax.swing.JFrame {
     */
     private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
 
-        txtErrorCliente.setText("");
+        txtErrorClientePrestamo.setText("");
         String idCliente = txtCodigoCliente.getText();
         txtCodigoCliente.setText("");
         int indice = Integer.parseInt(idCliente);
         indice-=1;
         try{
             clienteConsultas = administradorCliente.getClienteEnLista(indice);
-            txtConsultaNombreCliente.setText(clienteConsultas.getNombre());
-            txtConsultaCorreoCliente.setText(clienteConsultas.getEmail());
-            txtConsultaCedulaCliente.setText(clienteConsultas.getCedula());
+            txtConsultaNombreClientePrestamo.setText(clienteConsultas.getNombre());
+            txtConsultaCorreoClientePrestamo.setText(clienteConsultas.getEmail());
+            txtConsultaCedulaClientePrestamo.setText(clienteConsultas.getCedula());
             recorrerListaRecursosLiterarios();
         }
         catch(Exception e){
-            txtErrorCliente.setText("**ERROR!: Ingrese un Cliente Válido");
+            txtErrorClientePrestamo.setText("**ERROR!: Ingrese un Cliente Válido");
         }
 
     }//GEN-LAST:event_btnConsultarClienteActionPerformed
@@ -2129,8 +2131,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarBibliotecario;
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnConsultarCliente;
+    private javax.swing.JButton btnConsultarDeudas;
     private javax.swing.JButton btnProcesarPrestamo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonRegistroLibro;
     private javax.swing.JButton jButtonRegistroRevista;
     private javax.swing.JCheckBox jCheckBoxFiltroLibro;
@@ -2147,18 +2149,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxTipoLibro;
     private javax.swing.JFileChooser jFileChooserCargaRecursosLiterarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelRecursosLiterariosFiltroLabel;
     private javax.swing.JLabel jLabelRecursosLiterariosLabel;
@@ -2186,15 +2176,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAyuda;
     private javax.swing.JMenuItem jMenuItemImportarLiteratura;
     private javax.swing.JMenuItem jMenuItemSalir;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanelAgregarCliente;
+    private javax.swing.JPanel jPanelBibliotecarios;
+    private javax.swing.JPanel jPanelClienteDeudas;
     private javax.swing.JPanel jPanelClientes;
+    private javax.swing.JPanel jPanelDeudas;
+    private javax.swing.JPanel jPanelFacturaPrestamos;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelLiteratura;
     private javax.swing.JPanel jPanelMostrarClientes;
@@ -2205,20 +2192,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelRegistroLibros;
     private javax.swing.JPanel jPanelRegistroRevistasLabel;
     private javax.swing.JPanel jPanelVentas;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPaneDeudas;
+    private javax.swing.JScrollPane jScrollPaneFacturaPrestamo;
     private javax.swing.JScrollPane jScrollPaneFiltro;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPanelBibliotecario;
+    private javax.swing.JScrollPane jScrollPanelClientes;
+    private javax.swing.JScrollPane jScrollPanelLibrosDisponibles;
+    private javax.swing.JSeparator jSeparatorFacturaPrestamo;
     private javax.swing.JPopupMenu.Separator jSeparatorFiltro;
     private javax.swing.JSpinner jSpinnerAnioRevista;
     private javax.swing.JSpinner jSpinnerRegistroLibroAnio;
     private javax.swing.JSpinner jSpinnerRegistroRevistaCosto;
     private javax.swing.JSpinner jSpinnerRegistroRevistaNumero;
     private javax.swing.JTabbedPane jTab;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldRegistroLibroAutor;
     private javax.swing.JTextField jTextFieldRegistroLibroEditorial;
     private javax.swing.JTextField jTextFieldRegistroLibroNombre;
@@ -2226,25 +2212,41 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jpanelMostrarBibliotecarios;
     private javax.swing.JPanel jpanelMostrarLibrosDisponibles;
     private javax.swing.JPanel jpanelMostrarLibrosSolicitados;
+    private javax.swing.JLabel labelAgrearCliente;
     private javax.swing.JLabel labelCedulaCliente;
+    private javax.swing.JLabel labelCedulaPrestamo;
+    private javax.swing.JLabel labelCedularBibliotecario;
+    private javax.swing.JLabel labelContraseniaBibliotecario;
+    private javax.swing.JLabel labelCorreoBibliotecario;
     private javax.swing.JLabel labelCorreoCliente;
+    private javax.swing.JLabel labelID;
+    private javax.swing.JLabel labelIDDeudas;
+    private javax.swing.JLabel labelIdenficadorDeudas;
+    private javax.swing.JLabel labelIdentificador;
+    private javax.swing.JLabel labelLibrosDisponibles;
+    private javax.swing.JLabel labelNombreBibliotecario;
     private javax.swing.JLabel labelNombreCliente;
-    private javax.swing.JLabel labelNombreCliente1;
-    private javax.swing.JLabel labelNombreCliente2;
+    private javax.swing.JLabel labelNombreClientePrestamo;
+    private javax.swing.JLabel labelNombrePrestamoCLiente;
+    private javax.swing.JLabel labelTelefonoBibliotecario;
     private javax.swing.JLabel labelTelefonoCliente;
+    private javax.swing.JPanel panelAgregarBibliotecario;
+    private javax.swing.JPanel panelIdentificadorClientePrestamo;
+    private javax.swing.JPanel panelMostrarDeudasCliente;
     private javax.swing.JTextField txtCedulaBibliotecario;
     private javax.swing.JTextField txtCedulaCliente;
     private javax.swing.JTextField txtCodigoCliente;
-    private javax.swing.JLabel txtConsultaCedulaCliente;
-    private javax.swing.JLabel txtConsultaCorreoCliente;
-    private javax.swing.JLabel txtConsultaNombreCliente;
+    private javax.swing.JLabel txtConsultaCedulaClientePrestamo;
+    private javax.swing.JLabel txtConsultaCorreoClientePrestamo;
+    private javax.swing.JLabel txtConsultaNombreClientePrestamo;
     private javax.swing.JTextField txtCorreoBibliotecario;
     private javax.swing.JTextField txtEmailCliente;
-    private javax.swing.JLabel txtErrorCliente;
+    private javax.swing.JLabel txtErrorClientePrestamo;
     private javax.swing.JLabel txtErrorEmail;
     private javax.swing.JLabel txtErrorEmailBiblio;
     private javax.swing.JLabel txtErrorTelefono;
     private javax.swing.JLabel txtErrorTelefonoBiblio;
+    private javax.swing.JTextField txtIdClienteDeudas;
     private javax.swing.JTextField txtNombreBibliotecario;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JPasswordField txtPasswordBibliotecario;
