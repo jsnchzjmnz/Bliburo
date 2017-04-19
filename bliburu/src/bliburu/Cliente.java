@@ -24,18 +24,15 @@ import java.util.regex.Pattern;
  *
  * @author JOAQUIN
  */
-public class Cliente {
-    private String nombre;
-    private String primerApellido;
-    private String segundoApellido;
-    private String correo;
-    private String cedula;
-    private String telefono;
+public class Cliente extends Persona{
+    public  static int idCliente = 0; 
     
     /**
      * Constructor por defecto
      */
     Cliente(){
+        idCliente+=1;
+        
     }
     
     /**
@@ -45,121 +42,21 @@ public class Cliente {
      * @param cedula cedula del Cliente
      * @param telefono telefono del Cliente
      */
-    Cliente(String nombre,String primerApellido,String segundoApellido,
-            String correo,String cedula,String telefono){
+    Cliente(String nombre,String correo,String cedula,String telefono){
         this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.correo = correo;
+        this.email = correo;
         this.cedula = cedula;
         this.telefono = telefono;
-    }
-    
-    /*
-    Getters
-    */
-    
-    /**
-     * 
-     * @return retorna el nombre del Cliente
-     */
-    public String getNombre() {
-        return nombre;
-    }
-    
-         /**
-     * 
-     * @return retorna el correo electronico del Cliente
-     */
-    public String getCorreo() {
-        return correo;
-    }
-    
-        /**
-     * 
-     * @return retorna la cedula del cliente
-     */
-    public String getCedula() {
-        return cedula;
-    }
-    
-        /**
-     * 
-     * @return retorna el telefono del Cliente
-     */
-    public String getTelefono() {
-        return telefono;
-    }
-    /**
-     * 
-     * @return retorna el primer apellido del Cliente
-     */
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
-    /**
-     * 
-     * @return retorna el segundo apellido del Cliente
-     */
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
-    
-    /*
-    Setters
-    */
-    
-    
-    
-     /**
-     * 
-     * @param nombre asigna el nombre al Cliente
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-     /**
-     * 
-     * @param correo asigna el correo al Cliente
-     */
-    public void setCorreo(String correo) {
-        this.correo = correo;
+        idCliente+=1;
     }
 
-    /**
-     * 
-     * @param cedula asigna la cedula al Cliente
-     */
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-    
-     /**
-     * 
-     * @param telefono asigna el telefono al Cliente
-     */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    /**
-     * 
-     * @param primerApellido asigna el primerApellido del Cliente
-     */
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
+    public void setIdCliente(int idCliente) {
+        Cliente.idCliente = idCliente;
     }
-    
-    /**
-     * 
-     * @param segundoApellido asigna el primerApellido del Cliente
-     */
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
-    }
-    
-    
     
     
 }
