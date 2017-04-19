@@ -38,7 +38,6 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -56,13 +55,13 @@ public class GUI extends javax.swing.JFrame {
     private Administrador administradorCliente;
     private Cliente clienteConsultas;
     private List<RecursoLiterario> listaRecursosLiterariosPrestados; 
-    //private Date fecha;
+    private Date fecha;
     Calendar calendar = Calendar.getInstance();
     private int recursosLiterariosAgregadosAPrestamo;
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    public Date fechaActualDeSistema;
-    public Date fechaDevolucionLibros;
-    public Date fechaDevolucionRevistas;
+    Date fechaActualDeSistema;
+    Date fechaDevolucionLibros;
+    Date fechaDevolucionRevistas;
     /**
      * Creates new form GUI
      */
@@ -222,7 +221,6 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemImportarLiteratura = new javax.swing.JMenuItem();
         jSeparatorFiltro = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenuHerramientas = new javax.swing.JMenu();
         jMenuItemAjustes = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
@@ -1473,15 +1471,6 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenuArchivo.add(jMenuItemSalir);
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Consultar Préstamos");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenuArchivo.add(jCheckBoxMenuItem1);
-
         jMenuBar.add(jMenuArchivo);
 
         jMenuHerramientas.setText("Herramientas");
@@ -1688,48 +1677,14 @@ public class GUI extends javax.swing.JFrame {
      * 
      */
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
-        String pathRight = "/images/right.jpg";
-        String pathWrong = "/images/wrong.jpg";
-        String path = pathWrong;
         String nombre = txtNombreCliente.getText();
         String email = txtEmailCliente.getText();
         String validacionEmail = administradorCliente.validarEmail(email);
-        if(!email.equals("")){
-            if(validacionEmail.equals("CORRECTO")){
-                path = pathRight;
-                txtErrorEmail.setText("");
-            }
-            else{
-                path = pathWrong;
-                txtErrorEmail.setText(validacionEmail);
-            }
-            URL url = this.getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
-            txtErrorEmail.setIcon(icon);
-        }
-        else{
-            txtErrorEmail.setText("Ingrese Datos Solicitados");
-        }
+        txtErrorEmail.setText(validacionEmail);
         String cedula = txtCedulaCliente.getText();
         String telefono = txtTelefonoCliente.getText();
         String validacionTelefono = administradorCliente.validarTelefono(telefono);
-        if(!telefono.equals("")){
-            if(validacionTelefono.equals("CORRECTO")){
-                path = pathRight;
-                txtErrorTelefono.setText("");
-            }
-            else{
-                path = pathWrong;
-                txtErrorTelefono.setText(validacionTelefono);
-            }
-            URL url = this.getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
-            txtErrorTelefono.setIcon(icon);
-        }
-        else{
-            txtErrorTelefono.setText("Ingrese Datos Solicitados");
-        }
-        
+        txtErrorTelefono.setText(validacionTelefono);
         if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
             int idCliente = administradorCliente.registrarCliente(nombre, cedula, email, telefono);
             refrescarPanelClientes(idCliente,nombre,cedula,email,telefono);
@@ -1748,7 +1703,6 @@ public class GUI extends javax.swing.JFrame {
         String pathWrong = "/images/wrong.jpg";
         String path = pathWrong;
         String telefono = txtTelefonoCliente.getText();
-        telefono=telefono + "1";
         if(!telefono.equals("")){
             String validacionTelefono = administradorCliente.validarTelefono(telefono);
             if(validacionTelefono.equals("CORRECTO")){
@@ -1936,7 +1890,7 @@ public class GUI extends javax.swing.JFrame {
             txtConsultaCorreoClientePrestamo.setText(clienteConsultas.getEmail());
             txtConsultaCedulaClientePrestamo.setText(clienteConsultas.getCedula());
             fechaActualDeSistema = biblioteca.getAdministrador().getParametrizador().getFechaDelSistema();
-            String fechaActual = dateFormat.format(fechaActualDeSistema);
+            String fechaActual = dateFormat.format(fecha);
             int diasPrestamoLibro = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoLibro();
             int diasPrestamoRevista = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoRevista();
             fechaDevolucionLibros = biblioteca.getAdministrador().getParametrizador().getFechaConDiasAdicionales(diasPrestamoLibro);
@@ -1963,29 +1917,10 @@ public class GUI extends javax.swing.JFrame {
     */
     private void btnProcesarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarPrestamoActionPerformed
 
-    JDialog.setDefaultLookAndFeelDecorated(true);
-    int response = JOptionPane.showConfirmDialog(null, "Desea Continuar?", "Confirmar",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.NO_OPTION) {
-      System.out.println("No button clicked");
-    } else if (response == JOptionPane.YES_OPTION) {
-      System.out.println("Yes button clicked");
-    } else if (response == JOptionPane.CLOSED_OPTION) {
-      System.out.println("JOptionPane closed");
-    }
-    Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,
+        Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,
                 fechaActualDeSistema,fechaDevolucionLibros,fechaDevolucionRevistas); 
-    administradorCliente.registrarPrestamo(pt);
-    
   
     }//GEN-LAST:event_btnProcesarPrestamoActionPerformed
-
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        ConsultaPrestamos verPrestamos = new ConsultaPrestamos();
-        verPrestamos.show();
-        
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     
      /**
@@ -2164,6 +2099,7 @@ public class GUI extends javax.swing.JFrame {
             String IdLibro = listaRecursosLiterariosPrestados.get(x).getId() ;
             String tipoRecurso;
             char caracterRecurso = IdLibro.charAt(0);
+            System.out.print(caracterRecurso);
             if('L' == caracterRecurso){
                 tipoRecurso="LIBRO";
             }
@@ -2316,7 +2252,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBoxFiltroRevistasPrestadas;
     private javax.swing.JCheckBox jCheckBoxFiltroRevistasVendidas;
     private javax.swing.JCheckBox jCheckBoxFiltroTodo;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBoxFiltroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxFiltroTipoLibro;
     private javax.swing.JComboBox<String> jComboBoxRegistroRevistaTipo;
