@@ -16,33 +16,62 @@
  */
 package bliburu;
 
+import Mensajeria.window;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Julio Sánchez Jiménez (jsnchzjmnz)
+ * @author Joaquin Mena Montero (jjomena)
  * @version 0.1
  */
 public class GUI extends javax.swing.JFrame {
 
     private Biblioteca biblioteca;
-    
+    private Administrador administradorBibliotecario;
+    private Administrador administradorCliente;
+    private Cliente clienteConsultas;
+    private List<RecursoLiterario> listaRecursosLiterariosPrestados; 
+    private Date fecha;
+    Calendar calendar = Calendar.getInstance();
+    private int recursosLiterariosAgregadosAPrestamo;
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date fechaActualDeSistema;
+    Date fechaDevolucionLibros;
+    Date fechaDevolucionRevistas;
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        administradorBibliotecario = new Administrador();
+        administradorCliente = new Administrador();
+        listaRecursosLiterariosPrestados = new ArrayList<RecursoLiterario>(); 
+        recursosLiterariosAgregadosAPrestamo = 0;
+        
     }
 
     /**
@@ -68,13 +97,13 @@ public class GUI extends javax.swing.JFrame {
         jPanelLiteratura = new javax.swing.JPanel();
         jPanelRecursosLiterarios = new javax.swing.JPanel();
         jScrollPaneFiltro = new javax.swing.JScrollPane();
-        jListRecursosLiterarios = new javax.swing.JList<>();
+        jListRecursosLiterarios = new javax.swing.JList<String>();
         jLabelRecursosLiterariosLabel = new javax.swing.JLabel();
         jPanelRecursoLiterarioFiltro = new javax.swing.JPanel();
         jLabelRecursosLiterariosFiltroLabel = new javax.swing.JLabel();
         jCheckBoxFiltroLibro = new javax.swing.JCheckBox();
         jCheckBoxFiltroRevista = new javax.swing.JCheckBox();
-        jComboBoxFiltroTipoLibro = new javax.swing.JComboBox<>();
+        jComboBoxFiltroTipoLibro = new javax.swing.JComboBox<String>();
         jCheckBoxFiltroLibrosDisponibles = new javax.swing.JCheckBox();
         jCheckBoxFiltroLibrosPrestados = new javax.swing.JCheckBox();
         jCheckBoxFiltroTodo = new javax.swing.JCheckBox();
@@ -82,7 +111,7 @@ public class GUI extends javax.swing.JFrame {
         jCheckBoxFiltroRevistasPrestadas = new javax.swing.JCheckBox();
         jCheckBoxFiltroRevistasVendidas = new javax.swing.JCheckBox();
         jLabelRegistroFiltroTipoLibro = new javax.swing.JLabel();
-        jComboBoxFiltroRevistaTipo = new javax.swing.JComboBox<>();
+        jComboBoxFiltroRevistaTipo = new javax.swing.JComboBox<String>();
         jLabelRegistroTipoRevista = new javax.swing.JLabel();
         jPanelRegistroRevistasLabel = new javax.swing.JPanel();
         jLabelRegistroRevistaLabel = new javax.swing.JLabel();
@@ -90,7 +119,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelRegistroRevistaNumero = new javax.swing.JLabel();
         jLabelRegistroRevistaAnio = new javax.swing.JLabel();
         jLabelRegistroRevistaCosto = new javax.swing.JLabel();
-        jComboBoxRegistroRevistaTipo = new javax.swing.JComboBox<>();
+        jComboBoxRegistroRevistaTipo = new javax.swing.JComboBox<String>();
         jTextFieldRegistroRevistaNombre = new javax.swing.JTextField();
         jButtonRegistroRevista = new javax.swing.JButton();
         jSpinnerAnioRevista = new javax.swing.JSpinner();
@@ -102,7 +131,7 @@ public class GUI extends javax.swing.JFrame {
         jTextFieldRegistroLibroNombre = new javax.swing.JTextField();
         jTextFieldRegistroLibroAutor = new javax.swing.JTextField();
         jTextFieldRegistroLibroEditorial = new javax.swing.JTextField();
-        jComboBoxTipoLibro = new javax.swing.JComboBox<>();
+        jComboBoxTipoLibro = new javax.swing.JComboBox<String>();
         jLabelRegistroLibroNombre = new javax.swing.JLabel();
         jLabelRegistroLibroAutor = new javax.swing.JLabel();
         jLabelRegistroLibroEditorial = new javax.swing.JLabel();
@@ -110,10 +139,81 @@ public class GUI extends javax.swing.JFrame {
         jButtonRegistroLibro = new javax.swing.JButton();
         jSpinnerRegistroLibroAnio = new javax.swing.JSpinner();
         jLabelRegistroLibroTipo = new javax.swing.JLabel();
-        jPanelPrestamos = new javax.swing.JPanel();
         jPanelVentas = new javax.swing.JPanel();
-        jPanelClientes = new javax.swing.JPanel();
         jPanelMultas = new javax.swing.JPanel();
+        jPanelClientes = new javax.swing.JPanel();
+        jPanelAgregarCliente = new javax.swing.JPanel();
+        labelAgrearCliente = new javax.swing.JLabel();
+        labelNombreCliente = new javax.swing.JLabel();
+        labelCorreoCliente = new javax.swing.JLabel();
+        labelCedulaCliente = new javax.swing.JLabel();
+        labelTelefonoCliente = new javax.swing.JLabel();
+        txtNombreCliente = new javax.swing.JTextField();
+        txtEmailCliente = new javax.swing.JTextField();
+        txtCedulaCliente = new javax.swing.JTextField();
+        txtTelefonoCliente = new javax.swing.JTextField();
+        btnAgregarCliente = new javax.swing.JButton();
+        txtErrorEmail = new javax.swing.JLabel();
+        txtErrorTelefono = new javax.swing.JLabel();
+        jScrollPanelClientes = new javax.swing.JScrollPane();
+        jPanelMostrarClientes = new javax.swing.JPanel();
+        jPanelBibliotecarios = new javax.swing.JPanel();
+        panelAgregarBibliotecario = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        labelNombreBibliotecario = new javax.swing.JLabel();
+        labelCorreoBibliotecario = new javax.swing.JLabel();
+        labelCedularBibliotecario = new javax.swing.JLabel();
+        labelTelefonoBibliotecario = new javax.swing.JLabel();
+        labelContraseniaBibliotecario = new javax.swing.JLabel();
+        txtTelefonoBibliotecario = new javax.swing.JTextField();
+        txtCedulaBibliotecario = new javax.swing.JTextField();
+        txtNombreBibliotecario = new javax.swing.JTextField();
+        txtCorreoBibliotecario = new javax.swing.JTextField();
+        btnAgregarBibliotecario = new javax.swing.JButton();
+        txtErrorEmailBiblio = new javax.swing.JLabel();
+        txtErrorTelefonoBiblio = new javax.swing.JLabel();
+        txtPasswordBibliotecario = new javax.swing.JPasswordField();
+        jScrollPanelBibliotecario = new javax.swing.JScrollPane();
+        jpanelMostrarBibliotecarios = new javax.swing.JPanel();
+        jPanelDeudas = new javax.swing.JPanel();
+        jPanelClienteDeudas = new javax.swing.JPanel();
+        labelIdenficadorDeudas = new javax.swing.JLabel();
+        btnConsultarDeudas = new javax.swing.JButton();
+        txtIdClienteDeudas = new javax.swing.JTextField();
+        labelIDDeudas = new javax.swing.JLabel();
+        jScrollPaneDeudas = new javax.swing.JScrollPane();
+        panelMostrarDeudasCliente = new javax.swing.JPanel();
+        jPanelPrestamos = new javax.swing.JPanel();
+        panelIdentificadorClientePrestamo = new javax.swing.JPanel();
+        labelIdentificador = new javax.swing.JLabel();
+        labelID = new javax.swing.JLabel();
+        txtCodigoCliente = new javax.swing.JTextField();
+        btnConsultarCliente = new javax.swing.JButton();
+        jScrollPanelLibrosDisponibles = new javax.swing.JScrollPane();
+        jpanelMostrarLibrosDisponibles = new javax.swing.JPanel();
+        labelLibrosDisponibles = new javax.swing.JLabel();
+        jPanelFacturaPrestamos = new javax.swing.JPanel();
+        labelNombrePrestamoCLiente = new javax.swing.JLabel();
+        labelNombreClientePrestamo = new javax.swing.JLabel();
+        labelCedulaPrestamo = new javax.swing.JLabel();
+        txtConsultaNombreClientePrestamo = new javax.swing.JLabel();
+        txtConsultaCorreoClientePrestamo = new javax.swing.JLabel();
+        txtConsultaCedulaClientePrestamo = new javax.swing.JLabel();
+        jSeparatorFacturaPrestamo = new javax.swing.JSeparator();
+        jScrollPaneFacturaPrestamo = new javax.swing.JScrollPane();
+        jpanelMostrarLibrosSolicitados = new javax.swing.JPanel();
+        btnProcesarPrestamo = new javax.swing.JButton();
+        labelFechaPrestamo = new javax.swing.JLabel();
+        txtFechaActualPrestamo = new javax.swing.JLabel();
+        labelDiasHabilesLibros = new javax.swing.JLabel();
+        txtCantidadDiasPrestamoLibros = new javax.swing.JLabel();
+        labelDiasHabilesRevistas = new javax.swing.JLabel();
+        txtCantidadDiasPrestamoRevistas = new javax.swing.JLabel();
+        labelDevolucionLibro = new javax.swing.JLabel();
+        txtDevolucionLibroPrestado = new javax.swing.JLabel();
+        labelDevolucionRevista = new javax.swing.JLabel();
+        txtDevolucionRevistaPrestado = new javax.swing.JLabel();
+        txtErrorClientePrestamo = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -121,6 +221,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemImportarLiteratura = new javax.swing.JMenuItem();
         jSeparatorFiltro = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenuHerramientas = new javax.swing.JMenu();
         jMenuItemAjustes = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
@@ -132,7 +233,6 @@ public class GUI extends javax.swing.JFrame {
         setResizable(false);
 
         jTab.setBackground(new java.awt.Color(232, 232, 232));
-        jTab.setBorder(null);
         jTab.setForeground(new java.awt.Color(88, 68, 49));
         jTab.setFont(new java.awt.Font("Khmer OS System", 1, 14)); // NOI18N
 
@@ -178,7 +278,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jComboBoxFiltroTipoLibro.setBackground(new java.awt.Color(125, 164, 203));
-        jComboBoxFiltroTipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
+        jComboBoxFiltroTipoLibro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
         jComboBoxFiltroTipoLibro.setEnabled(false);
         jComboBoxFiltroTipoLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +344,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelRegistroFiltroTipoLibro.setText("Tipo");
 
         jComboBoxFiltroRevistaTipo.setBackground(new java.awt.Color(125, 164, 203));
-        jComboBoxFiltroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Venta", "Prestamo" }));
+        jComboBoxFiltroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "Venta", "Prestamo" }));
         jComboBoxFiltroRevistaTipo.setEnabled(false);
         jComboBoxFiltroRevistaTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,7 +430,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelRecursoLiterarioFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                .addComponent(jScrollPaneFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanelRecursosLiterariosLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
@@ -361,7 +461,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelRegistroRevistaCosto.setText("Costo");
 
-        jComboBoxRegistroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Venta", "Prestamo" }));
+        jComboBoxRegistroRevistaTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Venta", "Prestamo" }));
 
         jTextFieldRegistroRevistaNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +481,7 @@ public class GUI extends javax.swing.JFrame {
 
         jSpinnerRegistroRevistaNumero.setModel(new javax.swing.SpinnerNumberModel());
 
-        jSpinnerRegistroRevistaCosto.setModel(new javax.swing.SpinnerNumberModel(1500.0d, null, null, 1.0d));
+        jSpinnerRegistroRevistaCosto.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(1500.0d), null, null, Double.valueOf(1.0d)));
 
         jLabelRegistroRevistasTipo.setText("Tipo");
 
@@ -466,7 +566,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxTipoLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
+        jComboBoxTipoLibro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Novela", "Teatro", "Poesía", "Ensayo", "Infantil" }));
 
         jLabelRegistroLibroNombre.setText("Nombre");
 
@@ -585,7 +685,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanelLiteraturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLiteraturaLayout.createSequentialGroup()
                         .addComponent(jPanelRegistroLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(jPanelRegistroRevistasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelRecursosLiterarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -593,50 +693,20 @@ public class GUI extends javax.swing.JFrame {
 
         jTab.addTab("Literatura", jPanelLiteratura);
 
-        jPanelPrestamos.setBackground(new java.awt.Color(232, 232, 232));
-
-        javax.swing.GroupLayout jPanelPrestamosLayout = new javax.swing.GroupLayout(jPanelPrestamos);
-        jPanelPrestamos.setLayout(jPanelPrestamosLayout);
-        jPanelPrestamosLayout.setHorizontalGroup(
-            jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
-        );
-        jPanelPrestamosLayout.setVerticalGroup(
-            jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-        );
-
-        jTab.addTab("Prestamos", jPanelPrestamos);
-
         jPanelVentas.setBackground(new java.awt.Color(232, 232, 232));
 
         javax.swing.GroupLayout jPanelVentasLayout = new javax.swing.GroupLayout(jPanelVentas);
         jPanelVentas.setLayout(jPanelVentasLayout);
         jPanelVentasLayout.setHorizontalGroup(
             jPanelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
+            .addGap(0, 1119, Short.MAX_VALUE)
         );
         jPanelVentasLayout.setVerticalGroup(
             jPanelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 509, Short.MAX_VALUE)
         );
 
         jTab.addTab("Ventas", jPanelVentas);
-
-        jPanelClientes.setBackground(new java.awt.Color(232, 232, 232));
-
-        javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
-        jPanelClientes.setLayout(jPanelClientesLayout);
-        jPanelClientesLayout.setHorizontalGroup(
-            jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
-        );
-        jPanelClientesLayout.setVerticalGroup(
-            jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-        );
-
-        jTab.addTab("Clientes", jPanelClientes);
 
         jPanelMultas.setBackground(new java.awt.Color(232, 232, 232));
 
@@ -644,14 +714,725 @@ public class GUI extends javax.swing.JFrame {
         jPanelMultas.setLayout(jPanelMultasLayout);
         jPanelMultasLayout.setHorizontalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
+            .addGap(0, 1119, Short.MAX_VALUE)
         );
         jPanelMultasLayout.setVerticalGroup(
             jPanelMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 509, Short.MAX_VALUE)
         );
 
         jTab.addTab("Multas", jPanelMultas);
+
+        jPanelClientes.setBackground(new java.awt.Color(232, 232, 232));
+
+        jPanelAgregarCliente.setBackground(new java.awt.Color(255, 255, 255));
+
+        labelAgrearCliente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAgrearCliente.setText("Agregar Cliente");
+
+        labelNombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombreCliente.setText("Nombre:");
+
+        labelCorreoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCorreoCliente.setText("Correo electrónico:");
+
+        labelCedulaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCedulaCliente.setText("Cédula de Identificación:");
+
+        labelTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelTelefonoCliente.setText("Teléfono:");
+
+        txtNombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreClienteActionPerformed(evt);
+            }
+        });
+
+        txtEmailCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtEmailCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailClienteKeyTyped(evt);
+            }
+        });
+
+        txtCedulaCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        txtTelefonoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTelefonoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoClienteKeyTyped(evt);
+            }
+        });
+
+        btnAgregarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAgregarCliente.setText("Agregar");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarClienteActionPerformed(evt);
+            }
+        });
+
+        txtErrorEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtErrorEmail.setForeground(new java.awt.Color(255, 0, 0));
+
+        txtErrorTelefono.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout jPanelAgregarClienteLayout = new javax.swing.GroupLayout(jPanelAgregarCliente);
+        jPanelAgregarCliente.setLayout(jPanelAgregarClienteLayout);
+        jPanelAgregarClienteLayout.setHorizontalGroup(
+            jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                        .addComponent(labelCedulaCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                            .addComponent(labelTelefonoCliente)
+                            .addGap(57, 57, 57)
+                            .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarClienteLayout.createSequentialGroup()
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgregarClienteLayout.createSequentialGroup()
+                                .addComponent(labelCorreoCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                                .addComponent(labelNombreCliente)
+                                .addGap(66, 66, 66)))
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtErrorTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                    .addComponent(txtErrorEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelAgrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelAgregarClienteLayout.setVerticalGroup(
+            jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelAgrearCliente)
+                .addGap(21, 21, 21)
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreCliente)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtErrorEmail)
+                        .addGap(62, 62, 62)
+                        .addComponent(txtErrorTelefono)
+                        .addGap(92, 92, 92))
+                    .addGroup(jPanelAgregarClienteLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCorreoCliente)
+                            .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCedulaCliente)
+                            .addComponent(txtCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanelAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTelefonoCliente)
+                            .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnAgregarCliente)
+                        .addContainerGap(22, Short.MAX_VALUE))))
+        );
+
+        javax.swing.GroupLayout jPanelMostrarClientesLayout = new javax.swing.GroupLayout(jPanelMostrarClientes);
+        jPanelMostrarClientes.setLayout(jPanelMostrarClientesLayout);
+        jPanelMostrarClientesLayout.setHorizontalGroup(
+            jPanelMostrarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1080, Short.MAX_VALUE)
+        );
+        jPanelMostrarClientesLayout.setVerticalGroup(
+            jPanelMostrarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 255, Short.MAX_VALUE)
+        );
+
+        jScrollPanelClientes.setViewportView(jPanelMostrarClientes);
+
+        javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
+        jPanelClientes.setLayout(jPanelClientesLayout);
+        jPanelClientesLayout.setHorizontalGroup(
+            jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPanelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanelClientesLayout.createSequentialGroup()
+                .addComponent(jPanelAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelClientesLayout.setVerticalGroup(
+            jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientesLayout.createSequentialGroup()
+                .addComponent(jPanelAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPanelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTab.addTab("Clientes", jPanelClientes);
+
+        panelAgregarBibliotecario.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setText("Agregar Bibliotecario");
+
+        labelNombreBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombreBibliotecario.setText("Nombre:");
+
+        labelCorreoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCorreoBibliotecario.setText("Correo electrónico: ");
+
+        labelCedularBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCedularBibliotecario.setText("Cédula de Identificación:");
+
+        labelTelefonoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelTelefonoBibliotecario.setText("Teléfono:");
+
+        labelContraseniaBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelContraseniaBibliotecario.setText("Contraseña:");
+
+        txtTelefonoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTelefonoBibliotecario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoBibliotecarioActionPerformed(evt);
+            }
+        });
+        txtTelefonoBibliotecario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoBibliotecarioKeyTyped(evt);
+            }
+        });
+
+        txtCedulaBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCedulaBibliotecario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaBibliotecarioActionPerformed(evt);
+            }
+        });
+
+        txtNombreBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNombreBibliotecario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreBibliotecarioActionPerformed(evt);
+            }
+        });
+
+        txtCorreoBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCorreoBibliotecario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoBibliotecarioActionPerformed(evt);
+            }
+        });
+        txtCorreoBibliotecario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoBibliotecarioKeyTyped(evt);
+            }
+        });
+
+        btnAgregarBibliotecario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnAgregarBibliotecario.setText("Agregar");
+        btnAgregarBibliotecario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarBibliotecarioActionPerformed(evt);
+            }
+        });
+
+        txtErrorEmailBiblio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtErrorEmailBiblio.setForeground(new java.awt.Color(255, 0, 0));
+
+        txtErrorTelefonoBiblio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtErrorTelefonoBiblio.setForeground(new java.awt.Color(255, 0, 0));
+        txtErrorTelefonoBiblio.setToolTipText("");
+
+        javax.swing.GroupLayout panelAgregarBibliotecarioLayout = new javax.swing.GroupLayout(panelAgregarBibliotecario);
+        panelAgregarBibliotecario.setLayout(panelAgregarBibliotecarioLayout);
+        panelAgregarBibliotecarioLayout.setHorizontalGroup(
+            panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTelefonoBibliotecario)
+                    .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                            .addComponent(labelNombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(80, 80, 80)
+                            .addComponent(txtNombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                            .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelCedularBibliotecario)
+                                .addComponent(labelCorreoBibliotecario)
+                                .addComponent(labelContraseniaBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCorreoBibliotecario)
+                                .addComponent(txtCedulaBibliotecario)
+                                .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                                    .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtTelefonoBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPasswordBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                .addGap(34, 34, 34)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtErrorEmailBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErrorTelefonoBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAgregarBibliotecarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarBibliotecario)
+                .addGap(276, 276, 276))
+        );
+        panelAgregarBibliotecarioLayout.setVerticalGroup(
+            panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAgregarBibliotecarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreBibliotecario)
+                    .addComponent(txtNombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCorreoBibliotecario)
+                    .addComponent(txtCorreoBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErrorEmailBiblio))
+                .addGap(18, 18, 18)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCedularBibliotecario)
+                    .addComponent(txtCedulaBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefonoBibliotecario)
+                    .addComponent(txtTelefonoBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtErrorTelefonoBiblio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAgregarBibliotecarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelContraseniaBibliotecario)
+                    .addComponent(txtPasswordBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(btnAgregarBibliotecario)
+                .addGap(35, 35, 35))
+        );
+
+        javax.swing.GroupLayout jpanelMostrarBibliotecariosLayout = new javax.swing.GroupLayout(jpanelMostrarBibliotecarios);
+        jpanelMostrarBibliotecarios.setLayout(jpanelMostrarBibliotecariosLayout);
+        jpanelMostrarBibliotecariosLayout.setHorizontalGroup(
+            jpanelMostrarBibliotecariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 794, Short.MAX_VALUE)
+        );
+        jpanelMostrarBibliotecariosLayout.setVerticalGroup(
+            jpanelMostrarBibliotecariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 163, Short.MAX_VALUE)
+        );
+
+        jScrollPanelBibliotecario.setViewportView(jpanelMostrarBibliotecarios);
+
+        javax.swing.GroupLayout jPanelBibliotecariosLayout = new javax.swing.GroupLayout(jPanelBibliotecarios);
+        jPanelBibliotecarios.setLayout(jPanelBibliotecariosLayout);
+        jPanelBibliotecariosLayout.setHorizontalGroup(
+            jPanelBibliotecariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBibliotecariosLayout.createSequentialGroup()
+                .addComponent(jScrollPanelBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 323, Short.MAX_VALUE))
+            .addGroup(jPanelBibliotecariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelAgregarBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelBibliotecariosLayout.setVerticalGroup(
+            jPanelBibliotecariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBibliotecariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelAgregarBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPanelBibliotecario, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTab.addTab("Bibliotecario", jPanelBibliotecarios);
+
+        jPanelClienteDeudas.setBackground(new java.awt.Color(255, 255, 255));
+
+        labelIdenficadorDeudas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelIdenficadorDeudas.setText("Idenficador de Cliente:");
+
+        btnConsultarDeudas.setText("Consultar");
+
+        labelIDDeudas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelIDDeudas.setText("CL:");
+
+        javax.swing.GroupLayout jPanelClienteDeudasLayout = new javax.swing.GroupLayout(jPanelClienteDeudas);
+        jPanelClienteDeudas.setLayout(jPanelClienteDeudasLayout);
+        jPanelClienteDeudasLayout.setHorizontalGroup(
+            jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                .addGroup(jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(btnConsultarDeudas))
+                    .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                                .addComponent(labelIDDeudas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtIdClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelIdenficadorDeudas))))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanelClienteDeudasLayout.setVerticalGroup(
+            jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClienteDeudasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelIdenficadorDeudas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelClienteDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIDDeudas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(btnConsultarDeudas)
+                .addGap(23, 23, 23))
+        );
+
+        javax.swing.GroupLayout panelMostrarDeudasClienteLayout = new javax.swing.GroupLayout(panelMostrarDeudasCliente);
+        panelMostrarDeudasCliente.setLayout(panelMostrarDeudasClienteLayout);
+        panelMostrarDeudasClienteLayout.setHorizontalGroup(
+            panelMostrarDeudasClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 631, Short.MAX_VALUE)
+        );
+        panelMostrarDeudasClienteLayout.setVerticalGroup(
+            panelMostrarDeudasClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 403, Short.MAX_VALUE)
+        );
+
+        jScrollPaneDeudas.setViewportView(panelMostrarDeudasCliente);
+
+        javax.swing.GroupLayout jPanelDeudasLayout = new javax.swing.GroupLayout(jPanelDeudas);
+        jPanelDeudas.setLayout(jPanelDeudasLayout);
+        jPanelDeudasLayout.setHorizontalGroup(
+            jPanelDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDeudasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPaneDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(220, Short.MAX_VALUE))
+        );
+        jPanelDeudasLayout.setVerticalGroup(
+            jPanelDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDeudasLayout.createSequentialGroup()
+                .addGroup(jPanelDeudasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDeudasLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jPanelClienteDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDeudasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPaneDeudas, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        jTab.addTab("Deudas", jPanelDeudas);
+
+        jPanelPrestamos.setBackground(new java.awt.Color(232, 232, 232));
+
+        panelIdentificadorClientePrestamo.setBackground(new java.awt.Color(255, 255, 255));
+
+        labelIdentificador.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelIdentificador.setText("Identificador Cliente");
+
+        labelID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelID.setText("CL:");
+
+        txtCodigoCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        btnConsultarCliente.setText("Consultar");
+        btnConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarClienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelIdentificadorClientePrestamoLayout = new javax.swing.GroupLayout(panelIdentificadorClientePrestamo);
+        panelIdentificadorClientePrestamo.setLayout(panelIdentificadorClientePrestamoLayout);
+        panelIdentificadorClientePrestamoLayout.setHorizontalGroup(
+            panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                .addGroup(panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(labelIdentificador))
+                    .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                                .addComponent(labelID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addComponent(btnConsultarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        panelIdentificadorClientePrestamoLayout.setVerticalGroup(
+            panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIdentificadorClientePrestamoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelIdentificador)
+                .addGap(18, 18, 18)
+                .addGroup(panelIdentificadorClientePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelID)
+                    .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConsultarCliente)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jpanelMostrarLibrosDisponiblesLayout = new javax.swing.GroupLayout(jpanelMostrarLibrosDisponibles);
+        jpanelMostrarLibrosDisponibles.setLayout(jpanelMostrarLibrosDisponiblesLayout);
+        jpanelMostrarLibrosDisponiblesLayout.setHorizontalGroup(
+            jpanelMostrarLibrosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 594, Short.MAX_VALUE)
+        );
+        jpanelMostrarLibrosDisponiblesLayout.setVerticalGroup(
+            jpanelMostrarLibrosDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 289, Short.MAX_VALUE)
+        );
+
+        jScrollPanelLibrosDisponibles.setViewportView(jpanelMostrarLibrosDisponibles);
+
+        labelLibrosDisponibles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        labelLibrosDisponibles.setText("Libros y Revistas Disponibles para Prestamo");
+
+        labelNombrePrestamoCLiente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombrePrestamoCLiente.setText("Nombre:");
+
+        labelNombreClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNombreClientePrestamo.setText("Correo Electrónico:");
+
+        labelCedulaPrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelCedulaPrestamo.setText("Cédula de Identificación:");
+
+        txtConsultaNombreClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtConsultaNombreClientePrestamo.setText("jLabel12");
+
+        txtConsultaCorreoClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtConsultaCorreoClientePrestamo.setText("jLabel12");
+
+        txtConsultaCedulaClientePrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtConsultaCedulaClientePrestamo.setText("jLabel16");
+
+        javax.swing.GroupLayout jpanelMostrarLibrosSolicitadosLayout = new javax.swing.GroupLayout(jpanelMostrarLibrosSolicitados);
+        jpanelMostrarLibrosSolicitados.setLayout(jpanelMostrarLibrosSolicitadosLayout);
+        jpanelMostrarLibrosSolicitadosLayout.setHorizontalGroup(
+            jpanelMostrarLibrosSolicitadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 525, Short.MAX_VALUE)
+        );
+        jpanelMostrarLibrosSolicitadosLayout.setVerticalGroup(
+            jpanelMostrarLibrosSolicitadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 259, Short.MAX_VALUE)
+        );
+
+        jScrollPaneFacturaPrestamo.setViewportView(jpanelMostrarLibrosSolicitados);
+
+        btnProcesarPrestamo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnProcesarPrestamo.setText("Procesar Préstamo");
+        btnProcesarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcesarPrestamoActionPerformed(evt);
+            }
+        });
+
+        labelFechaPrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelFechaPrestamo.setText("Fecha Actual del Sistema: ");
+
+        txtFechaActualPrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtFechaActualPrestamo.setText("jLabel2");
+
+        labelDiasHabilesLibros.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDiasHabilesLibros.setText("Días Habiles de Préstamo de Libros:");
+
+        txtCantidadDiasPrestamoLibros.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCantidadDiasPrestamoLibros.setText("jLabel2");
+
+        labelDiasHabilesRevistas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDiasHabilesRevistas.setText("Días Habiles de Préstamo de Revistas: ");
+
+        txtCantidadDiasPrestamoRevistas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCantidadDiasPrestamoRevistas.setText("jLabel3");
+
+        labelDevolucionLibro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDevolucionLibro.setText("Devolución:");
+
+        txtDevolucionLibroPrestado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDevolucionLibroPrestado.setText("jLabel2");
+
+        labelDevolucionRevista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDevolucionRevista.setText("Devolución:");
+
+        txtDevolucionRevistaPrestado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDevolucionRevistaPrestado.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanelFacturaPrestamosLayout = new javax.swing.GroupLayout(jPanelFacturaPrestamos);
+        jPanelFacturaPrestamos.setLayout(jPanelFacturaPrestamosLayout);
+        jPanelFacturaPrestamosLayout.setHorizontalGroup(
+            jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                        .addComponent(labelDiasHabilesRevistas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadDiasPrestamoRevistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelDevolucionRevista, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                        .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                .addComponent(labelNombrePrestamoCLiente)
+                                .addGap(95, 95, 95)
+                                .addComponent(txtConsultaNombreClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                    .addComponent(labelFechaPrestamo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFechaActualPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                    .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelNombreClientePrestamo)
+                                        .addComponent(labelCedulaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                            .addGap(2, 2, 2)
+                                            .addComponent(txtConsultaCedulaClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                .addComponent(labelDiasHabilesLibros)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCantidadDiasPrestamoLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelDevolucionLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)))
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDevolucionLibroPrestado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDevolucionRevistaPrestado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparatorFacturaPrestamo)
+                .addContainerGap())
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneFacturaPrestamo)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnProcesarPrestamo)
+                .addGap(174, 174, 174))
+        );
+        jPanelFacturaPrestamosLayout.setVerticalGroup(
+            jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombrePrestamoCLiente)
+                    .addComponent(txtConsultaNombreClientePrestamo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreClientePrestamo)
+                    .addComponent(txtConsultaCedulaClientePrestamo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCedulaPrestamo)
+                    .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFechaPrestamo)
+                    .addComponent(txtFechaActualPrestamo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDiasHabilesLibros)
+                    .addComponent(txtCantidadDiasPrestamoLibros)
+                    .addComponent(labelDevolucionLibro)
+                    .addComponent(txtDevolucionLibroPrestado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDiasHabilesRevistas)
+                    .addComponent(txtCantidadDiasPrestamoRevistas)
+                    .addComponent(labelDevolucionRevista)
+                    .addComponent(txtDevolucionRevistaPrestado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparatorFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPaneFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnProcesarPrestamo)
+                .addContainerGap())
+        );
+
+        txtErrorClientePrestamo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtErrorClientePrestamo.setForeground(new java.awt.Color(255, 0, 0));
+        txtErrorClientePrestamo.setText("jLabel13");
+
+        javax.swing.GroupLayout jPanelPrestamosLayout = new javax.swing.GroupLayout(jPanelPrestamos);
+        jPanelPrestamos.setLayout(jPanelPrestamosLayout);
+        jPanelPrestamosLayout.setHorizontalGroup(
+            jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrestamosLayout.createSequentialGroup()
+                .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelIdentificadorClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtErrorClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPanelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(labelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelFacturaPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelPrestamosLayout.setVerticalGroup(
+            jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addComponent(jPanelFacturaPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                        .addGroup(jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelIdentificadorClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelPrestamosLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(txtErrorClientePrestamo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addComponent(labelLibrosDisponibles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPanelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
+        );
+
+        jTab.addTab("Prestamos", jPanelPrestamos);
 
         jPanelHeader.setBackground(new java.awt.Color(125, 164, 202));
         jPanelHeader.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 68, 49), 2));
@@ -690,6 +1471,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMenuArchivo.add(jMenuItemSalir);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Consultar Préstamos");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuArchivo.add(jCheckBoxMenuItem1);
 
         jMenuBar.add(jMenuArchivo);
 
@@ -736,18 +1526,18 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelHeader, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTab, javax.swing.GroupLayout.PREFERRED_SIZE, 928, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTab)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTab))
+                .addComponent(jTab)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -774,34 +1564,6 @@ public class GUI extends javax.swing.JFrame {
         ajustes.show();
     }//GEN-LAST:event_jMenuItemAjustesActionPerformed
 
-    private void jCheckBoxFiltroLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroLibroActionPerformed
-        if (jCheckBoxFiltroLibro.isSelected()) {
-            jCheckBoxFiltroLibrosDisponibles.setEnabled(true);
-            jCheckBoxFiltroLibrosPrestados.setEnabled(true);
-            jComboBoxFiltroTipoLibro.setEnabled(true);
-        }else{
-            jCheckBoxFiltroLibrosDisponibles.setEnabled(false);
-            jCheckBoxFiltroLibrosPrestados.setEnabled(false);
-            jComboBoxFiltroTipoLibro.setEnabled(false);
-        }
-        refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jCheckBoxFiltroLibroActionPerformed
-
-    private void jTextFieldRegistroLibroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRegistroLibroNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldRegistroLibroNombreActionPerformed
-
-    private void jTextFieldRegistroRevistaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRegistroRevistaNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldRegistroRevistaNombreActionPerformed
-
-    private void jButtonRegistroLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroLibroActionPerformed
-
-        biblioteca.getInventario().registrarLibro(jTextFieldRegistroLibroNombre.getText(), jTextFieldRegistroLibroAutor.getText(), (Date) jSpinnerRegistroLibroAnio.getModel().getValue(),jTextFieldRegistroLibroEditorial.getText(), TipoLibro.valueOf(jComboBoxTipoLibro.getModel().getSelectedItem().toString().toUpperCase()));
-        refrescarjListRecursosLiterarios();
-        
-    }//GEN-LAST:event_jButtonRegistroLibroActionPerformed
-
     private void jMenuItemImportarLiteraturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportarLiteraturaActionPerformed
         int returnVal = jFileChooserCargaRecursosLiterarios.showOpenDialog(this);
     if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -823,10 +1585,250 @@ public class GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
+     /**
+     * Evento del boton que agrega nuevos Bibliotecarios
+     */  
+    private void btnAgregarBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarBibliotecarioActionPerformed
+        String nombre = txtNombreBibliotecario.getText();
+        String email = txtCorreoBibliotecario.getText();
+        String validacionEmail = administradorBibliotecario.validarEmail(email);
+        txtErrorEmailBiblio.setText(validacionEmail);
+        String cedula = txtCedulaBibliotecario.getText();
+        String telefono = txtTelefonoBibliotecario.getText();
+        String validacionTelefono = administradorBibliotecario.validarTelefono(telefono);
+        txtErrorTelefonoBiblio.setText(validacionTelefono);
+        String password=String.valueOf(txtPasswordBibliotecario.getPassword());
+        if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
+            int idBibliotecario = administradorBibliotecario.registrarBibliotecario(nombre, cedula, email, telefono,password);
+            refrescarPanelBibliotecarios(idBibliotecario,nombre,cedula,email,telefono);
+        }
+    }//GEN-LAST:event_btnAgregarBibliotecarioActionPerformed
+
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un correo electronico válido
+     * 
+     */
+    private void txtCorreoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoBibliotecarioKeyTyped
+        // TODO add your handling code here:
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String email = txtCorreoBibliotecario.getText();
+        if(!email.equals("")){
+            String validacionEmail = administradorBibliotecario.validarEmail(email);
+            //txtErrorEmail.setText(validacionEmail);
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorEmailBiblio.setText("");
+                //txtErrorEmail.setIcon(icon);
+            }
+            else{
+                path = pathWrong;
+                txtErrorEmailBiblio.setText("* Ingrese email válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorEmailBiblio.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtCorreoBibliotecarioKeyTyped
+
+    private void txtCorreoBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoBibliotecarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoBibliotecarioActionPerformed
+
+    private void txtNombreBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreBibliotecarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreBibliotecarioActionPerformed
+
+    private void txtCedulaBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaBibliotecarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaBibliotecarioActionPerformed
+
+    /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un número de telefono válido
+     * 
+     */
+    private void txtTelefonoBibliotecarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoBibliotecarioKeyTyped
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String telefono = txtTelefonoBibliotecario.getText();
+        if(!telefono.equals("")){
+            String validacionTelefono = administradorBibliotecario.validarTelefono(telefono);
+            //txtErrorEmail.setText(validacionEmail);
+            if(validacionTelefono.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorTelefonoBiblio.setText("");
+                //txtErrorEmail.setIcon(icon);
+            }
+            else{
+                path = pathWrong;
+                txtErrorTelefonoBiblio.setText("* Ingrese Teléfono válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorTelefonoBiblio.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtTelefonoBibliotecarioKeyTyped
+
+    private void txtTelefonoBibliotecarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoBibliotecarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoBibliotecarioActionPerformed
+
+    /**
+     * Evento efectuado por el boton de agrear Cliente,
+     * Permite extaer los datos de los campos de texto
+     * Validar correo y telefono
+     * Finalmente mostrar los datos en el panel de Clientes
+     * 
+     */
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String nombre = txtNombreCliente.getText();
+        String email = txtEmailCliente.getText();
+        String validacionEmail = administradorCliente.validarEmail(email);
+        if(!email.equals("")){
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorEmail.setText("");
+            }
+            else{
+                path = pathWrong;
+                txtErrorEmail.setText("* Ingrese email válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorEmail.setIcon(icon);
+        }
+        else{
+           txtErrorEmail.setText("**Capo Requerido");
+        }
+        String cedula = txtCedulaCliente.getText();
+        String telefono = txtTelefonoCliente.getText();
+        String validacionTelefono = administradorCliente.validarTelefono(telefono);
+        if(!telefono.equals("")){
+            if(validacionTelefono.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorTelefono.setText("");
+            }
+            else{
+                path = pathWrong;
+                txtErrorTelefono.setText("* Ingrese Teléfono válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorTelefono.setIcon(icon);
+        }
+        else{
+           txtErrorTelefono.setText("**Capo Requerido");
+        }
+        if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
+            int idCliente = administradorCliente.registrarCliente(nombre, cedula, email, telefono);
+            refrescarPanelClientes(idCliente,nombre,cedula,email,telefono);
+        }
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
+
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un número de telefono válido
+     * 
+     */
+    private void txtTelefonoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoClienteKeyTyped
+
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String telefono = txtTelefonoCliente.getText();
+        telefono=telefono+"1";
+        if(!telefono.equals("")){
+            String validacionTelefono = administradorCliente.validarTelefono(telefono);
+            if(validacionTelefono.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorTelefono.setText("");
+            }
+            else{
+                path = pathWrong;
+                txtErrorTelefono.setText(validacionTelefono);
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorTelefono.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtTelefonoClienteKeyTyped
+
+     /**
+     * Evento efectuado por el el campo Telefono: cada vez que se digita 
+     * cualquier entrada en este campo se evalua los datos ingresados, validando
+     * que corresponda a un correo electronico válido
+     * 
+     */
+    private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
+
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
+        String email = txtEmailCliente.getText();
+        if(!email.equals("")){
+            String validacionEmail = administradorCliente.validarEmail(email);
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorEmail.setText("");
+            }
+            else{
+                path = pathWrong;
+                txtErrorEmail.setText(validacionEmail);
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorEmail.setIcon(icon);
+        }
+    }//GEN-LAST:event_txtEmailClienteKeyTyped
+
+    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteActionPerformed
+
+    private void jButtonRegistroLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroLibroActionPerformed
+
+        biblioteca.getInventario().registrarLibro(jTextFieldRegistroLibroNombre.getText(), jTextFieldRegistroLibroAutor.getText(), (Date) jSpinnerRegistroLibroAnio.getModel().getValue(),jTextFieldRegistroLibroEditorial.getText(), TipoLibro.valueOf(jComboBoxTipoLibro.getModel().getSelectedItem().toString().toUpperCase()));
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jButtonRegistroLibroActionPerformed
+
+    private void jTextFieldRegistroLibroNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRegistroLibroNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldRegistroLibroNombreActionPerformed
+
     private void jButtonRegistroRevistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroRevistaActionPerformed
         biblioteca.getInventario().registrarRevista(jTextFieldRegistroRevistaNombre.getText(), (int) jSpinnerRegistroRevistaNumero.getModel().getValue(), (Date) jSpinnerAnioRevista.getValue(), TipoRevista.valueOf(jComboBoxRegistroRevistaTipo.getModel().getSelectedItem().toString().toUpperCase()), (double) jSpinnerRegistroRevistaCosto.getValue());
         refrescarjListRecursosLiterarios();
     }//GEN-LAST:event_jButtonRegistroRevistaActionPerformed
+
+    private void jTextFieldRegistroRevistaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRegistroRevistaNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldRegistroRevistaNombreActionPerformed
+
+    private void jComboBoxFiltroRevistaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroRevistaTipoActionPerformed
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jComboBoxFiltroRevistaTipoActionPerformed
+
+    private void jCheckBoxFiltroRevistasVendidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistasVendidasActionPerformed
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jCheckBoxFiltroRevistasVendidasActionPerformed
+
+    private void jCheckBoxFiltroRevistasPrestadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistasPrestadasActionPerformed
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jCheckBoxFiltroRevistasPrestadasActionPerformed
+
+    private void jCheckBoxFiltroRevistasDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistasDisponiblesActionPerformed
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jCheckBoxFiltroRevistasDisponiblesActionPerformed
 
     private void jCheckBoxFiltroTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroTodoActionPerformed
         if(jCheckBoxFiltroTodo.isSelected()){
@@ -835,8 +1837,7 @@ public class GUI extends javax.swing.JFrame {
             jCheckBoxFiltroLibrosDisponibles.setEnabled(false);
             jCheckBoxFiltroLibrosPrestados.setEnabled(false);
             jComboBoxFiltroTipoLibro.setEnabled(false);
-            
-            
+
         }else{
             jCheckBoxFiltroLibro.setEnabled(true);
             jCheckBoxFiltroRevista.setEnabled(true);
@@ -849,8 +1850,7 @@ public class GUI extends javax.swing.JFrame {
                 jCheckBoxFiltroLibrosPrestados.setEnabled(false);
                 jComboBoxFiltroTipoLibro.setEnabled(false);
             }
-            
-           
+
         }
         refrescarjListRecursosLiterarios();
     }//GEN-LAST:event_jCheckBoxFiltroTodoActionPerformed
@@ -859,28 +1859,13 @@ public class GUI extends javax.swing.JFrame {
         refrescarjListRecursosLiterarios();
     }//GEN-LAST:event_jCheckBoxFiltroLibrosPrestadosActionPerformed
 
-    private void jListRecursosLiterariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRecursosLiterariosMouseClicked
-        
-        if(jListRecursosLiterarios.getModel().getSize()>0){
- 
-            String id= jListRecursosLiterarios.getSelectedValue().split(" ")[0];
-            int contador=0;
-            boolean flag=false;
-            while(contador<biblioteca.getInventario().getListaRecursosLiterarios().size() && !flag){
-                if(biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getId().contains(id)){
-                    flag=true;
-                }else{
-                    contador++;
-                }
-            }
-            
-            ResultadoConsultaRecursosLiterarios resultadoConsultado = new ResultadoConsultaRecursosLiterarios();
-            resultadoConsultado.cargarContenido(biblioteca.getInventario().getListaRecursosLiterarios().get(contador));
-            resultadoConsultado.show();
-        }
-        
-        
-    }//GEN-LAST:event_jListRecursosLiterariosMouseClicked
+    private void jCheckBoxFiltroLibrosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroLibrosDisponiblesActionPerformed
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jCheckBoxFiltroLibrosDisponiblesActionPerformed
+
+    private void jComboBoxFiltroTipoLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroTipoLibroActionPerformed
+        refrescarjListRecursosLiterarios();
+    }//GEN-LAST:event_jComboBoxFiltroTipoLibroActionPerformed
 
     private void jCheckBoxFiltroRevistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistaActionPerformed
         if (jCheckBoxFiltroRevista.isSelected()) {
@@ -894,35 +1879,307 @@ public class GUI extends javax.swing.JFrame {
             jCheckBoxFiltroRevistasVendidas.setEnabled(false);
             jComboBoxFiltroRevistaTipo.setEnabled(false);
         }
-        
+
         refrescarjListRecursosLiterarios();
     }//GEN-LAST:event_jCheckBoxFiltroRevistaActionPerformed
 
-    private void jCheckBoxFiltroLibrosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroLibrosDisponiblesActionPerformed
+    private void jCheckBoxFiltroLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroLibroActionPerformed
+        if (jCheckBoxFiltroLibro.isSelected()) {
+            jCheckBoxFiltroLibrosDisponibles.setEnabled(true);
+            jCheckBoxFiltroLibrosPrestados.setEnabled(true);
+            jComboBoxFiltroTipoLibro.setEnabled(true);
+        }else{
+            jCheckBoxFiltroLibrosDisponibles.setEnabled(false);
+            jCheckBoxFiltroLibrosPrestados.setEnabled(false);
+            jComboBoxFiltroTipoLibro.setEnabled(false);
+        }
         refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jCheckBoxFiltroLibrosDisponiblesActionPerformed
+    }//GEN-LAST:event_jCheckBoxFiltroLibroActionPerformed
 
-    private void jComboBoxFiltroTipoLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroTipoLibroActionPerformed
-        refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jComboBoxFiltroTipoLibroActionPerformed
+    private void jListRecursosLiterariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRecursosLiterariosMouseClicked
 
-    private void jCheckBoxFiltroRevistasDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistasDisponiblesActionPerformed
-        refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jCheckBoxFiltroRevistasDisponiblesActionPerformed
+        if(jListRecursosLiterarios.getModel().getSize()>0){
 
-    private void jCheckBoxFiltroRevistasPrestadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistasPrestadasActionPerformed
-        refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jCheckBoxFiltroRevistasPrestadasActionPerformed
+            String id= jListRecursosLiterarios.getSelectedValue().split(" ")[0];
+            int contador=0;
+            boolean flag=false;
+            while(contador<biblioteca.getInventario().getListaRecursosLiterarios().size() && !flag){
+                if(biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getId().contains(id)){
+                    flag=true;
+                }else{
+                    contador++;
+                }
+            }
 
-    private void jCheckBoxFiltroRevistasVendidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFiltroRevistasVendidasActionPerformed
-        refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jCheckBoxFiltroRevistasVendidasActionPerformed
+            ResultadoConsultaRecursosLiterarios resultadoConsultado = new ResultadoConsultaRecursosLiterarios();
+            resultadoConsultado.cargarContenido(biblioteca.getInventario().getListaRecursosLiterarios().get(contador));
+            resultadoConsultado.show();
+        }
+    }//GEN-LAST:event_jListRecursosLiterariosMouseClicked
 
-    private void jComboBoxFiltroRevistaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroRevistaTipoActionPerformed
-        refrescarjListRecursosLiterarios();
-    }//GEN-LAST:event_jComboBoxFiltroRevistaTipoActionPerformed
+    /*
+    *Toma el valor de cliente ingresado por el usuario y consulta su información
+    *
+    */
+    private void btnConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClienteActionPerformed
+
+        txtErrorClientePrestamo.setText("");
+        String idCliente = txtCodigoCliente.getText();
+        txtCodigoCliente.setText("");
+        int indice = Integer.parseInt(idCliente);
+        indice-=1;
+        try{
+            clienteConsultas = administradorCliente.getClienteEnLista(indice);
+            txtConsultaNombreClientePrestamo.setText(clienteConsultas.getNombre());
+            txtConsultaCorreoClientePrestamo.setText(clienteConsultas.getEmail());
+            txtConsultaCedulaClientePrestamo.setText(clienteConsultas.getCedula());
+            fechaActualDeSistema = biblioteca.getAdministrador().getParametrizador().getFechaDelSistema();
+            String fechaActual = dateFormat.format(fechaActualDeSistema);
+            int diasPrestamoLibro = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoLibro();
+            int diasPrestamoRevista = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoRevista();
+            fechaDevolucionLibros = biblioteca.getAdministrador().getParametrizador().getFechaConDiasAdicionales(diasPrestamoLibro);
+            fechaDevolucionRevistas = biblioteca.getAdministrador().getParametrizador().getFechaConDiasAdicionales(diasPrestamoRevista);
+            //
+            String fechaDevolucionLibro = dateFormat.format(fechaDevolucionLibros);
+            String fechaDevolucionRevista = dateFormat.format(fechaDevolucionRevistas);
+            //
+            txtFechaActualPrestamo.setText(fechaActual);
+            txtCantidadDiasPrestamoLibros.setText(String.valueOf(diasPrestamoLibro));
+            txtCantidadDiasPrestamoRevistas.setText(String.valueOf(diasPrestamoRevista));
+            txtDevolucionLibroPrestado.setText(fechaDevolucionLibro);
+            txtDevolucionRevistaPrestado.setText(fechaDevolucionRevista);
+            recorrerListaRecursosLiterarios();
+        }
+        catch(Exception e){
+            txtErrorClientePrestamo.setText("**ERROR!: Ingrese un Cliente Válido");
+        }
+
+    }//GEN-LAST:event_btnConsultarClienteActionPerformed
+
+    /*Acción del boton de procesar prestamo, genera un nuevo objeto prestamo como los parametros:
+    *Un Cliente asociado y una lista de Recursos literari y la fecha actual
+    */
+    private void btnProcesarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarPrestamoActionPerformed
+        Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,
+                fechaActualDeSistema,fechaDevolucionLibros,fechaDevolucionRevistas); 
+        administradorCliente.registrarPrestamo(pt);
+    }//GEN-LAST:event_btnProcesarPrestamoActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        consultaPrestamos prestamos = new consultaPrestamos(administradorCliente);
+        prestamos.show();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     
+     /**
+     * 
+     * @param nombre agrega nombre del cliente en el Panel
+     * * @param cedula agrega cedula del cliente en el Panel
+     * * @param email agrega email del cliente en el Panel
+     * * @param telefono agrega telefono del cliente en el Panel
+     */
+    private void refrescarPanelClientes(int idCliente,String nombre, String cedula, 
+        final String email, String telefono){
+        txtErrorEmail.setForeground(Color.green);
+        txtErrorTelefono.setForeground(Color.green);
+        String idenCliente; 
+        idenCliente = "CL: " + String.valueOf(idCliente);
+        JLabel panelIdCliente = new javax.swing.JLabel(idenCliente);
+        JLabel panelnombre = new javax.swing.JLabel(nombre);
+        JLabel panelemail = new javax.swing.JLabel(email);
+        JLabel panelcedula = new javax.swing.JLabel(cedula);
+        JLabel paneltelefono = new javax.swing.JLabel(telefono);
+        JButton panelMensaje = new javax.swing.JButton("ENVIAR CORREO");
+        //panelMensaje.addActionListener((ActionListener) this);
+        jPanelMostrarClientes.setLayout(new GridLayout(0,6,20,20));
+        jPanelMostrarClientes.add(panelIdCliente);
+        jPanelMostrarClientes.add(panelnombre);
+        jPanelMostrarClientes.add(panelemail);
+        jPanelMostrarClientes.add(panelcedula);
+        jPanelMostrarClientes.add(paneltelefono);
+        jPanelMostrarClientes.add(panelMensaje);
+        jPanelMostrarClientes.revalidate();
+        jPanelMostrarClientes.repaint();
+        txtNombreCliente.setText("");
+        txtEmailCliente.setText("");
+        txtCedulaCliente.setText("");
+        txtTelefonoCliente.setText("");
+        txtErrorTelefono.setText(null);
+        txtErrorTelefono.setIcon(null);
+        txtErrorEmail.setText(null);
+        txtErrorEmail.setIcon(null);
+        txtErrorEmail.setForeground(Color.red);
+        txtErrorTelefono.setForeground(Color.red);
+        panelMensaje.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                window ventana = new window();
+                ventana.Username = "bliburu2017@gmail.com";
+                ventana.PassWord = "IC2101POO";
+                ventana.To = email;
+                ventana.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+    }
+
+    /**
+     * 
+     * @param nombre agrega nombre del Bibliotecario en el Panel
+     * * @param cedula agrega cedula del Bibliotecario en el Panel
+     * * @param email agrega email del Bibliotecario en el Panel
+     * * @param telefono agrega telefono del Bibliotecario en el Panel
+     */
+    private void refrescarPanelBibliotecarios(int idBibliotecario,String nombre, String cedula, 
+        final String email, String telefono){
+        txtErrorEmailBiblio.setForeground(Color.green);
+        txtErrorTelefonoBiblio.setForeground(Color.green);
+        String idenBibliotecario; 
+        idenBibliotecario = "BL: " + String.valueOf(idBibliotecario);
+        JLabel panelIdBibliotecario = new javax.swing.JLabel(idenBibliotecario);
+        JLabel panelNombreBibliotecario = new javax.swing.JLabel(nombre);
+        JLabel panelEmailBibliotecario = new javax.swing.JLabel(email);
+        JLabel panelCedulaBibliotecario = new javax.swing.JLabel(cedula);
+        JLabel panelTelefonoBibliotecario = new javax.swing.JLabel(telefono);
+        JButton panelMensajeBibliotecario = new javax.swing.JButton("ENVIAR CORREO");
+        //panelMensaje.addActionListener((ActionListener) this);
+        jpanelMostrarBibliotecarios.setLayout(new GridLayout(0,6,20,20));
+        jpanelMostrarBibliotecarios.add(panelIdBibliotecario);
+        jpanelMostrarBibliotecarios.add(panelNombreBibliotecario);
+        jpanelMostrarBibliotecarios.add(panelEmailBibliotecario);
+        jpanelMostrarBibliotecarios.add(panelCedulaBibliotecario);
+        jpanelMostrarBibliotecarios.add(panelTelefonoBibliotecario);
+        jpanelMostrarBibliotecarios.add(panelMensajeBibliotecario);
+        jpanelMostrarBibliotecarios.revalidate();
+        jPanelMostrarClientes.repaint();
+        txtNombreBibliotecario.setText("");
+        txtCorreoBibliotecario.setText("");
+        txtCedulaBibliotecario.setText("");
+        txtTelefonoBibliotecario.setText("");
+        txtPasswordBibliotecario.setText("");
+        txtErrorTelefonoBiblio.setText(null);
+        txtErrorTelefonoBiblio.setIcon(null);
+        txtErrorEmailBiblio.setText(null);
+        txtErrorEmailBiblio.setIcon(null);
+        txtErrorEmailBiblio.setForeground(Color.red);
+        txtErrorTelefonoBiblio.setForeground(Color.red);
+        panelMensajeBibliotecario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                window ventana = new window();
+                ventana.Username = "bliburu2017@gmail.com";
+                ventana.PassWord = "IC2101POO";
+                ventana.To = email;
+                ventana.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+    }
+    
+    /*Permite mostar en el panel de recursos Literarios, aquellos  cuyo estado es DISPONIBLE
+    *Permitiendo que sean prestados
+    */
+    private void recorrerListaRecursosLiterarios(){
+        int contador = 0;
+        while(contador<biblioteca.getInventario().getListaRecursosLiterarios().size()){
+            if(biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getEstado().toString()==Estado.DISPONIBLE.toString()){
+                String idLibro = biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getId();
+                String nombreLibro = biblioteca.getInventario().getListaRecursosLiterarios().get(contador).getNombre();
+                refrescarPanelLibrosDisponibles(idLibro,nombreLibro,contador);
+            }
+            contador++;  
+        }
+    }
+    
+    /**
+     * 
+     * @param idLibro pinta el id del libro en panel de libros disponibles
+     * @param nombreLibro pinta el nombre del libro en el panel de libros disponibles
+     */
+    private void refrescarPanelLibrosDisponibles(final String idLibro, final String nombreLibro,final int indice){
+        JLabel panelIdLibro;
+        JLabel panelnombreLibro;
+        JButton panelAgregarLibro;
+        
+        jpanelMostrarLibrosDisponibles.setLayout(new GridLayout(0,3,10,10));
+        panelIdLibro = new javax.swing.JLabel(idLibro);
+        panelnombreLibro = new javax.swing.JLabel(nombreLibro);
+        panelAgregarLibro = new javax.swing.JButton("Agregar");
+        jpanelMostrarLibrosDisponibles.add(panelIdLibro);
+        jpanelMostrarLibrosDisponibles.add(panelnombreLibro);
+        jpanelMostrarLibrosDisponibles.add(panelAgregarLibro);
+        jpanelMostrarLibrosDisponibles.revalidate();
+        jpanelMostrarLibrosDisponibles.repaint();
+        panelAgregarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                editarListaRecursosLiterariosSolicita(indice,true);
+            }
+        });   
+            
+    }
+     /**
+     * 
+     * @param indice indice al recurso literario que se encuentra en el inventario con estado Disponible
+     * @param accion determina si se desea agregar o aliminar un elemento de la listaRecursosLiterariosPrestados
+     */
+    private void editarListaRecursosLiterariosSolicita(int indice,boolean accion){
+        if(accion){
+            listaRecursosLiterariosPrestados.add(biblioteca.getInventario().getListaRecursosLiterarios().get(indice));
+            recursosLiterariosAgregadosAPrestamo+=1; 
+        }
+        else{
+            listaRecursosLiterariosPrestados.remove(indice);
+            recursosLiterariosAgregadosAPrestamo-=1;
+        }
+        refrescarPanelLibrosSolicitados(indice);
+        
+    }
+    
+     /**
+     * Pintar en el Panel de Recursos literarios Solicitados aquellos seleccionados por el usuario
+     * @param indice indice al recurso literario que se encuentra en el inventario con estado Disponible
+     * 
+     */
+    private void refrescarPanelLibrosSolicitados(final int indice){
+        jpanelMostrarLibrosSolicitados.removeAll();
+        for(int x=0;x<listaRecursosLiterariosPrestados.size();x++) {
+            String IdLibro = listaRecursosLiterariosPrestados.get(x).getId() ;
+            String tipoRecurso;
+            char caracterRecurso = IdLibro.charAt(0);
+            System.out.print(caracterRecurso);
+            if('L' == caracterRecurso){
+                tipoRecurso="LIBRO";
+            }
+            else{
+                tipoRecurso="REVISTA";
+            }
+            String nombreLibro = listaRecursosLiterariosPrestados.get(x).getNombre();
+            JLabel panelIdLibro;
+            JLabel panelTipoRecuerso;
+            JLabel panelnombreLibro;
+            JButton panelEmilinarLibro;
+            panelIdLibro = new javax.swing.JLabel(IdLibro);
+            panelTipoRecuerso = new javax.swing.JLabel(tipoRecurso);
+            panelnombreLibro = new javax.swing.JLabel(nombreLibro);
+            panelEmilinarLibro = new javax.swing.JButton("Eliminar");
+            jpanelMostrarLibrosSolicitados.setLayout(new GridLayout(0,4,10,10));
+            jpanelMostrarLibrosSolicitados.add(panelIdLibro);
+            jpanelMostrarLibrosSolicitados.add(panelTipoRecuerso);
+            jpanelMostrarLibrosSolicitados.add(panelnombreLibro);
+            jpanelMostrarLibrosSolicitados.add(panelEmilinarLibro);
+            jpanelMostrarLibrosSolicitados.revalidate();
+            jpanelMostrarLibrosSolicitados.repaint();
+            panelEmilinarLibro.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    editarListaRecursosLiterariosSolicita(indice,false);
+                }
+            });
+        }
+    }
+ 
     private void refrescarjListRecursosLiterarios(){
         int contador = 0;
         DefaultListModel model = new DefaultListModel();
@@ -1029,6 +2286,11 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarBibliotecario;
+    private javax.swing.JButton btnAgregarCliente;
+    private javax.swing.JButton btnConsultarCliente;
+    private javax.swing.JButton btnConsultarDeudas;
+    private javax.swing.JButton btnProcesarPrestamo;
     private javax.swing.JButton jButtonRegistroLibro;
     private javax.swing.JButton jButtonRegistroRevista;
     private javax.swing.JCheckBox jCheckBoxFiltroLibro;
@@ -1039,11 +2301,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBoxFiltroRevistasPrestadas;
     private javax.swing.JCheckBox jCheckBoxFiltroRevistasVendidas;
     private javax.swing.JCheckBox jCheckBoxFiltroTodo;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBoxFiltroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxFiltroTipoLibro;
     private javax.swing.JComboBox<String> jComboBoxRegistroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxTipoLibro;
     private javax.swing.JFileChooser jFileChooserCargaRecursosLiterarios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelRecursosLiterariosFiltroLabel;
     private javax.swing.JLabel jLabelRecursosLiterariosLabel;
@@ -1071,9 +2335,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAyuda;
     private javax.swing.JMenuItem jMenuItemImportarLiteratura;
     private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JPanel jPanelAgregarCliente;
+    private javax.swing.JPanel jPanelBibliotecarios;
+    private javax.swing.JPanel jPanelClienteDeudas;
     private javax.swing.JPanel jPanelClientes;
+    private javax.swing.JPanel jPanelDeudas;
+    private javax.swing.JPanel jPanelFacturaPrestamos;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelLiteratura;
+    private javax.swing.JPanel jPanelMostrarClientes;
     private javax.swing.JPanel jPanelMultas;
     private javax.swing.JPanel jPanelPrestamos;
     private javax.swing.JPanel jPanelRecursoLiterarioFiltro;
@@ -1081,7 +2351,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelRegistroLibros;
     private javax.swing.JPanel jPanelRegistroRevistasLabel;
     private javax.swing.JPanel jPanelVentas;
+    private javax.swing.JScrollPane jScrollPaneDeudas;
+    private javax.swing.JScrollPane jScrollPaneFacturaPrestamo;
     private javax.swing.JScrollPane jScrollPaneFiltro;
+    private javax.swing.JScrollPane jScrollPanelBibliotecario;
+    private javax.swing.JScrollPane jScrollPanelClientes;
+    private javax.swing.JScrollPane jScrollPanelLibrosDisponibles;
+    private javax.swing.JSeparator jSeparatorFacturaPrestamo;
     private javax.swing.JPopupMenu.Separator jSeparatorFiltro;
     private javax.swing.JSpinner jSpinnerAnioRevista;
     private javax.swing.JSpinner jSpinnerRegistroLibroAnio;
@@ -1092,5 +2368,58 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRegistroLibroEditorial;
     private javax.swing.JTextField jTextFieldRegistroLibroNombre;
     private javax.swing.JTextField jTextFieldRegistroRevistaNombre;
+    private javax.swing.JPanel jpanelMostrarBibliotecarios;
+    private javax.swing.JPanel jpanelMostrarLibrosDisponibles;
+    private javax.swing.JPanel jpanelMostrarLibrosSolicitados;
+    private javax.swing.JLabel labelAgrearCliente;
+    private javax.swing.JLabel labelCedulaCliente;
+    private javax.swing.JLabel labelCedulaPrestamo;
+    private javax.swing.JLabel labelCedularBibliotecario;
+    private javax.swing.JLabel labelContraseniaBibliotecario;
+    private javax.swing.JLabel labelCorreoBibliotecario;
+    private javax.swing.JLabel labelCorreoCliente;
+    private javax.swing.JLabel labelDevolucionLibro;
+    private javax.swing.JLabel labelDevolucionRevista;
+    private javax.swing.JLabel labelDiasHabilesLibros;
+    private javax.swing.JLabel labelDiasHabilesRevistas;
+    private javax.swing.JLabel labelFechaPrestamo;
+    private javax.swing.JLabel labelID;
+    private javax.swing.JLabel labelIDDeudas;
+    private javax.swing.JLabel labelIdenficadorDeudas;
+    private javax.swing.JLabel labelIdentificador;
+    private javax.swing.JLabel labelLibrosDisponibles;
+    private javax.swing.JLabel labelNombreBibliotecario;
+    private javax.swing.JLabel labelNombreCliente;
+    private javax.swing.JLabel labelNombreClientePrestamo;
+    private javax.swing.JLabel labelNombrePrestamoCLiente;
+    private javax.swing.JLabel labelTelefonoBibliotecario;
+    private javax.swing.JLabel labelTelefonoCliente;
+    private javax.swing.JPanel panelAgregarBibliotecario;
+    private javax.swing.JPanel panelIdentificadorClientePrestamo;
+    private javax.swing.JPanel panelMostrarDeudasCliente;
+    private javax.swing.JLabel txtCantidadDiasPrestamoLibros;
+    private javax.swing.JLabel txtCantidadDiasPrestamoRevistas;
+    private javax.swing.JTextField txtCedulaBibliotecario;
+    private javax.swing.JTextField txtCedulaCliente;
+    private javax.swing.JTextField txtCodigoCliente;
+    private javax.swing.JLabel txtConsultaCedulaClientePrestamo;
+    private javax.swing.JLabel txtConsultaCorreoClientePrestamo;
+    private javax.swing.JLabel txtConsultaNombreClientePrestamo;
+    private javax.swing.JTextField txtCorreoBibliotecario;
+    private javax.swing.JLabel txtDevolucionLibroPrestado;
+    private javax.swing.JLabel txtDevolucionRevistaPrestado;
+    private javax.swing.JTextField txtEmailCliente;
+    private javax.swing.JLabel txtErrorClientePrestamo;
+    private javax.swing.JLabel txtErrorEmail;
+    private javax.swing.JLabel txtErrorEmailBiblio;
+    private javax.swing.JLabel txtErrorTelefono;
+    private javax.swing.JLabel txtErrorTelefonoBiblio;
+    private javax.swing.JLabel txtFechaActualPrestamo;
+    private javax.swing.JTextField txtIdClienteDeudas;
+    private javax.swing.JTextField txtNombreBibliotecario;
+    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JPasswordField txtPasswordBibliotecario;
+    private javax.swing.JTextField txtTelefonoBibliotecario;
+    private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }

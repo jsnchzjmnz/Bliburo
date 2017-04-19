@@ -21,7 +21,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -33,9 +34,14 @@ public class Administrador {
 
     private Parametrizador parametrizador;
     private List<Cliente> listaClientes;
+    private List<Bibliotecario> listaBibliotecarios;
     private List<Multa> listaMultas;
     private List<Prestamo> listaPrestamos;
     private List<Venta> listaVentas;
+    private static final String expesionRegularEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    
+    private static final String expesionRegularTelefono = "^[0-9]{8}$";
     
     /**
      * Constructor por defecto de la clase Administrador
@@ -44,6 +50,7 @@ public class Administrador {
     public Administrador() {
         parametrizador = new Parametrizador();
         listaClientes = new ArrayList<Cliente>();
+        listaBibliotecarios =  new ArrayList<Bibliotecario>();
         listaMultas = new ArrayList<Multa>();
         listaPrestamos = new ArrayList<Prestamo>();
         listaVentas = new ArrayList<Venta>();
@@ -67,6 +74,14 @@ public class Administrador {
      */
     public List<Cliente> getListaClientes() {
         return listaClientes;
+    }
+    
+    /**
+     * 
+     * @return retorna la lista de Bibliotecarios
+     */
+    public List<Bibliotecario> getListaBibliotecario() {
+        return listaBibliotecarios;
     }
 
     /**
@@ -93,7 +108,9 @@ public class Administrador {
         return listaVentas;
     }
     
-    
+    public Cliente getClienteEnLista(int indice){
+        return listaClientes.get(indice);
+    }
     
     /*
     Setter
@@ -113,6 +130,14 @@ public class Administrador {
      */
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
+    }
+    
+    /**
+     * 
+     * @param listaBibliotecarios asigna una nueva lista de Bibliotecarios
+     */
+    public void listaBibliotecarios(List<Bibliotecario> listaBibliotecarios) {
+        this.listaBibliotecarios = listaBibliotecarios;
     }
 
     /**
@@ -153,8 +178,25 @@ public class Administrador {
      * @param email correo electrónico del cliente
      * @param telefono teléfono del cliente
      */
-    public void registrarCliente(String nombre,String cedula, String email, String telefono){
-        
+    public int registrarCliente(String nombre,String cedula, String email, String telefono){
+        Cliente cl = new Cliente(nombre, cedula, email, telefono);
+        listaClientes.add(cl);
+        return cl.getIdCliente();
+    }
+    
+        /**
+     * Método que se encarga del registro de clientes
+     * 
+     * @param nombre nombre del Bibliotecario
+     * @param cedula cédula del Bibliotecario
+     * @param email correo electrónico del Bibliotecario
+     * @param telefono teléfono del Bibliotecario
+     */
+    public int registrarBibliotecario(String nombre,String cedula, 
+            String email, String telefono,String password){
+        Bibliotecario bl = new Bibliotecario(nombre, cedula, email, telefono,password);
+        listaBibliotecarios.add(bl);
+       return bl.getIdBibliotecario();
     }
     
     /**
@@ -163,6 +205,41 @@ public class Administrador {
      */
     private boolean validarRegistroCliente(){
         return true;
+    }
+    
+     /**
+     * 
+     * @param correo Permite validar que el correo ingresado 
+     * cumpla con el formato
+     * @return retorna mensaje si es correcto el correo o inválido
+     */
+    public  String validarEmail(String correo){
+        Pattern pattern = Pattern.compile(expesionRegularEmail);
+
+        Matcher matcher = pattern.matcher(correo);
+        
+        if (matcher.find() == true) {
+            return "CORRECTO";
+        } else {
+            return "* El email ingresado es inválido.";
+        }
+    }
+    /**
+     * 
+     * @param telefono Permite validar que el telefono ingresado 
+     * cumpla con el formato
+     * @return retorna mensaje si es correcto el telefono o inválido
+     */
+    public String validarTelefono(String telefono){
+        Pattern pattern2 = Pattern.compile(expesionRegularTelefono);
+        
+        Matcher matcher2 = pattern2.matcher(telefono);
+        
+        if (matcher2.find() == true) {
+            return "CORRECTO";
+        } else {
+            return "* El telefono ingresado es inválido.";
+        }
     }
     
     /**
@@ -193,8 +270,8 @@ public class Administrador {
      * @param recursosLiterarios Recursos literarios solicitados para préstamo
      * @return retorna true si se realizó el préstamo
      */
-    public boolean registrarPrestamo(String idCliente,String contrasenia,List<RecursoLiterario> recursosLiterarios){
-        return true;
+    public void registrarPrestamo(Prestamo prestamo){
+        this.listaPrestamos.add(prestamo);       
     }
     
     /**

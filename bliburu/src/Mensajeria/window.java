@@ -15,7 +15,7 @@ public class window extends javax.swing.JFrame {
     public static String Username = "";
     public static String PassWord = "";
     String Mensage = "";
-    String To = "";
+    public static String To = "";
     String Subject = "";
 
     public void SendMail() {
@@ -55,32 +55,29 @@ public class window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonEnviar = new javax.swing.JButton();
+        btnCancelarMensaje = new javax.swing.JButton();
+        btnEnviarMensaje = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMensaje = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelMensajeMensajeria = new javax.swing.JLabel();
+        labelAsuntoMensajeria = new javax.swing.JLabel();
         txtAsunto = new javax.swing.JTextField();
-        txtDestinatario = new javax.swing.JTextField();
-        jButtonLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonCancelar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarMensaje.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnCancelarMensaje.setText("Cancelar");
+        btnCancelarMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                btnCancelarMensajeActionPerformed(evt);
             }
         });
 
-        jButtonEnviar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButtonEnviar.setText("Enviar");
-        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviarMensaje.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnEnviarMensaje.setText("Enviar");
+        btnEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnviarActionPerformed(evt);
+                btnEnviarMensajeActionPerformed(evt);
             }
         });
 
@@ -89,26 +86,13 @@ public class window extends javax.swing.JFrame {
         txtMensaje.setRows(5);
         jScrollPane1.setViewportView(txtMensaje);
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel4.setText("Mensaje");
+        labelMensajeMensajeria.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        labelMensajeMensajeria.setText("Mensaje");
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel3.setText("Asunto");
-
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel2.setText("Para");
+        labelAsuntoMensajeria.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        labelAsuntoMensajeria.setText("Asunto");
 
         txtAsunto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        txtDestinatario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        jButtonLimpiar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jButtonLimpiar.setText("Limpiar Campos");
-        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimpiarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,25 +102,19 @@ public class window extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
+                        .addComponent(labelAsuntoMensajeria)
                         .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAsunto)
-                            .addComponent(txtDestinatario)))
+                        .addComponent(txtAsunto))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(labelMensajeMensajeria)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jButtonEnviar)
+                .addComponent(btnEnviarMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonLimpiar)
+                .addComponent(btnCancelarMensaje)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,46 +122,36 @@ public class window extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(labelAsuntoMensajeria))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(labelMensajeMensajeria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEnviar)
-                    .addComponent(jButtonCancelar)
-                    .addComponent(jButtonLimpiar))
+                    .addComponent(btnEnviarMensaje)
+                    .addComponent(btnCancelarMensaje))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    private void btnCancelarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarMensajeActionPerformed
         System.exit(0); //Se cierra la ventana
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarMensajeActionPerformed
 
-    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
+    private void btnEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarMensajeActionPerformed
         //Se recoge la información y se envía el email
         Mensage = txtMensaje.getText();
-        To = txtDestinatario.getText();
+        //To = txtDestinatario.getText();
         Subject = txtAsunto.getText();
         SendMail();
-    }//GEN-LAST:event_jButtonEnviarActionPerformed
-
-    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-
-        //Se limpian los campos de texto
-        txtDestinatario.setText("");
         txtAsunto.setText("");
         txtMensaje.setText("");
-    }//GEN-LAST:event_jButtonLimpiarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnEnviarMensajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,15 +189,12 @@ public class window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonEnviar;
-    private javax.swing.JButton jButtonLimpiar;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton btnCancelarMensaje;
+    private javax.swing.JButton btnEnviarMensaje;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelAsuntoMensajeria;
+    private javax.swing.JLabel labelMensajeMensajeria;
     private javax.swing.JTextField txtAsunto;
-    private javax.swing.JTextField txtDestinatario;
     private javax.swing.JTextArea txtMensaje;
     // End of variables declaration//GEN-END:variables
 }
