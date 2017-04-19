@@ -28,6 +28,7 @@ public class Parametrizador {
     private Date fechaDelSistema;
     private int diasPrestamoLibro;
     private int diasPrestamoRevista;
+    private Date fechaConDiasAdicionales;
 
     
     /**
@@ -41,6 +42,7 @@ public class Parametrizador {
         fechaDelSistema = calendar.getTime();
         diasPrestamoLibro=10;
         diasPrestamoRevista=5;
+        
     }
     
     
@@ -98,6 +100,7 @@ public class Parametrizador {
      */
     public void setFechaDelSistema(Date fechaDelSistema) {
         this.fechaDelSistema = fechaDelSistema;
+        
     }
 
     /**
@@ -116,6 +119,12 @@ public class Parametrizador {
         this.diasPrestamoRevista = diasPrestamoRevista;
     }
 
+    public Date getFechaConDiasAdicionales(int dias){
+        Calendar c = Calendar.getInstance(); 
+        c.setTime(fechaDelSistema);
+        c.add(Calendar.DATE, dias);
+        return fechaConDiasAdicionales = c.getTime();
+    }
     
         
 

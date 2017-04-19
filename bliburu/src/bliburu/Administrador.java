@@ -41,7 +41,7 @@ public class Administrador {
     private static final String expesionRegularEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     
-    private static final String expesionRegularTelefono = "^[0-9]{8}$";
+    private static final String expesionRegularTelefono = "^[0-9]{7}$";
     
     /**
      * Constructor por defecto de la clase Administrador

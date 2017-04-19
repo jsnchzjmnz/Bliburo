@@ -59,6 +59,9 @@ public class GUI extends javax.swing.JFrame {
     Calendar calendar = Calendar.getInstance();
     private int recursosLiterariosAgregadosAPrestamo;
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date fechaActualDeSistema;
+    Date fechaDevolucionLibros;
+    Date fechaDevolucionRevistas;
     /**
      * Creates new form GUI
      */
@@ -206,6 +209,10 @@ public class GUI extends javax.swing.JFrame {
         txtCantidadDiasPrestamoLibros = new javax.swing.JLabel();
         labelDiasHabilesRevistas = new javax.swing.JLabel();
         txtCantidadDiasPrestamoRevistas = new javax.swing.JLabel();
+        labelDevolucionLibro = new javax.swing.JLabel();
+        txtDevolucionLibroPrestado = new javax.swing.JLabel();
+        labelDevolucionRevista = new javax.swing.JLabel();
+        txtDevolucionRevistaPrestado = new javax.swing.JLabel();
         txtErrorClientePrestamo = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
@@ -1249,57 +1256,86 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        labelFechaPrestamo.setText("Fecha: ");
+        labelFechaPrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelFechaPrestamo.setText("Fecha Actual del Sistema: ");
 
+        txtFechaActualPrestamo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtFechaActualPrestamo.setText("jLabel2");
 
+        labelDiasHabilesLibros.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDiasHabilesLibros.setText("Días Habiles de Préstamo de Libros:");
 
+        txtCantidadDiasPrestamoLibros.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtCantidadDiasPrestamoLibros.setText("jLabel2");
 
+        labelDiasHabilesRevistas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelDiasHabilesRevistas.setText("Días Habiles de Préstamo de Revistas: ");
 
+        txtCantidadDiasPrestamoRevistas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtCantidadDiasPrestamoRevistas.setText("jLabel3");
+
+        labelDevolucionLibro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDevolucionLibro.setText("Devolución:");
+
+        txtDevolucionLibroPrestado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDevolucionLibroPrestado.setText("jLabel2");
+
+        labelDevolucionRevista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelDevolucionRevista.setText("Devolución:");
+
+        txtDevolucionRevistaPrestado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDevolucionRevistaPrestado.setText("jLabel2");
 
         javax.swing.GroupLayout jPanelFacturaPrestamosLayout = new javax.swing.GroupLayout(jPanelFacturaPrestamos);
         jPanelFacturaPrestamos.setLayout(jPanelFacturaPrestamosLayout);
         jPanelFacturaPrestamosLayout.setHorizontalGroup(
             jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparatorFacturaPrestamo))
+                        .addComponent(labelDiasHabilesRevistas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadDiasPrestamoRevistas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelDevolucionRevista, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                                 .addComponent(labelNombrePrestamoCLiente)
                                 .addGap(95, 95, 95)
                                 .addComponent(txtConsultaNombreClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                    .addComponent(labelFechaPrestamo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFechaActualPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                    .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelNombreClientePrestamo)
+                                        .addComponent(labelCedulaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                            .addGap(2, 2, 2)
+                                            .addComponent(txtConsultaCedulaClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                                 .addComponent(labelDiasHabilesLibros)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCantidadDiasPrestamoLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                .addComponent(labelFechaPrestamo)
+                                .addComponent(txtCantidadDiasPrestamoLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFechaActualPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelNombreClientePrestamo)
-                                    .addComponent(labelCedulaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(txtConsultaCedulaClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                .addComponent(labelDiasHabilesRevistas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCantidadDiasPrestamoRevistas)))))
+                                .addComponent(labelDevolucionLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)))
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDevolucionLibroPrestado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDevolucionRevistaPrestado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparatorFacturaPrestamo)
                 .addContainerGap())
             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                 .addContainerGap()
@@ -1332,11 +1368,15 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDiasHabilesLibros)
-                    .addComponent(txtCantidadDiasPrestamoLibros))
+                    .addComponent(txtCantidadDiasPrestamoLibros)
+                    .addComponent(labelDevolucionLibro)
+                    .addComponent(txtDevolucionLibroPrestado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDiasHabilesRevistas)
-                    .addComponent(txtCantidadDiasPrestamoRevistas))
+                    .addComponent(txtCantidadDiasPrestamoRevistas)
+                    .addComponent(labelDevolucionRevista)
+                    .addComponent(txtDevolucionRevistaPrestado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparatorFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1671,7 +1711,7 @@ public class GUI extends javax.swing.JFrame {
             }
             else{
                 path = pathWrong;
-                txtErrorTelefono.setText("* Ingrese Teléfono válido");
+                txtErrorTelefono.setText(validacionTelefono);
             }
             URL url = this.getClass().getResource(path);
             ImageIcon icon = new ImageIcon(url);
@@ -1699,7 +1739,7 @@ public class GUI extends javax.swing.JFrame {
             }
             else{
                 path = pathWrong;
-                txtErrorEmail.setText("* Ingrese email válido");
+                txtErrorEmail.setText(validacionEmail);
             }
             URL url = this.getClass().getResource(path);
             ImageIcon icon = new ImageIcon(url);
@@ -1849,13 +1889,21 @@ public class GUI extends javax.swing.JFrame {
             txtConsultaNombreClientePrestamo.setText(clienteConsultas.getNombre());
             txtConsultaCorreoClientePrestamo.setText(clienteConsultas.getEmail());
             txtConsultaCedulaClientePrestamo.setText(clienteConsultas.getCedula());
-            Date fecha = biblioteca.getAdministrador().getParametrizador().getFechaDelSistema();
+            fechaActualDeSistema = biblioteca.getAdministrador().getParametrizador().getFechaDelSistema();
             String fechaActual = dateFormat.format(fecha);
             int diasPrestamoLibro = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoLibro();
             int diasPrestamoRevista = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoRevista();
+            fechaDevolucionLibros = biblioteca.getAdministrador().getParametrizador().getFechaConDiasAdicionales(diasPrestamoLibro);
+            fechaDevolucionRevistas = biblioteca.getAdministrador().getParametrizador().getFechaConDiasAdicionales(diasPrestamoRevista);
+            //
+            String fechaDevolucionLibro = dateFormat.format(fechaDevolucionLibros);
+            String fechaDevolucionRevista = dateFormat.format(fechaDevolucionRevistas);
+            //
             txtFechaActualPrestamo.setText(fechaActual);
             txtCantidadDiasPrestamoLibros.setText(String.valueOf(diasPrestamoLibro));
             txtCantidadDiasPrestamoRevistas.setText(String.valueOf(diasPrestamoRevista));
+            txtDevolucionLibroPrestado.setText(fechaDevolucionLibro);
+            txtDevolucionRevistaPrestado.setText(fechaDevolucionRevista);
             recorrerListaRecursosLiterarios();
         }
         catch(Exception e){
@@ -1868,10 +1916,10 @@ public class GUI extends javax.swing.JFrame {
     *Un Cliente asociado y una lista de Recursos literari y la fecha actual
     */
     private void btnProcesarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarPrestamoActionPerformed
-        // TODO add your handling code here:
-        this.fecha = calendar.getTime();
-        Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,fecha); 
-        
+
+        Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,
+                fechaActualDeSistema,fechaDevolucionLibros,fechaDevolucionRevistas); 
+  
     }//GEN-LAST:event_btnProcesarPrestamoActionPerformed
 
     
@@ -2280,6 +2328,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelContraseniaBibliotecario;
     private javax.swing.JLabel labelCorreoBibliotecario;
     private javax.swing.JLabel labelCorreoCliente;
+    private javax.swing.JLabel labelDevolucionLibro;
+    private javax.swing.JLabel labelDevolucionRevista;
     private javax.swing.JLabel labelDiasHabilesLibros;
     private javax.swing.JLabel labelDiasHabilesRevistas;
     private javax.swing.JLabel labelFechaPrestamo;
@@ -2306,6 +2356,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel txtConsultaCorreoClientePrestamo;
     private javax.swing.JLabel txtConsultaNombreClientePrestamo;
     private javax.swing.JTextField txtCorreoBibliotecario;
+    private javax.swing.JLabel txtDevolucionLibroPrestado;
+    private javax.swing.JLabel txtDevolucionRevistaPrestado;
     private javax.swing.JTextField txtEmailCliente;
     private javax.swing.JLabel txtErrorClientePrestamo;
     private javax.swing.JLabel txtErrorEmail;

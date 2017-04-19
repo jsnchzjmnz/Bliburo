@@ -30,17 +30,26 @@ import java.util.List;
 public class Prestamo {
     private List<RecursoLiterario> productosPrestados;
     private Cliente cliente;
-    private Date fecha;
+    private Date fechaActualDeSistema;
+    private Date fechaDevolucionLibros;
+    private Date fechaDevolucionRevistas;
+
+
+
+
     
     public Prestamo(){
         Calendar calendar = Calendar.getInstance();
-        this.fecha = calendar.getTime();
+        this.fechaActualDeSistema = calendar.getTime();
     }
     
-    public Prestamo(Cliente cliente,List<RecursoLiterario> productosPrestados,Date fecha){
+    public Prestamo(Cliente cliente,List<RecursoLiterario> productosPrestados,
+            Date fechaActualDeSistema, Date fechaDevolucionLibros, Date fechaDevolucionRevistas ){
         this.cliente = cliente;
         this.productosPrestados = productosPrestados;
-        this.fecha = fecha;
+        this.fechaActualDeSistema = fechaActualDeSistema;
+        this.fechaDevolucionLibros = fechaDevolucionLibros;
+        this.fechaDevolucionRevistas = fechaDevolucionRevistas;
     }
 
 
@@ -57,7 +66,15 @@ public class Prestamo {
     }
     
     public Date getFecha() {
-        return fecha;
+        return fechaActualDeSistema;
+    }
+    
+    public Date getFechaDevolucionLibros() {
+        return fechaDevolucionLibros;
+    }
+    
+    public Date getFechaDevolucionRevistas() {
+        return fechaDevolucionRevistas;
     }
     /*
      Setters   
@@ -71,7 +88,15 @@ public class Prestamo {
     }
 
     public void setFecha(Date fecha) {
-        this.fecha = fecha;
+        this.fechaActualDeSistema = fecha;
+    }
+    
+    public void setFechaDevolucionRevistas(Date fechaDevolucionRevistas) {
+        this.fechaDevolucionRevistas = fechaDevolucionRevistas;
+    }
+    
+    public void setFechaDevolucionLibros(Date fechaDevolucionLibros) {
+        this.fechaDevolucionLibros = fechaDevolucionLibros;
     }
     
     
