@@ -221,6 +221,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemImportarLiteratura = new javax.swing.JMenuItem();
         jSeparatorFiltro = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenuHerramientas = new javax.swing.JMenu();
         jMenuItemAjustes = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
@@ -1471,6 +1472,15 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenuArchivo.add(jMenuItemSalir);
 
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Consultar Préstamos");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuArchivo.add(jCheckBoxMenuItem1);
+
         jMenuBar.add(jMenuArchivo);
 
         jMenuHerramientas.setText("Herramientas");
@@ -1955,6 +1965,12 @@ public class GUI extends javax.swing.JFrame {
         administradorCliente.registrarPrestamo(pt);
     }//GEN-LAST:event_btnProcesarPrestamoActionPerformed
 
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        consultaPrestamos prestamos = new consultaPrestamos(administradorCliente);
+        prestamos.show();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
     
      /**
      * 
@@ -2285,6 +2301,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBoxFiltroRevistasPrestadas;
     private javax.swing.JCheckBox jCheckBoxFiltroRevistasVendidas;
     private javax.swing.JCheckBox jCheckBoxFiltroTodo;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBoxFiltroRevistaTipo;
     private javax.swing.JComboBox<String> jComboBoxFiltroTipoLibro;
     private javax.swing.JComboBox<String> jComboBoxRegistroRevistaTipo;

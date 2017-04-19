@@ -16,6 +16,12 @@
  */
 package bliburu;
 
+import java.awt.GridLayout;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author JOAQUIN
@@ -25,8 +31,63 @@ public class consultaPrestamos extends javax.swing.JFrame {
     /**
      * Creates new form consultaPrestamos
      */
+    Administrador admi;
+    private List<Prestamo> listaPrestamos;
+    Cliente cliente;
+    private Date fechaActualDeSistema;
+    private Date fechaDevolucionLibros;
+    private Date fechaDevolucionRevistas;
+    
     public consultaPrestamos() {
         initComponents();
+    }
+    public consultaPrestamos(Administrador admin){
+        this.admi=admin;
+        this.listaPrestamos = admi.getListaPrestamos();
+        recorrerListaPrestamos();
+    }
+    
+    public void recorrerListaPrestamos(){
+        int contador = 0;
+        while(contador < listaPrestamos.size()){
+           cliente = listaPrestamos.get(contador).getCliente();
+           fechaActualDeSistema = listaPrestamos.get(contador).getFecha();
+           fechaDevolucionLibros = listaPrestamos.get(contador).getFechaDevolucionLibros();
+           fechaDevolucionRevistas = listaPrestamos.get(contador).getFechaDevolucionRevistas();
+           System.out.println("Cliente: "+cliente);
+           System.out.println("Fecha de devolucion: "+fechaDevolucionLibros);
+           recorrerRecursosLiterariosPrestados(contador);
+           contador++;
+        }
+    }
+    public void recorrerRecursosLiterariosPrestados(int indice){
+        int dimension = listaPrestamos.get(indice).getProductosPrestados().size();
+        for (int x = 0;x < dimension;x++){
+            String id = listaPrestamos.get(x).getProductosPrestados().get(x).getId();
+            String nombre = listaPrestamos.get(x).getProductosPrestados().get(x).getNombre();
+            System.out.println(id+":"+nombre);
+        }
+
+    }
+ 
+    
+    public void refrescarPanelPrestamos(){
+        JLabel Identificador = new javax.swing.JLabel("IDENTIFICADOR");
+        JLabel nombre = new javax.swing.JLabel("NOMBRE");
+        JLabel fechaSolicitud = new javax.swing.JLabel("FECHA-SOLICITUD");
+        JLabel Cliente = new javax.swing.JLabel("CLIENTE");
+        JLabel fechaDevolucion = new javax.swing.JLabel("FECHA-DEVOLUCIÓN");
+        //JButton multas = new javax.swing.JButton("Consultar Multas");
+        panelConsultaPrestamos.setLayout(new GridLayout(0,5,20,20));
+        panelConsultaPrestamos.add(Identificador);
+        panelConsultaPrestamos.add(nombre);
+        panelConsultaPrestamos.add(fechaSolicitud);
+        panelConsultaPrestamos.add(Cliente);
+        panelConsultaPrestamos.add(fechaDevolucion);
+        //panelConsultaPrestamos.add(multas);
+        panelConsultaPrestamos.revalidate();
+        panelConsultaPrestamos.repaint();
+        
     }
 
     /**
@@ -42,10 +103,16 @@ public class consultaPrestamos extends javax.swing.JFrame {
         jLabelLogo = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
+        panelConsultaPrestamos = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(2147, 2147));
 
         bannerBliburu.setBackground(new java.awt.Color(125, 164, 202));
         bannerBliburu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 68, 49), 2));
@@ -57,45 +124,76 @@ public class consultaPrestamos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Recurso Literario:");
 
+        jLabel2.setText("IDENTIFICADOR");
+
+        jLabel3.setText("NOMBRE");
+
+        jLabel4.setText("FECHA-SOLICITUD");
+
+        jLabel5.setText("CLIENTE");
+
+        jLabel6.setText("FECHA-DEVOLUCIÓN");
+
         javax.swing.GroupLayout bannerBliburuLayout = new javax.swing.GroupLayout(bannerBliburu);
         bannerBliburu.setLayout(bannerBliburuLayout);
         bannerBliburuLayout.setHorizontalGroup(
             bannerBliburuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bannerBliburuLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(bannerBliburuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bannerBliburuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelLogo))
-                    .addGroup(bannerBliburuLayout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                        .addComponent(jLabelLogo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(179, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bannerBliburuLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel3)
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel6)
+                        .addGap(20, 20, 20))))
         );
         bannerBliburuLayout.setVerticalGroup(
             bannerBliburuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bannerBliburuLayout.createSequentialGroup()
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bannerBliburuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bannerBliburuLayout.createSequentialGroup()
+                        .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bannerBliburuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(bannerBliburuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(27, 27, 27)))
                 .addGroup(bannerBliburuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(4, 4, 4))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelConsultaPrestamosLayout = new javax.swing.GroupLayout(panelConsultaPrestamos);
+        panelConsultaPrestamos.setLayout(panelConsultaPrestamosLayout);
+        panelConsultaPrestamosLayout.setHorizontalGroup(
+            panelConsultaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 748, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 343, Short.MAX_VALUE)
+        panelConsultaPrestamosLayout.setVerticalGroup(
+            panelConsultaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(jPanel2);
+        jScrollPane1.setViewportView(panelConsultaPrestamos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,7 +211,7 @@ public class consultaPrestamos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(bannerBliburu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -159,8 +257,13 @@ public class consultaPrestamos extends javax.swing.JFrame {
     private javax.swing.JPanel bannerBliburu;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelConsultaPrestamos;
     // End of variables declaration//GEN-END:variables
 }
