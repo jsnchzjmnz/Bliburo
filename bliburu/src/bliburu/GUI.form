@@ -1685,13 +1685,12 @@
                               <Component id="jScrollPanelLibrosDisponibles" min="-2" pref="534" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="labelLibrosDisponibles" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="labelLibrosDisponibles" min="-2" pref="292" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanelFacturaPrestamos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="115" max="32767" attributes="0"/>
+                      <Component id="jPanelFacturaPrestamos" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1712,7 +1711,7 @@
                                       <Component id="txtErrorClientePrestamo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="60" max="32767" attributes="0"/>
                               <Component id="labelLibrosDisponibles" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPanelLibrosDisponibles" min="-2" pref="230" max="-2" attributes="0"/>
@@ -1834,7 +1833,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Libros Disponibles para Prestamo"/>
+                <Property name="text" type="java.lang.String" value="Libros y Revistas Disponibles para Prestamo"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanelFacturaPrestamos">
@@ -1848,42 +1847,59 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparatorFacturaPrestamo" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="labelCedulaPrestamo" min="-2" pref="141" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="txtConsultaCedulaClientePrestamo" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelNombrePrestamoCLiente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                                          <Component id="txtConsultaNombreClientePrestamo" min="-2" pref="95" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelDiasHabilesLibros" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="txtCantidadDiasPrestamoLibros" min="-2" pref="55" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelFechaPrestamo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtFechaActualPrestamo" min="-2" pref="172" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="labelNombreClientePrestamo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labelCedulaPrestamo" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="txtConsultaCorreoClientePrestamo" min="-2" pref="118" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="labelNombreClientePrestamo" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                                  <Component id="txtConsultaCorreoClientePrestamo" min="-2" pref="95" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="labelNombrePrestamoCLiente" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                                  <Component id="txtConsultaNombreClientePrestamo" min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                  <Component id="txtConsultaCedulaClientePrestamo" min="-2" pref="195" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                                          <Component id="btnProcesarPrestamo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelDiasHabilesRevistas" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtCantidadDiasPrestamoRevistas" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneFacturaPrestamo" min="-2" pref="397" max="-2" attributes="0"/>
-                          <EmptySpace pref="25" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneFacturaPrestamo" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnProcesarPrestamo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1898,20 +1914,35 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelNombreClientePrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtConsultaCorreoClientePrestamo" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelCedulaPrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtConsultaCedulaClientePrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelCedulaPrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtConsultaCorreoClientePrestamo" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelFechaPrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFechaActualPrestamo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelDiasHabilesLibros" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCantidadDiasPrestamoLibros" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelDiasHabilesRevistas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCantidadDiasPrestamoRevistas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jSeparatorFacturaPrestamo" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPaneFacturaPrestamo" min="-2" pref="261" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnProcesarPrestamo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="55" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1976,12 +2007,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="410" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="525" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="251" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="259" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1998,6 +2029,36 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProcesarPrestamoActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelFechaPrestamo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fecha: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtFechaActualPrestamo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelDiasHabilesLibros">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="D&#xed;as Habiles de Pr&#xe9;stamo de Libros:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtCantidadDiasPrestamoLibros">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelDiasHabilesRevistas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="D&#xed;as Habiles de Pr&#xe9;stamo de Revistas: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="txtCantidadDiasPrestamoRevistas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jLabel3"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

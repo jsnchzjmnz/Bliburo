@@ -58,7 +58,7 @@ public class GUI extends javax.swing.JFrame {
     private Date fecha;
     Calendar calendar = Calendar.getInstance();
     private int recursosLiterariosAgregadosAPrestamo;
-    
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     /**
      * Creates new form GUI
      */
@@ -200,6 +200,12 @@ public class GUI extends javax.swing.JFrame {
         jScrollPaneFacturaPrestamo = new javax.swing.JScrollPane();
         jpanelMostrarLibrosSolicitados = new javax.swing.JPanel();
         btnProcesarPrestamo = new javax.swing.JButton();
+        labelFechaPrestamo = new javax.swing.JLabel();
+        txtFechaActualPrestamo = new javax.swing.JLabel();
+        labelDiasHabilesLibros = new javax.swing.JLabel();
+        txtCantidadDiasPrestamoLibros = new javax.swing.JLabel();
+        labelDiasHabilesRevistas = new javax.swing.JLabel();
+        txtCantidadDiasPrestamoRevistas = new javax.swing.JLabel();
         txtErrorClientePrestamo = new javax.swing.JLabel();
         jPanelHeader = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
@@ -1202,7 +1208,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPanelLibrosDisponibles.setViewportView(jpanelMostrarLibrosDisponibles);
 
         labelLibrosDisponibles.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        labelLibrosDisponibles.setText("Libros Disponibles para Prestamo");
+        labelLibrosDisponibles.setText("Libros y Revistas Disponibles para Prestamo");
 
         labelNombrePrestamoCLiente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         labelNombrePrestamoCLiente.setText("Nombre:");
@@ -1226,11 +1232,11 @@ public class GUI extends javax.swing.JFrame {
         jpanelMostrarLibrosSolicitados.setLayout(jpanelMostrarLibrosSolicitadosLayout);
         jpanelMostrarLibrosSolicitadosLayout.setHorizontalGroup(
             jpanelMostrarLibrosSolicitadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
         );
         jpanelMostrarLibrosSolicitadosLayout.setVerticalGroup(
             jpanelMostrarLibrosSolicitadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 251, Short.MAX_VALUE)
+            .addGap(0, 259, Short.MAX_VALUE)
         );
 
         jScrollPaneFacturaPrestamo.setViewportView(jpanelMostrarLibrosSolicitados);
@@ -1243,6 +1249,18 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        labelFechaPrestamo.setText("Fecha: ");
+
+        txtFechaActualPrestamo.setText("jLabel2");
+
+        labelDiasHabilesLibros.setText("Días Habiles de Préstamo de Libros:");
+
+        txtCantidadDiasPrestamoLibros.setText("jLabel2");
+
+        labelDiasHabilesRevistas.setText("Días Habiles de Préstamo de Revistas: ");
+
+        txtCantidadDiasPrestamoRevistas.setText("jLabel3");
+
         javax.swing.GroupLayout jPanelFacturaPrestamosLayout = new javax.swing.GroupLayout(jPanelFacturaPrestamos);
         jPanelFacturaPrestamos.setLayout(jPanelFacturaPrestamosLayout);
         jPanelFacturaPrestamosLayout.setHorizontalGroup(
@@ -1253,31 +1271,44 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jSeparatorFacturaPrestamo))
                     .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                        .addComponent(labelCedulaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtConsultaCedulaClientePrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                        .addComponent(labelNombreClientePrestamo)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                        .addComponent(labelNombrePrestamoCLiente)
-                                        .addGap(95, 95, 95)
-                                        .addComponent(txtConsultaNombreClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(labelNombrePrestamoCLiente)
+                                .addGap(95, 95, 95)
+                                .addComponent(txtConsultaNombreClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(btnProcesarPrestamo)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(labelDiasHabilesLibros)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCantidadDiasPrestamoLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                .addComponent(labelFechaPrestamo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFechaActualPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelNombreClientePrestamo)
+                                    .addComponent(labelCedulaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(txtConsultaCedulaClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
+                                .addComponent(labelDiasHabilesRevistas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCantidadDiasPrestamoRevistas)))))
                 .addContainerGap())
             .addGroup(jPanelFacturaPrestamosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jScrollPaneFacturaPrestamo)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFacturaPrestamosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnProcesarPrestamo)
+                .addGap(174, 174, 174))
         );
         jPanelFacturaPrestamosLayout.setVerticalGroup(
             jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1289,18 +1320,30 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreClientePrestamo)
-                    .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(txtConsultaCedulaClientePrestamo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCedulaPrestamo)
-                    .addComponent(txtConsultaCedulaClientePrestamo))
+                    .addComponent(txtConsultaCorreoClientePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFechaPrestamo)
+                    .addComponent(txtFechaActualPrestamo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDiasHabilesLibros)
+                    .addComponent(txtCantidadDiasPrestamoLibros))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelFacturaPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDiasHabilesRevistas)
+                    .addComponent(txtCantidadDiasPrestamoRevistas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparatorFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPaneFacturaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnProcesarPrestamo)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         txtErrorClientePrestamo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -1322,11 +1365,10 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPanelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelPrestamosLayout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(labelLibrosDisponibles)))
+                        .addGap(95, 95, 95)
+                        .addComponent(labelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanelFacturaPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addComponent(jPanelFacturaPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPrestamosLayout.setVerticalGroup(
             jPanelPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1342,7 +1384,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(jPanelPrestamosLayout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addComponent(txtErrorClientePrestamo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(labelLibrosDisponibles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPanelLibrosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1807,6 +1849,13 @@ public class GUI extends javax.swing.JFrame {
             txtConsultaNombreClientePrestamo.setText(clienteConsultas.getNombre());
             txtConsultaCorreoClientePrestamo.setText(clienteConsultas.getEmail());
             txtConsultaCedulaClientePrestamo.setText(clienteConsultas.getCedula());
+            Date fecha = biblioteca.getAdministrador().getParametrizador().getFechaDelSistema();
+            String fechaActual = dateFormat.format(fecha);
+            int diasPrestamoLibro = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoLibro();
+            int diasPrestamoRevista = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoRevista();
+            txtFechaActualPrestamo.setText(fechaActual);
+            txtCantidadDiasPrestamoLibros.setText(String.valueOf(diasPrestamoLibro));
+            txtCantidadDiasPrestamoRevistas.setText(String.valueOf(diasPrestamoRevista));
             recorrerListaRecursosLiterarios();
         }
         catch(Exception e){
@@ -2000,15 +2049,27 @@ public class GUI extends javax.swing.JFrame {
         jpanelMostrarLibrosSolicitados.removeAll();
         for(int x=0;x<listaRecursosLiterariosPrestados.size();x++) {
             String IdLibro = listaRecursosLiterariosPrestados.get(x).getId() ;
+            String tipoRecurso;
+            char caracterRecurso = IdLibro.charAt(0);
+            System.out.print(caracterRecurso);
+            if('L' == caracterRecurso){
+                tipoRecurso="LIBRO";
+            }
+            else{
+                tipoRecurso="REVISTA";
+            }
             String nombreLibro = listaRecursosLiterariosPrestados.get(x).getNombre();
             JLabel panelIdLibro;
+            JLabel panelTipoRecuerso;
             JLabel panelnombreLibro;
             JButton panelEmilinarLibro;
             panelIdLibro = new javax.swing.JLabel(IdLibro);
+            panelTipoRecuerso = new javax.swing.JLabel(tipoRecurso);
             panelnombreLibro = new javax.swing.JLabel(nombreLibro);
             panelEmilinarLibro = new javax.swing.JButton("Eliminar");
-            jpanelMostrarLibrosSolicitados.setLayout(new GridLayout(0,3,10,10));
+            jpanelMostrarLibrosSolicitados.setLayout(new GridLayout(0,4,10,10));
             jpanelMostrarLibrosSolicitados.add(panelIdLibro);
+            jpanelMostrarLibrosSolicitados.add(panelTipoRecuerso);
             jpanelMostrarLibrosSolicitados.add(panelnombreLibro);
             jpanelMostrarLibrosSolicitados.add(panelEmilinarLibro);
             jpanelMostrarLibrosSolicitados.revalidate();
@@ -2219,6 +2280,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelContraseniaBibliotecario;
     private javax.swing.JLabel labelCorreoBibliotecario;
     private javax.swing.JLabel labelCorreoCliente;
+    private javax.swing.JLabel labelDiasHabilesLibros;
+    private javax.swing.JLabel labelDiasHabilesRevistas;
+    private javax.swing.JLabel labelFechaPrestamo;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelIDDeudas;
     private javax.swing.JLabel labelIdenficadorDeudas;
@@ -2233,6 +2297,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelAgregarBibliotecario;
     private javax.swing.JPanel panelIdentificadorClientePrestamo;
     private javax.swing.JPanel panelMostrarDeudasCliente;
+    private javax.swing.JLabel txtCantidadDiasPrestamoLibros;
+    private javax.swing.JLabel txtCantidadDiasPrestamoRevistas;
     private javax.swing.JTextField txtCedulaBibliotecario;
     private javax.swing.JTextField txtCedulaCliente;
     private javax.swing.JTextField txtCodigoCliente;
@@ -2246,6 +2312,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel txtErrorEmailBiblio;
     private javax.swing.JLabel txtErrorTelefono;
     private javax.swing.JLabel txtErrorTelefonoBiblio;
+    private javax.swing.JLabel txtFechaActualPrestamo;
     private javax.swing.JTextField txtIdClienteDeudas;
     private javax.swing.JTextField txtNombreBibliotecario;
     private javax.swing.JTextField txtNombreCliente;
