@@ -1677,14 +1677,47 @@ public class GUI extends javax.swing.JFrame {
      * 
      */
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        String pathRight = "/images/right.jpg";
+        String pathWrong = "/images/wrong.jpg";
+        String path = pathWrong;
         String nombre = txtNombreCliente.getText();
         String email = txtEmailCliente.getText();
         String validacionEmail = administradorCliente.validarEmail(email);
-        txtErrorEmail.setText(validacionEmail);
+        if(!email.equals("")){
+            if(validacionEmail.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorEmail.setText("");
+            }
+            else{
+                path = pathWrong;
+                txtErrorEmail.setText("* Ingrese email válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorEmail.setIcon(icon);
+        }
+        else{
+           txtErrorEmail.setText("**Capo Requerido");
+        }
         String cedula = txtCedulaCliente.getText();
         String telefono = txtTelefonoCliente.getText();
         String validacionTelefono = administradorCliente.validarTelefono(telefono);
-        txtErrorTelefono.setText(validacionTelefono);
+        if(!telefono.equals("")){
+            if(validacionTelefono.equals("CORRECTO")){
+                path = pathRight;
+                txtErrorTelefono.setText("");
+            }
+            else{
+                path = pathWrong;
+                txtErrorTelefono.setText("* Ingrese Teléfono válido");
+            }
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            txtErrorTelefono.setIcon(icon);
+        }
+        else{
+           txtErrorTelefono.setText("**Capo Requerido");
+        }
         if("CORRECTO".equals(validacionEmail) && "CORRECTO".equals(validacionTelefono)){
             int idCliente = administradorCliente.registrarCliente(nombre, cedula, email, telefono);
             refrescarPanelClientes(idCliente,nombre,cedula,email,telefono);
@@ -1703,6 +1736,7 @@ public class GUI extends javax.swing.JFrame {
         String pathWrong = "/images/wrong.jpg";
         String path = pathWrong;
         String telefono = txtTelefonoCliente.getText();
+        telefono=telefono+"1";
         if(!telefono.equals("")){
             String validacionTelefono = administradorCliente.validarTelefono(telefono);
             if(validacionTelefono.equals("CORRECTO")){
@@ -1890,7 +1924,7 @@ public class GUI extends javax.swing.JFrame {
             txtConsultaCorreoClientePrestamo.setText(clienteConsultas.getEmail());
             txtConsultaCedulaClientePrestamo.setText(clienteConsultas.getCedula());
             fechaActualDeSistema = biblioteca.getAdministrador().getParametrizador().getFechaDelSistema();
-            String fechaActual = dateFormat.format(fecha);
+            String fechaActual = dateFormat.format(fechaActualDeSistema);
             int diasPrestamoLibro = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoLibro();
             int diasPrestamoRevista = biblioteca.getAdministrador().getParametrizador().getDiasPrestamoRevista();
             fechaDevolucionLibros = biblioteca.getAdministrador().getParametrizador().getFechaConDiasAdicionales(diasPrestamoLibro);
@@ -1916,10 +1950,9 @@ public class GUI extends javax.swing.JFrame {
     *Un Cliente asociado y una lista de Recursos literari y la fecha actual
     */
     private void btnProcesarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarPrestamoActionPerformed
-
         Prestamo pt = new Prestamo(clienteConsultas,listaRecursosLiterariosPrestados,
                 fechaActualDeSistema,fechaDevolucionLibros,fechaDevolucionRevistas); 
-  
+        administradorCliente.registrarPrestamo(pt);
     }//GEN-LAST:event_btnProcesarPrestamoActionPerformed
 
     

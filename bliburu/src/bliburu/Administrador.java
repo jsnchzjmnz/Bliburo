@@ -41,7 +41,7 @@ public class Administrador {
     private static final String expesionRegularEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     
-    private static final String expesionRegularTelefono = "^[0-9]{7}$";
+    private static final String expesionRegularTelefono = "^[0-9]{8}$";
     
     /**
      * Constructor por defecto de la clase Administrador
@@ -270,8 +270,8 @@ public class Administrador {
      * @param recursosLiterarios Recursos literarios solicitados para préstamo
      * @return retorna true si se realizó el préstamo
      */
-    public boolean registrarPrestamo(String idCliente,String contrasenia,List<RecursoLiterario> recursosLiterarios){
-        return true;
+    public void registrarPrestamo(Prestamo prestamo){
+        this.listaPrestamos.add(prestamo);       
     }
     
     /**
