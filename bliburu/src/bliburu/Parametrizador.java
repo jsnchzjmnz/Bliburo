@@ -28,6 +28,8 @@ public class Parametrizador {
     private Date fechaDelSistema;
     private int diasPrestamoLibro;
     private int diasPrestamoRevista;
+    private Date fechaConDiasAdicionales;
+    private double costoMultaDia;
 
     
     /**
@@ -41,6 +43,8 @@ public class Parametrizador {
         fechaDelSistema = calendar.getTime();
         diasPrestamoLibro=10;
         diasPrestamoRevista=5;
+        costoMultaDia=300;
+        
     }
     
     
@@ -52,16 +56,27 @@ public class Parametrizador {
      * @param diasPrestamoLibro dias asignados para el préstamo de libros
      * @param diasPrestamoRevista dias asignados para el préstamo de revistas
      */
-    public Parametrizador(Date fechaDelSistema, int diasPrestamoLibro, int diasPrestamoRevista) {
+    public Parametrizador(Date fechaDelSistema, int diasPrestamoLibro, int diasPrestamoRevista,double costoMultaDia) {
         
         this.fechaDelSistema = fechaDelSistema;
         this.diasPrestamoLibro = diasPrestamoLibro;
         this.diasPrestamoRevista = diasPrestamoRevista;
+        this.costoMultaDia = costoMultaDia;
     }
     
     /*
     Getters
     */
+
+    /**
+     * 
+     * @return retorna el costo de la multa por día de retraso
+     */
+    public double getCostoMultaDia() {
+        return costoMultaDia;
+    }
+    
+    
     
     /**
      * 
@@ -91,7 +106,17 @@ public class Parametrizador {
     /*
     Setters
     */
+    
+    /**
+     * 
+     * @param costoMultaDia monto de lo que se cobrará por día de retraso
+     */
+    public void setCostoMultaDia(double costoMultaDia) {
+        this.costoMultaDia = costoMultaDia;
+        
+    }
 
+    
     /**
      * 
      * @param fechaDelSistema asigna una nueva fecha al programa
@@ -116,6 +141,12 @@ public class Parametrizador {
         this.diasPrestamoRevista = diasPrestamoRevista;
     }
 
+    public Date getFechaConDiasAdicionales(int dias){
+        Calendar c = Calendar.getInstance(); 
+        c.setTime(fechaDelSistema);
+        c.add(Calendar.DATE, dias);
+        return fechaConDiasAdicionales = c.getTime();
+    }
     
         
 
